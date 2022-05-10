@@ -1,1 +1,90 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=Roboto:ital,wght@0,400;0,500;1,400&display=swap');
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:'Roboto', sans-serif; 
+  color: var(--text-color);
+}
+
+:root {
+    --background-color: #ffffff;
+    --text-color: #272727;
+    --card-color: #e7e9eb;
+    --primary-color: #62d7d7;
+    --seccondary-color: #376474;
+    --devider: #c0c0c0;
+    --upwoted: #04aa6d;
+    --downowoted: #dc2048
+  }
+
+  app-root{
+      min-height: 1vh;
+      overflow: auto;
+  }
+
+
+.flexboxEnd{
+    margin-left: auto;
+}
+
+.btn{
+    padding: 0.6em 2em;
+    font-size: medium;
+    border: 1.5px solid;
+    border-radius: 8px;
+    background-color: var(--card-color);
+}
+
+.btn-light:hover{
+    background-color: #bdbec086;
+    color: var(--text-color);
+}
+
+
+
+.btn-filled{
+    background-color: var(--seccondary-color);
+    color: var(--background-color);
+    border-color: var(--text-color);
+}
+
+.btn-filled:hover{
+    background-color: #376474c0;
+    color: var(--background-color);
+    border-color:  #376474c0 ;
+}
+
+.card{
+    background-color: var(--card-color);
+    border-radius: 8px;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+.upwoted{
+    color: var(--upwoted);
+}
+
+.downwoted{
+    color: var(--downowoted);
+}
+
+.link{
+    text-decoration: none;
+    color: var(--text-color);
+} 
+
+.test_img{
+    background-color: #62d7d7;
+    border-radius: 30px;
+    height: 40px;
+    width: 40px;
+}
