@@ -1,0 +1,25 @@
+import { Injectable } from '@angular/core';
+import { CommunityResponse } from '../Model/community';
+import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import {ConfigService} from './config.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CommunityService {
+
+  private headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+  constructor(private http: HttpClient, private config: ConfigService) {
+  
+   }
+
+   getAll(): Observable<CommunityResponse[]> {
+    return this.http.get<CommunityResponse[]>(this.config.communities_url); 
+   }
+
+   getOne(id: number): Observable<CommunityResponse> {
+     return this.http.get<CommunityResponse>(this.config.communities_url + '/' + id);}
+
+}

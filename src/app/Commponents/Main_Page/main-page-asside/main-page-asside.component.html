@@ -1,0 +1,16 @@
+<aside class="asside_commnuities">
+    <div class="card communities_card">
+        <h4>Popular communities:</h4>
+        <ul class="communities_list">
+            <li *ngFor="let community of communities; let i=index">
+                <div class="community_list_item" *ngIf="i < 6">
+                    <div class="commnuity_name_row">
+                        <div class="test_img"></div>
+                        <h4 [routerLink]="['/Community',community.id]">{{community.name}}</h4>                   
+                    </div>
+                    <button class="btn btn-filled flexEnd">Follow</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</aside>

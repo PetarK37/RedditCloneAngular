@@ -1,0 +1,11 @@
+.aboutCommunity{
+    margin-top: 40px;
+    text-align: center;
+    min-width: fit-content;
+    padding: 20px;
+}
+
+.description{
+    font-size: large;
+    padding: 10px 0;
+}

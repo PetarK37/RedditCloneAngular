@@ -1,0 +1,11 @@
+.communityRules{
+    text-align: center;
+    min-width: fit-content;
+    padding: 20px;
+}
+
+.communityRules > ul > li{
+    list-style: none;
+    font-size: larger;
+    padding: 5px 0;
+}

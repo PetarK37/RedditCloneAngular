@@ -1,0 +1,18 @@
+.mainView{
+    height: 100vh;
+    overflow: auto;
+    display: grid;
+    column-gap: 20px;
+    grid-template-areas: "leftSide centerContent rightSide"
+                            "btm btm btm";
+    grid-template-columns: 1fr 1.5fr 1fr;
+    grid-template-rows: 1fr 15vh ;
+}
+
+app-main-page-posts{
+    grid-area: centerContent;
+}
+
+app-main-page-asside{
+    grid-area: rightSide;
+}
