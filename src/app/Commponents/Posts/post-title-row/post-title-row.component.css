@@ -1,0 +1,32 @@
+.commnuity_card_row{
+    grid-area: community;
+    display: flex;
+    padding: 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.post_title_row{
+   display: grid;
+   grid-template-rows: fit-content fit-content;
+}
+
+.flare{
+    padding: 3px;
+}
+
+.posted_by{
+    margin-left: auto;
+}
+
+.username{
+    font-size: larger;
+}
+
+
+.title_div{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+}

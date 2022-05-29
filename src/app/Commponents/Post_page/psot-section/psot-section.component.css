@@ -1,0 +1,15 @@
+.postSection{
+    margin-top: 40px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.content{
+    align-self: center;
+    font-size: larger;
+}
+

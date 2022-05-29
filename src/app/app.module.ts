@@ -22,6 +22,9 @@ import { CommunityTitleBarComponent } from './Commponents/Community_page/communi
 import { PostWindowComponent } from './Commponents/Post_page/post-window/post-window.component';
 import { PostPageContentComponent } from './Commponents/Post_page/post-page-content/post-page-content.component';
 import { PostPageAssideComponent } from './Commponents/Post_page/post-page-asside/post-page-asside.component';
+import { PostTitleRowComponent } from './Commponents/Posts/post-title-row/post-title-row.component';
+import { PostSectionComponent } from './Commponents/Post_page/psot-section/psot-section.component';
+import { PostKarmaRowComponent } from './Commponents/Post_page/psot-karma-row/psot-karma-row.component';
 
 
 
@@ -44,7 +47,10 @@ import { PostPageAssideComponent } from './Commponents/Post_page/post-page-assid
     CommunityTitleBarComponent,
     PostWindowComponent,
     PostPageContentComponent,
-    PostPageAssideComponent
+    PostPageAssideComponent,
+    PostTitleRowComponent,
+    PostSectionComponent,
+    PostKarmaRowComponent
   ],
   imports: [
     HttpClientModule,

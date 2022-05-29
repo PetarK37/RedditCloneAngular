@@ -1,0 +1,17 @@
+.postKarmaRow{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.postKarmaRow > button{
+    margin-left: auto;
+}
+
+.karma_btn{
+    font-size: 3.5rem;
+}
+
+.karma_num{
+    font-size: x-large;
+}

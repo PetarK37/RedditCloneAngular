@@ -1,25 +1,8 @@
 <div class="card post_card">
     <app-post-card-karma [karma] = "post.karma"></app-post-card-karma>
     <div class="card_content">
-        <div class="commnuity_card_row">
-            <div class="test_img"></div>
-            <h4 [routerLink]="['/Community',post.community.id]">{{post.community.name}}</h4>
-        </div>
-        <header class="post_title_row">
-            <div class="title_div">
-                <h2>{{post.title}}</h2>
-                <button class="btn btn-filled flare">{{post.hasAFlair.name}}</button>
-                <p class="posted_by">posted by:</p>
-                <div class="flex">
-                    <div class="test_img"></div>
-                    <p class="username">{{post.postedBy.username}}</p>
-                </div>
-            </div>
-            <div class="posted_ago">
-                <p>2w ago</p>
-            </div>
-        </header>
-        <p class="content_txt">
+     <app-post-title-row [post] = "post"></app-post-title-row>
+        <p class="content_txt" [routerLink]="['/Post',post.id]">
             {{post.text}}
         </p>
     </div>
