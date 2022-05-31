@@ -1,0 +1,46 @@
+.commentRow{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 5px 5%;
+    gap: 5px;
+    box-shadow: 2px 2px 10px 5px rgba(0,0,0,0.18);
+}
+
+.usernameSection{
+    display: grid;
+    grid-template-areas: "img username"
+                            "img date"; 
+    justify-items: center;
+    column-gap: 5px;
+}
+
+.usernameSection > .test_img{
+    grid-area: img;
+    align-self: center;
+    margin: auto;
+}
+
+.usernameSection > p {
+    margin: auto;
+    font-size: smaller;
+    grid-area: date;
+}
+
+.usernameSection > h5 {
+    margin: auto;
+    grid-area: username;
+}
+
+.commentContent{
+    font-size: larger;
+    margin-left: 40px;
+}
+
+app-comment-karma-row,.replies{
+    width: 100%;
+}
+
+.reply{
+    padding: 10%;
+}

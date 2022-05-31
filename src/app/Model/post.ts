@@ -3,10 +3,10 @@ import { Flair } from "./flair";
 import { UserResponse } from "./user";
 
 export interface PostResponse{
-    id?:number,
+    id:number,
     title:string,
     text:string,
-    creationDate:Date,
+    creationDate:number[],
     imgPath:string,
     hasAFlair:Flair,
     postedBy:UserResponse,

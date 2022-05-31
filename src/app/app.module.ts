@@ -25,6 +25,10 @@ import { PostPageAssideComponent } from './Commponents/Post_page/post-page-assid
 import { PostTitleRowComponent } from './Commponents/Posts/post-title-row/post-title-row.component';
 import { PostSectionComponent } from './Commponents/Post_page/psot-section/psot-section.component';
 import { PostKarmaRowComponent } from './Commponents/Post_page/psot-karma-row/psot-karma-row.component';
+import { CommentSectionComponent } from './Commponents/Post_page/comment-section/comment-section.component';
+import { CommentCardComponent } from './Commponents/Comment/comment-card/comment-card.component';
+import { CommentKarmaRowComponent } from './Commponents/Comment/comment-karma-row/comment-karma-row.component';
+import { WeekAgoPipe } from './Pipes/week-ago.pipe';
 
 
 
@@ -50,7 +54,11 @@ import { PostKarmaRowComponent } from './Commponents/Post_page/psot-karma-row/ps
     PostPageAssideComponent,
     PostTitleRowComponent,
     PostSectionComponent,
-    PostKarmaRowComponent
+    PostKarmaRowComponent,
+    CommentSectionComponent,
+    CommentCardComponent,
+    CommentKarmaRowComponent,
+    WeekAgoPipe
   ],
   imports: [
     HttpClientModule,

@@ -19,7 +19,6 @@ export class SortBarComponent implements OnInit {
   communityId! : number;
 
   constructor(
-    private communityService : CommunityService,
     private postService : PostServiceService,
     private route: ActivatedRoute
   ) { }

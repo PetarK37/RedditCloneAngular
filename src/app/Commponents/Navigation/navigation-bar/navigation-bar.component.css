@@ -23,7 +23,7 @@
     max-height: 8vh;
 }
 
-select{
+.select{
     font-size: large;
     border-radius: 5px;
     width: 7em;

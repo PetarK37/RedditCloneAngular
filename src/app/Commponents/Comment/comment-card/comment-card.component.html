@@ -1,0 +1,12 @@
+<div class="commentRow card">
+   <section class="usernameSection">
+        <div class="test_img"></div>
+        <h5>{{comment.postedBy}}</h5>
+        <p>{{comment.timestamp | weekAgo}}</p>
+   </section>
+        <p class="commentContent">{{comment.text}}</p>
+    <app-comment-karma-row [comment] = "comment"></app-comment-karma-row>
+    <div class="replies" *ngIf ="comment.replies.length > 0">
+        <app-comment-card *ngFor="let reply of comment.replies" [comment]="reply" class="reply"></app-comment-card>
+    </div>
+</div>

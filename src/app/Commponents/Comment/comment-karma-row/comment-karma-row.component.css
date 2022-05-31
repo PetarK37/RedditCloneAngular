@@ -1,0 +1,26 @@
+.commentKarmaRow{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.commentKarmaRow:first-child{
+    margin-left: 40px;
+}
+
+button{
+    padding: 5px;
+}
+
+.reportCommentBtn{
+    margin-left: auto;
+}
+
+.karma_btn{
+    font-size: 2.5rem;
+}
+
+.karma_num{
+    font-size: large;
+}
+

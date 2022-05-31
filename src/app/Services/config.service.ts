@@ -13,6 +13,8 @@ export class ConfigService{
     private _post_url_hot = this.post_url + '/Hot';
     private _communities_url = this._api_url + '/Communities';
     private _post_url_community = this._post_url + "/Community/";
+    private _comment_url = this._api_url + '/Comments/';
+    private _post_comments_url = this._comment_url + 'Post/';
 
 
     get post_url(){
@@ -58,4 +60,28 @@ export class ConfigService{
     post_url_community_top(id:number){
         return this._post_url_community + id + "/Top"
     }
+
+    get comment_url(){
+        return this._comment_url
+    }
+
+    post_comments_url(id : number){
+        return this._post_comments_url + id
+    }
+
+    post_comments_url_new(id : number){
+        return this._post_comments_url  + id +"/New"
+    }   
+
+    post_comments_url_old(id : number){
+        return this._post_comments_url  + id +"/Old"
+    }   
+
+    post_comments_url_top(id : number){
+        return this._post_comments_url  + id +"/Top"
+    }   
+
+    comment_karma_url(id : number){
+        return this._comment_url + id + "/Karma"
+    } 
 }
