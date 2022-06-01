@@ -19,7 +19,9 @@
     --seccondary-color: #376474;
     --devider: #c0c0c0;
     --upwoted: #04aa6d;
-    --downowoted: #dc2048
+    --downowoted: #dc2048;
+    --hower-light: #bdbec086;
+    --hover-dark : #376474c0;
   }
 
   app-root{
@@ -41,7 +43,7 @@
 }
 
 .btn-light:hover{
-    background-color: #bdbec086;
+    background-color: var(--hower-light);
     color: var(--text-color);
 }
 
@@ -54,9 +56,9 @@
 }
 
 .btn-filled:hover{
-    background-color: #376474c0;
+    background-color: var(--hover-dark);
     color: var(--background-color);
-    border-color:  #376474c0 ;
+    border-color:  var(--hover-dark);
 }
 
 .card{

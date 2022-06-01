@@ -9,4 +9,5 @@ export const routes :Routes = [
 	{path: 'Home', component: MainWindowComponent},
 	{path: 'Community/:id',component: CommunityWindowComponent},
 	{path: 'Post/:id',component: PostWindowComponent},
+	{path: '', redirectTo: 'Home', pathMatch: 'full'},
 ];
