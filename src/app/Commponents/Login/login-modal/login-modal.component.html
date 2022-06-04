@@ -1,0 +1,12 @@
+<div class="modal loginModal" id="modal">
+    <section class="login-title">
+        <h2>Log in</h2>
+        <button data-close-button class="exit flexboxEnd" (click)="closeModal()">&times;</button>
+    </section>
+    <form>
+        <input type="text" name="email" placeholder="Your email" required>
+        <input type="password" name="password" placeholder="Your password" required>
+        <input  type="submit" class="btn btn-filled logiInBtn" value="Log in">
+    </form>
+    <p class="notMember"> Not a member? <a>Sign up</a></p>
+</div>

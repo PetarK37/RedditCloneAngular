@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit,Output } from '@angular/core';
 import { CommunityResponse } from 'src/app/Model/community';
 import { ActivatedRoute,Router } from '@angular/router';
 import { CommunityService } from 'src/app/Services/community.service';
@@ -13,6 +13,8 @@ import { CommunityService } from 'src/app/Services/community.service';
 export class NavigationBarComponent implements OnInit {
 
   communities! : CommunityResponse[];
+  @Output() ModalEvent = new EventEmitter();
+
 
   constructor(private route :ActivatedRoute,
     private communityService : CommunityService,
@@ -32,4 +34,10 @@ export class NavigationBarComponent implements OnInit {
       }
       return false;
   }
+
+  loginModal(){
+      this.ModalEvent.emit("login");
+  }
+
+  
 }

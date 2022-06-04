@@ -1,4 +1,6 @@
 <div class="wrapper">
-  <app-navigation-bar></app-navigation-bar>
+  <app-navigation-bar (ModalEvent) = "openModal($event)" ></app-navigation-bar>
   <router-outlet></router-outlet>
+  <app-login-modal #logInModal id="logInModal" class="" (CloseModal) = "closeModal()"></app-login-modal>
+  <div #overlay class="" id="overlay" (click)="overlayClick()"></div>
 </div>

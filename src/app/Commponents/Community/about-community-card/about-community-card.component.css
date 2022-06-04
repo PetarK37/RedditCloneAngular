@@ -1,7 +1,8 @@
 .aboutCommunity{
     margin-top: 40px;
     text-align: center;
-    min-width: fit-content;
+    max-width: 15em;
+    word-wrap: normal;
     padding: 20px;
 }
 

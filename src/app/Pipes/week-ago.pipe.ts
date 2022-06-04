@@ -25,7 +25,7 @@ export class WeekAgoPipe implements PipeTransform {
       return numOfdays + "d ago";
     } 
    
-    return  numOfdays/7 + "w ago";
+    return Math.round(numOfdays/7) + "w ago";
   }
 
 }

@@ -29,6 +29,8 @@ import { CommentSectionComponent } from './Commponents/Post_page/comment-section
 import { CommentCardComponent } from './Commponents/Comment/comment-card/comment-card.component';
 import { CommentKarmaRowComponent } from './Commponents/Comment/comment-karma-row/comment-karma-row.component';
 import { WeekAgoPipe } from './Pipes/week-ago.pipe';
+import { LoginModalComponent } from './Commponents/Login/login-modal/login-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -58,13 +60,15 @@ import { WeekAgoPipe } from './Pipes/week-ago.pipe';
     CommentSectionComponent,
     CommentCardComponent,
     CommentKarmaRowComponent,
-    WeekAgoPipe
+    WeekAgoPipe,
+    LoginModalComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
