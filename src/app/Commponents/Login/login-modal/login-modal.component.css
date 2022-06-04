@@ -1,35 +1,9 @@
-.modal{
-    background-color: var(--background-color);
-    box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
-    border-radius: 10px;
-    padding: 10px 30px;
-}
-
-.loginModal, form{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-}
-.login-title{
-    color: var(--text-color);
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-}
 
 h2{
     font-size: 1.6em;
     flex: 1;
     display: flex;
     justify-content: center;
-}
-
-.exit{
-    font-size: 2em;
-    border: none;
-    background: none;
-    outline: none;
 }
 
 input{
@@ -43,4 +17,7 @@ input{
 .logiInBtn{
     margin-top: 50px;
     font-size: 1.1em;
+}
+a{
+    cursor: pointer;
 }

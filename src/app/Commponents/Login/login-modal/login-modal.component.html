@@ -1,5 +1,5 @@
 <div class="modal loginModal" id="modal">
-    <section class="login-title">
+    <section class="modal-title">
         <h2>Log in</h2>
         <button data-close-button class="exit flexboxEnd" (click)="closeModal()">&times;</button>
     </section>
@@ -8,5 +8,5 @@
         <input type="password" name="password" placeholder="Your password" required>
         <input  type="submit" class="btn btn-filled logiInBtn" value="Log in">
     </form>
-    <p class="notMember"> Not a member? <a>Sign up</a></p>
+    <p class="notMember"> Not a member? <a (click) = "registerModal()">Sign up!</a></p>
 </div>

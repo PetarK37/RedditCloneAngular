@@ -11,7 +11,6 @@ export class LoginModalComponent implements OnInit {
   element!: HTMLElement;
 
   constructor(element: ElementRef) {
-    console.log(element.nativeElement);
     this.element = element.nativeElement;
 }
 
@@ -20,7 +19,12 @@ export class LoginModalComponent implements OnInit {
 
   closeModal(){
     this.CloseModal.emit(this.element);
-    this.element.classList.remove('active')
+    this.element.classList.remove('active');
+  }
+
+  registerModal(){
+    this.CloseModal.emit("register");
+    this.element.classList.remove('active');
   }
 
 }

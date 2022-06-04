@@ -1,0 +1,15 @@
+<div class="modal registerModal" id="modal">
+    <section class="modal-title">
+        <h2>Register</h2>
+        <button class="exit flexboxEnd" (click)="closeModal()">&times;</button>
+    </section>
+    <form>
+        <input type="text" name="username" placeholder="Your username" required>
+        <input type="text" name="displayName" placeholder="Display Name(optional)">
+        <input type="text" name="email" placeholder="Your email" required>
+        <input type="password" name="password" placeholder="Your password" required>
+        <input type="password" name="confirmPassword" placeholder="Confirm password" required>
+        <input type="submit" class="btn btn-filled registerBtn" value="Register">
+    </form>
+    <button class="btn btn-light" (click)="closeModal()">Cancel</button>
+</div>

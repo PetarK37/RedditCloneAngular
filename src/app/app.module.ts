@@ -31,6 +31,7 @@ import { CommentKarmaRowComponent } from './Commponents/Comment/comment-karma-ro
 import { WeekAgoPipe } from './Pipes/week-ago.pipe';
 import { LoginModalComponent } from './Commponents/Login/login-modal/login-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterModalComponent } from './Commponents/Register/register-modal/register-modal.component';
 
 
 
@@ -61,7 +62,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommentCardComponent,
     CommentKarmaRowComponent,
     WeekAgoPipe,
-    LoginModalComponent
+    LoginModalComponent,
+    RegisterModalComponent
   ],
   imports: [
     HttpClientModule,

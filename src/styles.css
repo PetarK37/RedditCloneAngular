@@ -90,3 +90,31 @@
     height: 40px;
     width: 40px;
 }
+
+.modal{
+    background-color: var(--background-color);
+    box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
+    border-radius: 10px;
+    padding: 10px 30px;
+}
+
+.loginModal, form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+.modal-title{
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.exit{
+    font-size: 2em;
+    border: none;
+    background: none;
+    outline: none;
+}

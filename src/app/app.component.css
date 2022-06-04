@@ -25,6 +25,7 @@ app-navigation-bar{
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 2;
     background-color: rgba(0,0,0,0.5);
     pointer-events: none;
 }
@@ -34,15 +35,14 @@ app-navigation-bar{
     pointer-events: all;
 }
 
-app-login-modal{
+app-login-modal,app-register-modal{
     position : fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%) scale(0);
     transition: 150ms ease-in-out;
     z-index: 10;
-    grid-template-rows: 1 span 2;
 }
-app-login-modal.active{
+app-login-modal.active,app-register-modal.active{
     transform: translate(-50%,-50%) scale(1);
 }
