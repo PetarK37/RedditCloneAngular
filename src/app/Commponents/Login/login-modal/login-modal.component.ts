@@ -20,7 +20,7 @@ export class LoginModalComponent implements OnInit {
     this.element = element.nativeElement;
 
     this.form = this.fb.group({
-			username : new FormControl(null, Validators.required), 
+			username :new FormControl(null, Validators.required), 
 			password: new FormControl(null, Validators.required),
 		});
 }
@@ -31,6 +31,7 @@ export class LoginModalComponent implements OnInit {
   closeModal(){
     this.CloseModal.emit(this.element);
     this.element.classList.remove('active');
+    this.form.reset();
   }
 
   registerModal(){
@@ -46,6 +47,7 @@ export class LoginModalComponent implements OnInit {
 		this.authService.logIn(dto).subscribe(
 			result => {
 				localStorage.setItem('JWT', result.accessToken);
+        this.authService.setCurrentUser();
         this.alertService.addAlert({text : "You successfully logged in", type : AlertType.success});
         this.authService.changeEvent();
         this.closeModal();

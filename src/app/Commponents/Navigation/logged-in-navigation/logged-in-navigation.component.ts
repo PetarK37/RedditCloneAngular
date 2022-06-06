@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit,Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit,Output, ViewChild ,AfterViewInit} from '@angular/core';
 import { CommunityResponse } from 'src/app/Model/community';
 import { ActivatedRoute,Router } from '@angular/router';
 import { CommunityService } from 'src/app/Services/community.service';
@@ -6,6 +6,7 @@ import { AlertService } from 'src/app/Services/alert.service';
 import { LoggedInNavMenuComponent } from '../logged-in-nav-menu/logged-in-nav-menu.component';
 import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';
 import { UserResponse } from 'src/app/Model/user';
+import { ThisReceiver } from '@angular/compiler';
 @Component({
   selector: 'app-logged-in-navigation',
   templateUrl: './logged-in-navigation.component.html',
@@ -14,7 +15,7 @@ import { UserResponse } from 'src/app/Model/user';
 export class LoggedInNavigationComponent implements OnInit {
 
   communities! : CommunityResponse[];
-  user! : UserResponse ;
+  user! : UserResponse;
 
   @ViewChild(LoggedInNavMenuComponent) menu! : LoggedInNavMenuComponent;
 
@@ -22,9 +23,8 @@ export class LoggedInNavigationComponent implements OnInit {
     private communityService : CommunityService,
     private router: Router,
     private alertService : AlertService,
-    private authService : AuthenticationServiceService) { 
-      this.authService.setCurrentUser();
-    }
+    private authService : AuthenticationServiceService) 
+    { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -33,9 +33,13 @@ export class LoggedInNavigationComponent implements OnInit {
           = res;})
         });
 
-        this.authService.setCurrentUser();
-        this.user = this.authService.currentUser;
+        this.user = this.authService.getCurrentUser();
+        this.authService.changedEvent.subscribe( res => {
+        if (res){
+          this.user = this.authService.getCurrentUser();
+        }})
     }
+
 
     navigateTo(value: string) {
       if (value) {

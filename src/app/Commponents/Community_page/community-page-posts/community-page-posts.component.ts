@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { PostResponse } from 'src/app/Model/post';
 import { PostServiceService } from 'src/app/Services/post-service.service';
 import { ActivatedRoute } from '@angular/router';
@@ -11,7 +11,7 @@ import { AuthenticationServiceService } from 'src/app/Services/authentication-se
   templateUrl: './community-page-posts.component.html',
   styleUrls: ['./community-page-posts.component.css']
 })
-export class CommunityPagePostsComponent implements OnInit {
+export class CommunityPagePostsComponent implements OnInit, OnChanges {
 
   posts!: PostResponse[];
   isLoggedIn = false;
@@ -26,6 +26,11 @@ export class CommunityPagePostsComponent implements OnInit {
 
 
   ngOnInit(): void {
+   
+    this.authService.changedEvent.subscribe( res => {
+      if (res){
+        this.isLoggedIn = this.authService.isLoggedIn();
+      }})
   }
   
   ngOnChanges(){
@@ -33,10 +38,6 @@ export class CommunityPagePostsComponent implements OnInit {
       res => { this.posts = res}
     );
     this.isLoggedIn = this.authService.isLoggedIn();
-    this.authService.changedEvent.subscribe( res => {
-      if (res){
-        this.isLoggedIn = this.authService.isLoggedIn();
-      }})
   }
 
 }
