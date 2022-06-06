@@ -22,6 +22,8 @@
     --downowoted: #dc2048;
     --hower-light: #bdbec086;
     --hover-dark : #376474c0;
+    --warninrg-color : rgba(235, 50, 50,0.7);
+    --succes-color : rgba(23, 230, 126,0.7);
   }
 
   app-root{

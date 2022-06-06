@@ -1,0 +1,59 @@
+.navHeader, app-navigation-bar{
+    grid-area: nav;
+    height: 100%;
+    position: relative;
+}
+
+.navBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    background-color: var(--card-color);
+    max-height: 100%;
+}
+
+#homeLogoBtn{
+    justify-self: stretch;
+}
+
+.navLogo{
+    padding: 10px;
+    max-height: 8vh;
+}
+
+.select{
+    font-size: large;
+    border-radius: 5px;
+    width: 7em;
+    text-align: center;
+}
+
+.loggedInMenuSelect{
+    justify-self: stretch;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding: 0 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.loggedInMenuSelect:hover,.navMenu > ul > li:hover{
+    background-color: var( --hower-light);
+}
+
+app-logged-in-nav-menu{
+    display: none;
+}
+
+app-logged-in-nav-menu.active{
+    display: block;
+    position: absolute;
+    bottom: calc(100vh- 10vh);
+    right: 10px;
+    height: fit-content;
+}
+

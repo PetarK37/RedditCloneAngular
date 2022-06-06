@@ -46,3 +46,16 @@ app-login-modal,app-register-modal{
 app-login-modal.active,app-register-modal.active{
     transform: translate(-50%,-50%) scale(1);
 }
+
+app-alert-modal{
+    position : fixed;
+    bottom: 5%;
+    left: 2%;
+    z-index: 9;
+    transform: translate(0px,0px) scale(0);
+    transition: 150ms ease-in-out;
+}
+
+app-alert-modal.active{
+    transform: translate(0px,0px)  scale(1);
+}

@@ -15,8 +15,14 @@ export class ConfigService{
     private _post_url_community = this._post_url + "/Community/";
     private _comment_url = this._api_url + '/Comments/';
     private _post_comments_url = this._comment_url + 'Post/';
+    private _users_url = this._api_url + '/Users';
+    private _login_url = this._users_url + '/login';
+    private _whoami_url = this._users_url + '/auth/whoami';
 
 
+    get whoami_url(){
+        return this._whoami_url;
+    }
     get post_url(){
         return this._post_url;
     }
@@ -83,5 +89,13 @@ export class ConfigService{
 
     comment_karma_url(id : number){
         return this._comment_url + id + "/Karma"
+    }
+ 
+    get users_url(){
+     return this._users_url;
     } 
+
+    get login_url(){
+        return this._login_url;
+    }
 }

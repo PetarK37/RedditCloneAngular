@@ -3,10 +3,10 @@
         <h2>Log in</h2>
         <button data-close-button class="exit flexboxEnd" (click)="closeModal()">&times;</button>
     </section>
-    <form>
-        <input type="text" name="email" placeholder="Your email" required>
-        <input type="password" name="password" placeholder="Your password" required>
-        <input  type="submit" class="btn btn-filled logiInBtn" value="Log in">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <input type="text" id="username" name="username" placeholder="Your username" [formControl]="$any(form.controls['username'])">
+        <input type="password" id="password" name="password"  placeholder="Your password" [formControl]="$any(form.controls['password'])">
+        <button  type="submit" class="btn btn-filled logiInBtn" [disabled]="!form.valid"> Log in</button>
     </form>
     <p class="notMember"> Not a member? <a (click) = "registerModal()">Sign up!</a></p>
 </div>

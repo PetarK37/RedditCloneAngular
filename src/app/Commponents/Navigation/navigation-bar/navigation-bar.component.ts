@@ -2,6 +2,9 @@ import { Component, EventEmitter, OnInit,Output } from '@angular/core';
 import { CommunityResponse } from 'src/app/Model/community';
 import { ActivatedRoute,Router } from '@angular/router';
 import { CommunityService } from 'src/app/Services/community.service';
+import { AlertService } from 'src/app/Services/alert.service';
+
+
 
 
 @Component({
@@ -18,7 +21,7 @@ export class NavigationBarComponent implements OnInit {
 
   constructor(private route :ActivatedRoute,
     private communityService : CommunityService,
-    private router: Router) { }
+    private router: Router,) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {

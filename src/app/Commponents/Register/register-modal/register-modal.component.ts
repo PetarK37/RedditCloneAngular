@@ -11,7 +11,6 @@ export class RegisterModalComponent implements OnInit {
   element!: HTMLElement;
 
   constructor(element: ElementRef) {
-    console.log(element.nativeElement);
     this.element = element.nativeElement;
 }
 

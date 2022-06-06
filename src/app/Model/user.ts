@@ -12,3 +12,8 @@ export interface UserResponse{
 export interface UserRequest{
 
 }
+
+export interface LoginRequest {
+    username: string;
+    password: string;
+}

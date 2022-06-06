@@ -11,7 +11,7 @@ import { MainPageAssideComponent } from './Commponents/Main_Page/main-page-assid
 import { SortBarComponent } from './Commponents/Posts/sort-bar/sort-bar.component';
 import { PostCardKarmaComponent } from './Commponents/Posts/Post_card/post-card-karma/post-card-karma.component';
 import { MainWindowComponent } from './Commponents/Main_Page/main-window/main-window.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommunityWindowComponent } from './Commponents/Community_page/community-window/community-window.component';
 import { CommunityPagePostsComponent } from './Commponents/Community_page/community-page-posts/community-page-posts.component';
 import { CommunityPageAssideComponent } from './Commponents/Community_page/community-page-asside/community-page-asside.component';
@@ -32,6 +32,15 @@ import { WeekAgoPipe } from './Pipes/week-ago.pipe';
 import { LoginModalComponent } from './Commponents/Login/login-modal/login-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterModalComponent } from './Commponents/Register/register-modal/register-modal.component';
+import { AlertModalComponent } from './Commponents/Alert/alert-modal/alert-modal.component';
+import { CretePostBarComponent } from './Commponents/Posts/crete-post-bar/crete-post-bar.component';
+import { LoggedInNavigationComponent } from './Commponents/Navigation/logged-in-navigation/logged-in-navigation.component';
+import { LoggedInNavMenuComponent } from './Commponents/Navigation/logged-in-nav-menu/logged-in-nav-menu.component';
+import { TokenInterceptor } from './Interceptors/TokenInterceptor';
+import { CommentService } from './Services/comment.service';
+import { AuthenticationServiceService } from './Services/authentication-service.service';
+import { CommunityService } from './Services/community.service';
+import { PostServiceService } from './Services/post-service.service';
 
 
 
@@ -63,7 +72,11 @@ import { RegisterModalComponent } from './Commponents/Register/register-modal/re
     CommentKarmaRowComponent,
     WeekAgoPipe,
     LoginModalComponent,
-    RegisterModalComponent
+    RegisterModalComponent,
+    AlertModalComponent,
+    CretePostBarComponent,
+    LoggedInNavigationComponent,
+    LoggedInNavMenuComponent
   ],
   imports: [
     HttpClientModule,
@@ -72,7 +85,17 @@ import { RegisterModalComponent } from './Commponents/Register/register-modal/re
     IonicModule.forRoot(),
     ReactiveFormsModule
   ],
-  providers: [],
+  providers:  [ 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+      CommentService,
+      AuthenticationServiceService,
+      CommunityService,
+      PostServiceService,
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

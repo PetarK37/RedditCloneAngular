@@ -1,0 +1,5 @@
+<div class="alert" [attr.intent] = "types[alertMessage.type]" *ngIf="alertMessage">
+    <ion-icon name="alert-outline" *ngIf="alertMessage.type == types.warning"></ion-icon>
+    <ion-icon name="checkmark-outline" *ngIf="alertMessage.type == types.success"></ion-icon>
+    <p>{{alertMessage.text}}</p>
+</div>

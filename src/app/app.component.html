@@ -1,7 +1,9 @@
 <div class="wrapper">
-  <app-navigation-bar (ModalEvent)="openModal($event)"></app-navigation-bar>
+  <app-navigation-bar (ModalEvent)="openModal($event)"  *ngIf="isLoggedIn == false"></app-navigation-bar>
+  <app-logged-in-navigation *ngIf="isLoggedIn"></app-logged-in-navigation>
   <router-outlet></router-outlet>
   <app-login-modal #logInModal id="logInModal" class="" (CloseModal)="closeModal($event)"></app-login-modal>
   <app-register-modal #registerModal id="registerModal" class="" (CloseModal)="closeModal($event)"></app-register-modal>
+  <app-alert-modal class=""></app-alert-modal>
   <div #overlay class="" id="overlay" (click)="overlayClick()"></div>
 </div>
