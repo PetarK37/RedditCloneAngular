@@ -10,13 +10,14 @@ export class AlertService {
   private alert = new Subject<AlertMessage>();
   openAlertEvent = new EventEmitter<boolean>();
   alert$ = this.alert.asObservable();
+  message!: AlertMessage;
 
 
   constructor() {
    }
 
    addAlert(alertMessage: AlertMessage) {
-      this.alert.next(alertMessage);
+      this.message = alertMessage;
       this.openAlertEvent.emit(true);
    }
 

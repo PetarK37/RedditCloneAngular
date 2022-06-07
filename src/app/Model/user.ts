@@ -17,3 +17,12 @@ export interface LoginRequest {
     username: string;
     password: string;
 }
+
+export interface UserRequest{
+    username: string;
+    displayName : string|null;
+    email: string;
+    profileDescription: string|null;
+    password: string;
+    avatarUrl : string|null;
+}

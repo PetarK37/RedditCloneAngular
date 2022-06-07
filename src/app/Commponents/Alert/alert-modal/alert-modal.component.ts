@@ -21,14 +21,16 @@ export class AlertModalComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.alertService.alert$.subscribe(alert => {
-      this.alertMessage = alert;
-    })
+    // this.alertService.alert$.subscribe(alert => {
+    //   this.alertMessage = alert;
+    // })
 
-    //    const message : AlertMessage = {text : "Login modal is closed", type :AlertType.warning};
-    // this.alertService.addAlert(message);
-    // this.alertModal.element.classList.add('active');
-    // setTimeout(() => {this.alertModal.element.classList.remove('active')},2500);
+    this.alertService.openAlertEvent.subscribe( res => {
+      if (res){
+        this.alertMessage = this.alertService.message;
+      }
+    })
+    this.alertMessage = this.alertService.message;
   }
 
 }

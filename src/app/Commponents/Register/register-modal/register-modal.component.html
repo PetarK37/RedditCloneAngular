@@ -3,13 +3,19 @@
         <h2>Register</h2>
         <button class="exit flexboxEnd" (click)="closeModal()">&times;</button>
     </section>
-    <form>
-        <input type="text" name="username" placeholder="Your username" required>
-        <input type="text" name="displayName" placeholder="Display Name(optional)">
-        <input type="text" name="email" placeholder="Your email" required>
-        <input type="password" name="password" placeholder="Your password" required>
-        <input type="password" name="confirmPassword" placeholder="Confirm password" required>
-        <input type="submit" class="btn btn-filled registerBtn" value="Register">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <input type="text" [formControlName]="'username'" name="username" placeholder="Your username" [ngClass]= "{  'invalid' : !form.get('username')?.valid && form.get('username')?.touched}">
+        <p class="errorLabel" *ngIf="!form.get('username')?.valid && form.get('username')?.touched">This feild can not be empty!</p>
+        <input type="text" [formControlName]="'displayName'" name="displayName" placeholder="Display Name(optional)">
+        <input type="text" [formControlName]="'email'" name="email" placeholder="Your email" [ngClass]= "{  'invalid' : !form.get('email')?.valid && form.get('email')?.touched}">
+        <p class="errorLabel" *ngIf="!form.get('email')?.valid && form.get('email')?.touched">Please check your email!</p>
+        <input type="password" [formControlName]="'password'" name="password" placeholder="Your password" [ngClass]= "{  'invalid' : !form.get('password')?.valid && form.get('password')?.touched}">
+        <p class="errorLabel" *ngIf="!form.get('password')?.valid && form.get('password')?.touched">This feild can not be empty!</p>
+        <input type="password" [formControlName]="'repeatedPassword'" name="confirmPassword" placeholder="Confirm password" [ngClass]= "{  'invalid' : !form.get('repeatedPassword')?.valid && form.get('repeatedPassword')?.touched}">
+        <p class="errorLabel" *ngIf="!form.get('repeatedPassword')?.valid && form.get('repeatedPassword')?.touched">This feild can not be empty!</p>
+        <p class="errorLabel" *ngIf="passwordsDontMatch()">Paswords do not match!</p>
+
+        <button type="submit" class="btn btn-filled registerBtn" [disabled]="form.invalid">Register</button>
     </form>
     <button class="btn btn-light" (click)="closeModal()">Cancel</button>
 </div>
