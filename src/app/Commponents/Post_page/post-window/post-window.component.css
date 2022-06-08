@@ -7,6 +7,7 @@
                             "btm btm btm";
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 1fr 15vh ;
+    position: relative;
 }
 
 app-post-page-content{
@@ -15,4 +16,18 @@ app-post-page-content{
 
 app-post-page-asside{
     grid-area: rightSide;
+}
+
+app-confirm-dialog{
+    z-index: 1;
+    position: absolute;
+    position : fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    transition: 150ms ease-in-out;
+    z-index: 10;
+}
+app-confirm-dialog.active{
+    transform: translate(-50%,-50%) scale(1);
 }

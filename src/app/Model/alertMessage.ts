@@ -6,6 +6,10 @@ export interface AlertMessage {
 
 }
  
+export interface ModalBox{
+    text: string;
+    title: string;
+}
 
 
 export enum AlertType {

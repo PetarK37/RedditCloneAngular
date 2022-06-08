@@ -42,6 +42,7 @@ import { AuthenticationServiceService } from './Services/authentication-service.
 import { CommunityService } from './Services/community.service';
 import { PostServiceService } from './Services/post-service.service';
 import { CreateEditPostComponent } from './Commponents/Create_post_page/create-edit-post/create-edit-post.component';
+import { ConfirmDialogComponent } from './Commponents/Alert/confirm-dialog/confirm-dialog.component';
 
 
 
@@ -78,7 +79,8 @@ import { CreateEditPostComponent } from './Commponents/Create_post_page/create-e
     CretePostBarComponent,
     LoggedInNavigationComponent,
     LoggedInNavMenuComponent,
-    CreateEditPostComponent
+    CreateEditPostComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     HttpClientModule,

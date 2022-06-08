@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommunityResponse } from 'src/app/Model/community';
+import { PostResponse } from 'src/app/Model/post';
 import { CreateEditPostService } from 'src/app/Services/create-edit-post.service';
 
 @Component({
@@ -11,6 +12,8 @@ import { CreateEditPostService } from 'src/app/Services/create-edit-post.service
 export class CretePostBarComponent implements OnInit {
 
   @Input() chosenCommunity! :  CommunityResponse;
+  @Input() postForEdit! : PostResponse;
+
   constructor(    private router: Router ,private CreateEditService : CreateEditPostService    ) { }
 
   ngOnInit(): void {

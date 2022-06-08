@@ -54,6 +54,8 @@ app-logged-in-nav-menu.active{
     position: absolute;
     bottom: calc(100vh- 10vh);
     right: 10px;
-    height: fit-content;
+    height: fit-content;    
+    z-index: 10;
+
 }
 

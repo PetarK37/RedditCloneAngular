@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AlertType } from 'src/app/Model/alertMessage';
 import { CommunityResponse } from 'src/app/Model/community';
 import { Flair } from 'src/app/Model/flair';
-import { PostRequest } from 'src/app/Model/post';
+import { PostRequest, PostResponse } from 'src/app/Model/post';
 import { UserResponse } from 'src/app/Model/user';
 import { AlertService } from 'src/app/Services/alert.service';
 import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';
@@ -20,6 +20,9 @@ import { PostServiceService } from 'src/app/Services/post-service.service';
 export class CreateEditPostComponent implements OnInit {
 
   @Input() community! :  CommunityResponse;
+  @Input() post! : PostResponse;
+  disabled  = false
+
   @ViewChild('flairSelect') flairSelect!: ElementRef;
   @ViewChild('flairLabel') flairLabel! : ElementRef;
 
@@ -30,7 +33,7 @@ export class CreateEditPostComponent implements OnInit {
 
   constructor(private communityService : CommunityService ,private fb: FormBuilder,private alertService : AlertService,
     private createEditService : CreateEditPostService,private authService : AuthenticationServiceService,private postService : PostServiceService,private router : Router) {    
-    this.form = this.fb.group({
+      this.form = this.fb.group({
 			title :new FormControl(null, Validators.required), 
 			content: new FormControl(null, Validators.required),
       img : new FormControl(''),
@@ -51,6 +54,23 @@ export class CreateEditPostComponent implements OnInit {
         this.community = this.createEditService.chooseenCommunity!;
         if (this.community != undefined){
           this.flairs = this.community.flairs;       
+          this.form.get('community')?.removeValidators(Validators.required);
+        }
+
+        this.post = this.createEditService.postForEdit!;
+        if (this.post != undefined || this.post != null){
+          this.createEditService.reset();
+          this.flairs = this.post.community.flairs;
+          this.community= this.post.community;
+          this.form.get('title')?.patchValue(this.post.title); 
+          this.form.get('content')?.patchValue(this.post.text); 
+          this.disabled = true;
+          // this.form.value.img = this.post.imgPath;
+          console.log(this.flairs);
+          console.log(this.post.hasAFlair);
+          this.form.get('flair')?.patchValue(this.flairs.findIndex(flair => {
+            return this.post.hasAFlair.name === flair.name;
+          })); 
           this.form.get('community')?.removeValidators(Validators.required);
         }
       };
@@ -86,16 +106,31 @@ export class CreateEditPostComponent implements OnInit {
           setTimeout(() => {this.flairLabel.nativeElement.style.setProperty("visibility" ,"hidden");
           this.flairSelect.nativeElement.classList.remove('invalid');},2000);
         }else{
-          this.postService.createPost(dto).subscribe(
-            res => {
-              this.alertService.addAlert({text :("You added post to a " + this.community.name + " successfully"),  type : AlertType.success});
-              this.createEditService.reset();
-              this.router.navigate(["/Home"]);
-            },
-            err => {
-              this.alertService.addAlert({text : "You can't post to this community!",  type : AlertType.warning});
-            }
-          )
+          if(this.post == undefined){
+            this.postService.createPost(dto).subscribe(
+              res => {
+                this.alertService.addAlert({text :("You added post to a " + this.community.name + " successfully"),  type : AlertType.success});
+                this.createEditService.reset();
+                history.back();
+              },
+              err => {
+                this.alertService.addAlert({text : "You can't post to this community!",  type : AlertType.warning});
+                history.back();
+              }
+            )
+          }else{
+            this.postService.editPost(dto,this.post.id).subscribe(
+              res => {
+                this.alertService.addAlert({text :("Post edited successfully"),  type : AlertType.success});
+                this.createEditService.reset();
+                history.back();
+              },
+              err => {
+                this.alertService.addAlert({text : "There has been problem with edit, \n  try again later.",  type : AlertType.warning});
+                history.back();
+              }
+            )
+          }
         }
 
       }

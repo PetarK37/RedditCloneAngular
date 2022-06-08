@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { CommunityResponse } from 'src/app/Model/community';
 
 @Component({
@@ -6,13 +6,13 @@ import { CommunityResponse } from 'src/app/Model/community';
   templateUrl: './post-page-asside.component.html',
   styleUrls: ['./post-page-asside.component.css']
 })
-export class PostPageAssideComponent implements OnInit {
+export class PostPageAssideComponent implements AfterViewInit {
 
   @Input() community! : CommunityResponse;
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
   }
 
 }

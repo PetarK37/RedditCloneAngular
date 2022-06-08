@@ -21,9 +21,6 @@ export class AlertModalComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.alertService.alert$.subscribe(alert => {
-    //   this.alertMessage = alert;
-    // })
 
     this.alertService.openAlertEvent.subscribe( res => {
       if (res){

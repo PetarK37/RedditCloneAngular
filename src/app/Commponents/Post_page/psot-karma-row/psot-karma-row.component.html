@@ -2,5 +2,16 @@
     <ion-icon name="caret-up" class="karma_btn upwoted"></ion-icon>
     <p class="karma_num">{{post.karma}}</p>
     <ion-icon name="caret-down" class="karma_btn downwoted"></ion-icon>
-    <button  class="btn btn-light">Report</button>
+    <button  class="btn btn-light" *ngIf="!canEdit()" >Report</button>
+    <ion-icon name="ellipsis-vertical-outline" class="settings" *ngIf="canEdit()" (click)="openSettings()"></ion-icon>
+    <div class="posst-settings modal" #settingsModal>
+        <ul>
+            <li (click)="deletePost()">
+                <a>Delete <span><ion-icon name="trash-outline"></ion-icon></span></a>
+            </li>
+            <li (click)="openEditPage()">
+                <a>Edit <span><ion-icon name="create-outline"></ion-icon></span></a>
+            </li>
+        </ul>
+    </div>
 </aside>

@@ -5,6 +5,8 @@ import {Injectable} from '@angular/core';
 })
 
 export class ConfigService{
+
+
     private _api_url = 'http://localhost:8080/api';
     private _post_url = this._api_url + '/Posts';
     private _post_url_random = this.post_url + '/Random';
@@ -97,5 +99,13 @@ export class ConfigService{
 
     get login_url(){
         return this._login_url;
+    }
+
+    editPost(id: number): string {
+        return this._post_url + '/' + id;      
+    }
+
+    deletePost(id: number): string {
+        return this._post_url + '/' + id;      
     }
 }

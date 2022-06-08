@@ -1,0 +1,26 @@
+.confirmDialog{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    gap: 15px;
+    flex-wrap:wrap;
+}
+
+h4{
+    font-size: 1.5em;
+}
+
+p{
+    font-size: 1.2em;
+}
+
+.confirmDialog > *{
+    flex-basis: 61%;
+}
+
+.confirmDialog > button{
+    flex: 0 1 40%;
+}

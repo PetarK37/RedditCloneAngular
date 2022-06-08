@@ -9,7 +9,7 @@ import {ConfigService} from './config.service';
 })
 export class PostServiceService {
 
-  private headers = new HttpHeaders({'Content-Type': 'application/json'});
+  private headers = new HttpHeaders().set('Content-Type','application/json').set('Access-Control-Allow-Origin',"http://localhost:4200");
 
   constructor(private http: HttpClient, private config: ConfigService) {
   
@@ -58,6 +58,15 @@ export class PostServiceService {
 
   createPost(dto : PostRequest) : Observable<PostResponse> {
     return this.http.post<PostResponse>(this.config.post_url, JSON.stringify(dto), {headers: this.headers, responseType: 'json'});
+  }
+
+  
+  editPost(dto : PostRequest,id : number) : Observable<PostResponse> {
+    return this.http.put<PostResponse>(this.config.editPost(id), JSON.stringify(dto), {headers: this.headers, responseType: 'json'});
+  }
+
+  deletePost(id : number) : Observable<PostResponse> {
+    return this.http.delete<PostResponse>(this.config.deletePost(id),{headers: this.headers, responseType: 'json'});
   }
 
 }
