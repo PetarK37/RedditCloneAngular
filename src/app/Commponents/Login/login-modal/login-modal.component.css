@@ -17,6 +17,7 @@ input{
 .logiInBtn{
     margin-top: 50px;
     font-size: 1.1em;
+    width: 100%;
 }
 a{
     cursor: pointer;

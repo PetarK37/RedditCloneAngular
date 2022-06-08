@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PostResponse } from '../Model/post';
+import { PostRequest, PostResponse } from '../Model/post';
 import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {ConfigService} from './config.service';
@@ -54,6 +54,10 @@ export class PostServiceService {
 
   getAllTopByCommunity(id:number):Observable<PostResponse[]> {
     return this.http.get<PostResponse[]>(this.config.post_url_community_top(id));
+  }
+
+  createPost(dto : PostRequest) : Observable<PostResponse> {
+    return this.http.post<PostResponse>(this.config.post_url, JSON.stringify(dto), {headers: this.headers, responseType: 'json'});
   }
 
 }

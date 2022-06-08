@@ -41,6 +41,7 @@ import { CommentService } from './Services/comment.service';
 import { AuthenticationServiceService } from './Services/authentication-service.service';
 import { CommunityService } from './Services/community.service';
 import { PostServiceService } from './Services/post-service.service';
+import { CreateEditPostComponent } from './Commponents/Create_post_page/create-edit-post/create-edit-post.component';
 
 
 
@@ -76,7 +77,8 @@ import { PostServiceService } from './Services/post-service.service';
     AlertModalComponent,
     CretePostBarComponent,
     LoggedInNavigationComponent,
-    LoggedInNavMenuComponent
+    LoggedInNavMenuComponent,
+    CreateEditPostComponent
   ],
   imports: [
     HttpClientModule,

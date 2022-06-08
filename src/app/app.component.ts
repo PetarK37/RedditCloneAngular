@@ -32,7 +32,6 @@ export class AppComponent implements OnInit{
       this.loginModal.element.classList.add('active')
     }else{
       this.registerModla.element.classList.add('active')
-      this.alertService.removeAlert();
     }
   }
 

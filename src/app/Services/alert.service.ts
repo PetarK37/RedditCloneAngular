@@ -7,9 +7,7 @@ import { AlertMessage } from '../Model/alertMessage';
 })
 export class AlertService {
 
-  private alert = new Subject<AlertMessage>();
   openAlertEvent = new EventEmitter<boolean>();
-  alert$ = this.alert.asObservable();
   message!: AlertMessage;
 
 
@@ -19,9 +17,5 @@ export class AlertService {
    addAlert(alertMessage: AlertMessage) {
       this.message = alertMessage;
       this.openAlertEvent.emit(true);
-   }
-
-   removeAlert() {
-      this.alert.complete();
    }
 }

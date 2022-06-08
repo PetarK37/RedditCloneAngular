@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CommunityResponse } from 'src/app/Model/community';
+import { CreateEditPostService } from 'src/app/Services/create-edit-post.service';
 
 @Component({
   selector: 'app-crete-post-bar',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CretePostBarComponent implements OnInit {
 
-  constructor() { }
+  @Input() chosenCommunity! :  CommunityResponse;
+  constructor(    private router: Router ,private CreateEditService : CreateEditPostService    ) { }
 
   ngOnInit(): void {
+    
+  }
+
+  openCreatePage(){
+    this.router.navigate(["/Post/Create"]);
+    this.CreateEditService.chooseCommunity(this.chosenCommunity);
   }
 
 }

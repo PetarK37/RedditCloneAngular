@@ -13,3 +13,11 @@ export interface PostResponse{
     community:CommunityResponse,
     karma:number
 }
+
+export interface PostRequest {
+    title: string;
+    text: string;
+    imgPath: string;
+    hasAFlair: Flair | null;
+    communityId: number;
+}
