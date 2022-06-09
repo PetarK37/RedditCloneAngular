@@ -5,7 +5,6 @@ import { AlertType } from 'src/app/Model/alertMessage';
 import { CommunityResponse } from 'src/app/Model/community';
 import { Flair } from 'src/app/Model/flair';
 import { PostRequest, PostResponse } from 'src/app/Model/post';
-import { UserResponse } from 'src/app/Model/user';
 import { AlertService } from 'src/app/Services/alert.service';
 import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';
 import { CommunityService } from 'src/app/Services/community.service';
@@ -21,7 +20,6 @@ export class CreateEditPostComponent implements OnInit {
 
   @Input() community! :  CommunityResponse;
   @Input() post! : PostResponse;
-  disabled  = false
 
   @ViewChild('flairSelect') flairSelect!: ElementRef;
   @ViewChild('flairLabel') flairLabel! : ElementRef;
@@ -64,7 +62,6 @@ export class CreateEditPostComponent implements OnInit {
           this.community= this.post.community;
           this.form.get('title')?.patchValue(this.post.title); 
           this.form.get('content')?.patchValue(this.post.text); 
-          this.disabled = true;
           // this.form.value.img = this.post.imgPath;
           console.log(this.flairs);
           console.log(this.post.hasAFlair);
@@ -74,6 +71,14 @@ export class CreateEditPostComponent implements OnInit {
           this.form.get('community')?.removeValidators(Validators.required);
         }
       };
+
+
+      disabled() : boolean{
+          if(this.post != undefined || this.post != null){
+            return true;
+          }
+          return false;
+      }
 
     
       selectCommunity(value :  number){

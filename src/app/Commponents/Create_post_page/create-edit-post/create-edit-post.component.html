@@ -1,8 +1,9 @@
 <div class="createPostSection">
-    `<h1 *ngIf="post != undefined">Edit post:</h1>
-    `<h1 *ngIf="post == undefined">Create post:</h1>
-    <form [formGroup]="form" (ngSubmit)="submit()">
-        <input type="text" class="" [attr.disabled]="disabled" id="title" placeholder="Title" [formControlName]="'title'"[ngClass]= "{  'invalid' : !form.get('title')?.valid && form.get('title')?.touched}">
+   <div class="fromWrapper">
+    <h1 *ngIf="post != undefined">Edit post:</h1>
+    <h1 *ngIf="post == undefined">Create post:</h1>
+    <form [formGroup]="form" class="form" (ngSubmit)="submit()">
+        <input type="text" class="" [attr.noEdit]="disabled()" id="title" placeholder="Title" [formControlName]="'title'"[ngClass]= "{  'invalid' : !form.get('title')?.valid && form.get('title')?.touched}">
         <p class="errorLabel" *ngIf="!form.get('title')?.valid && form.get('title')?.touched">This feild can not be empty!</p>
         <textarea class="" id="content" rows="20" placeholder="What are you thinking today?" [formControlName]="'content'" [ngClass]= "{  'invalid' : !form.get('content')?.valid && form.get('content')?.touched}"></textarea>
         <p class="errorLabel" *ngIf="!form.get('content')?.valid && form.get('content')?.touched">This feild can not be empty!</p>
@@ -25,4 +26,5 @@
         <p #flairLabel class="errorLabel"  style="visibility: hidden;" >Please choose flair!</p>
         <button type="submit" class="btn btn-filled" [disabled]="form.invalid">Submit</button>
     </form>
+   </div>
 </div>

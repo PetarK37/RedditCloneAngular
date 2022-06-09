@@ -43,6 +43,9 @@ import { CommunityService } from './Services/community.service';
 import { PostServiceService } from './Services/post-service.service';
 import { CreateEditPostComponent } from './Commponents/Create_post_page/create-edit-post/create-edit-post.component';
 import { ConfirmDialogComponent } from './Commponents/Alert/confirm-dialog/confirm-dialog.component';
+import { SettingsWindowUserComponent } from './Commponents/Settings-window/settings-window-user/settings-window-user.component';
+import { UserSettingsSidebarComponent } from './Commponents/Settings-window/user-settings-sidebar/user-settings-sidebar.component';
+import { CreateCommunityComponent } from './Commponents/Create-community-window/create-community/create-community.component';
 
 
 
@@ -80,7 +83,10 @@ import { ConfirmDialogComponent } from './Commponents/Alert/confirm-dialog/confi
     LoggedInNavigationComponent,
     LoggedInNavMenuComponent,
     CreateEditPostComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    SettingsWindowUserComponent,
+    UserSettingsSidebarComponent,
+    CreateCommunityComponent
   ],
   imports: [
     HttpClientModule,

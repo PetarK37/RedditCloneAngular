@@ -1,14 +1,20 @@
 <div class="navMenu modal">
     <ul>
-        <li routerLink="/Profile">
+        <li [routerLink]="['Settings/User']" (click)="closeThis()">
+            <ion-icon name="person-circle-outline"></ion-icon>
             <a>My Profile</a>
         </li>
+        <li [routerLink]="['Community/Create']" (click)="closeThis()">
+            <ion-icon name="add-circle-outline"></ion-icon>
+            <a>Create community</a>
+        </li>
         <li routerLink="/Settings/Mod/Communities">
+            <ion-icon name="list-outline"></ion-icon>
             <a>My Communities</a>
         </li>
-        <li (click) = "logOut()">
-            <a>Log out</a>
+        <li (click)="logOut()">
             <ion-icon name="log-out-outline"></ion-icon>
+            <a>Log out</a>
         </li>
     </ul>
 </div>

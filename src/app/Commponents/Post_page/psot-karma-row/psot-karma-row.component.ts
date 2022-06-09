@@ -46,12 +46,13 @@ export class PostKarmaRowComponent implements OnInit {
     this.dialogService.okDialogEvent.subscribe( res => {
       if(res){
         this.postService.deletePost(this.post.id).subscribe( ret => {
-          this.alertService.addAlert({text :("You deleted successfully"),  type : AlertType.success});
-          // this.router.navigate(["/Home"]);
+          this.alertService.addAlert({text :("You deleted post successfully"),  type : AlertType.success});
           history.back();
           return;
         }, err => {
-        this.alertService.addAlert({text : "There was problem with deleting of this post, \n please try again later!",  type : AlertType.warning});
+          if(err.status == 400){
+            this.alertService.addAlert({text : "There was problem with deleting of this post, \n please try again later!",  type : AlertType.warning});
+          }
       })
     }
   });}

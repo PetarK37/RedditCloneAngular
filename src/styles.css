@@ -25,6 +25,10 @@
     --succes-color : rgba(23, 230, 126,0.7);
   }
 
+  body{
+    height: 100vh;
+  }
+
   app-root{
       min-height: 1vh;
       overflow: auto;

@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class LoggedInNavMenuComponent implements OnInit {
 
   element!: HTMLElement;
 
-  constructor(element: ElementRef,private authService : AuthenticationServiceService) {
+  constructor(element: ElementRef,private authService : AuthenticationServiceService,private router: Router) {
     this.element = element.nativeElement;
 }
 
@@ -20,6 +21,10 @@ export class LoggedInNavMenuComponent implements OnInit {
   logOut(){
     this.authService.logOut();
     this.authService.changeEvent();
+  }
+
+  closeThis(){
+    this.element.classList.remove('active');
   }
 
 }

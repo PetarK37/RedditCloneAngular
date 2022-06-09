@@ -4,14 +4,25 @@
     gap: 10px;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    padding-top: 10%;
-    padding-bottom: 5%;
-    overflow: auto;}
+    height: 92vh; /* 100% - navbar height */
+}
 
-    h1{
-        font-size: 2em;                                        
+    .form{
+        margin: 0 auto ;
+        width: fit-content;
     }
+
+    .fromWrapper{
+        text-align: center;
+        width: 100%;
+        height: max-content;
+        overflow: auto;
+        padding-bottom: 2%;
+    }
+
+h1{ 
+    font-size: 2em;                                        
+}
 
 input[type="text"]{
     display: block;
@@ -70,6 +81,10 @@ input[type="file"] {
     border-radius: 5px;
     padding: 8px;
     text-align: center;
+}
+
+[noEdit = true]{
+    pointer-events: none;
 }
 
 button[type="submit"]{

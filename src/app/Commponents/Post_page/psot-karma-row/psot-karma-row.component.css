@@ -50,6 +50,9 @@
     text-decoration: none;
     color: var(--text-color);
     font-size: large;
+    display: flex;
+    gap: 5px;
+    align-items: center;
 }
 
 .posst-settings > ion-icon{
