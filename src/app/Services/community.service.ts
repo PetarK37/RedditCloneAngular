@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CommunityResponse } from '../Model/community';
+import { CommunityResponse, CommuntyRequest } from '../Model/community';
 import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {ConfigService} from './config.service';
@@ -21,5 +21,9 @@ export class CommunityService {
 
    getOne(id: number): Observable<CommunityResponse> {
      return this.http.get<CommunityResponse>(this.config.communities_url + '/' + id);}
+
+    crateCommunity(dto: CommuntyRequest): Observable<CommunityResponse> {
+      return this.http.post<CommunityResponse>(this.config.communities_url, JSON.stringify(dto), {headers: this.headers});
+    }
 
 }

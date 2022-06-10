@@ -1,7 +1,7 @@
 <div class="createCommunityWindow">
     <div class="scroll">
         <h1>Create community:</h1>
-        <form class="form" [formGroup]="form" class="form" (ngSubmit)="submit()">
+        <form class="form" [formGroup]="form" class="form" (ngSubmit)="submit()" (keydown.enter)="$event.preventDefault()">
             <input type="text" placeholder="Name" [formControlName]="'name'"[ngClass]= "{  'invalid' : !form.get('name')?.valid && form.get('name')?.touched}">
             <p class="errorLabel" *ngIf="!form.get('name')?.valid && form.get('name')?.touched">This feild can not be empty!</p>
             <textarea class="" id="content" rows="12" placeholder="Description" [formControlName]="'description'"[ngClass]= "{  'invalid' : !form.get('description')?.valid && form.get('description')?.touched}"></textarea>
@@ -9,14 +9,14 @@
             <div class="todoArea">
                 <div class="todoInput">
                     <input [formControlName]="'flairs'" type="text" placeholder="Add Flare">
-                    <button class="addBtn" (click)="addFlair()">
+                    <button type="button" class="addBtn" (click)="addFlair()">
                         <ion-icon name="add-outline"></ion-icon>
                     </button>
                 </div>
                 <ul>
                     <li class="item" *ngFor="let f of flairs">
                         {{f.name}}
-                        <button class="btn btn-light removeBtn" (click)="removeFlair(f)">
+                        <button type="button" class="btn btn-light removeBtn" (click)="removeFlair(f)">
                             <ion-icon name="close-outline"></ion-icon>
                         </button>
                     </li>
@@ -25,14 +25,14 @@
             <div class="todoArea">
                 <div class="todoInput">
                     <input [formControlName]="'rules'" type="text" placeholder="Add Rule">
-                    <button class="addBtn" (click)="addRule()">
+                    <button type="button" class="addBtn" (click)="addRule()">
                         <ion-icon name="add-outline"></ion-icon>
                     </button>
                 </div>
                 <ul>
                     <li class="item" *ngFor="let r of rules">
                         {{r}}
-                        <button class="btn btn-light removeBtn" (click)="removeRule(r)">
+                        <button type="button" class="btn btn-light removeBtn" (click)="removeRule(r)">
                             <ion-icon name="close-outline"></ion-icon>
                         </button>
                     </li>

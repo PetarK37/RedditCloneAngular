@@ -10,3 +10,10 @@ export interface CommunityResponse{
     flairs:Flair[],
     moderators: ModeratorResponse[]
 }
+
+export interface CommuntyRequest{
+    name: string;
+    description: string;
+    rules: string[];
+    flairs: Flair[];
+}
