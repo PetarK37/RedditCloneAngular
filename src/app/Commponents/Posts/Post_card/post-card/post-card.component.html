@@ -1,5 +1,5 @@
 <div class="card post_card">
-    <app-post-card-karma [karma] = "post.karma"></app-post-card-karma>
+    <app-post-card-karma [post] = "post"></app-post-card-karma>
     <div class="card_content">
      <app-post-title-row [post] = "post"></app-post-title-row>
         <p class="content_txt" [routerLink]="['/Post',post.id]">

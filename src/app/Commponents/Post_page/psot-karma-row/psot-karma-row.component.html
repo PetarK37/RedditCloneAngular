@@ -1,8 +1,9 @@
 <aside class="postKarmaRow">
-    <ion-icon name="caret-up" class="karma_btn upwoted"></ion-icon>
+    <button #upvoteElement (click)="upvote()" class="btn-wrapper" [attr.upvoted] = "'false'" ><ion-icon  name="caret-up" class="karma_btn " ></ion-icon></button>
     <p class="karma_num">{{post.karma}}</p>
-    <ion-icon name="caret-down" class="karma_btn downwoted"></ion-icon>
-    <button  class="btn btn-light flexboxEnd" *ngIf="!canEdit()" >Report</button>
+    <button #downovoteElement class="btn-wrapper"  (click)="downvote()" [attr.downvoted] = "'false'">
+        <ion-icon  name="caret-down"  class="karma_btn "></ion-icon>
+    </button>    <button  class="btn btn-light flexboxEnd" *ngIf="!canEdit()" >Report</button>
     <ion-icon name="ellipsis-vertical-outline" class="settings" *ngIf="canEdit()" (click)="openSettings()"></ion-icon>
     <div class="posst-settings modal" #settingsModal>
         <ul>

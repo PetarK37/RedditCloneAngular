@@ -7,12 +7,18 @@
 
 .communities_list{
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+    width: 100%;
 }
 
 .community_list_item{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
     gap: 50px;
 }
 

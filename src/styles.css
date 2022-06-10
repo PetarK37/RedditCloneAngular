@@ -76,13 +76,7 @@
     align-items: center;
 }
 
-.upwoted{
-    color: var(--upwoted);
-}
 
-.downwoted{
-    color: var(--downowoted);
-}
 
 .link{
     text-decoration: none;
@@ -116,6 +110,28 @@
     align-items: center;
     width: 100%;
 }
+
+.karma_btn{
+    color: var(--seccondary-color);
+}
+
+.karma_btn:hover{
+    transform: scaleX(1.2);
+    transform: scaleY(1.2);
+}
+.btn-wrapper{
+    border: 0;
+    background-color: transparent;
+}
+
+[upvoted = true] > ion-icon{
+    color: var(--upwoted);
+}
+
+[downvoted = "true"] > ion-icon{
+    color: var(--downowoted);
+} 
+
 
 .exit{
     font-size: 2em;

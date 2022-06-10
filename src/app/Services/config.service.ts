@@ -20,6 +20,7 @@ export class ConfigService{
     private _users_url = this._api_url + '/Users';
     private _login_url = this._users_url + '/login';
     private _whoami_url = this._users_url + '/auth/whoami';
+    private _reactions_url = this._api_url + '/Reactions';
 
 
     get whoami_url(){
@@ -107,5 +108,13 @@ export class ConfigService{
 
     deletePost(id: number): string {
         return this._post_url + '/' + id;      
+    }
+
+    get reactions_url(){
+        return this._reactions_url;
+    }
+
+    getMyReaction(id : Number){
+        return this._reactions_url + "/ReactedTo/" + id
     }
 }
