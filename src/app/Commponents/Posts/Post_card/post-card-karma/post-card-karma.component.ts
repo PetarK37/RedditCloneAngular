@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, Component, DoCheck, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { PostResponse } from 'src/app/Model/post';
 import { ReactionRequest } from 'src/app/Model/reaction';
 import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';
@@ -10,7 +10,7 @@ import { ReactionService } from 'src/app/Services/reaction.service';
   templateUrl: './post-card-karma.component.html',
   styleUrls: ['./post-card-karma.component.css']
 })
-export class PostCardKarmaComponent implements OnInit,AfterViewInit {
+export class PostCardKarmaComponent implements OnInit{
 
   @Input() post!: PostResponse;
   @ViewChild('upvoteElement') upvoteHtml!: ElementRef;
@@ -19,6 +19,7 @@ export class PostCardKarmaComponent implements OnInit,AfterViewInit {
 
 
   constructor(private reactionService : ReactionService,private postService : PostServiceService,private authService : AuthenticationServiceService) { }
+
 
   ngOnInit(): void {
     this.reactionService.getMyReaction(this.post.id).subscribe(reaction => {
@@ -31,11 +32,14 @@ export class PostCardKarmaComponent implements OnInit,AfterViewInit {
         return;
       }
     });
+
+    this.authService.changedEvent.subscribe(res => {
+      if(res){
+        this.upvoteHtml.nativeElement.setAttribute('upvoted' , false);
+        this.downvoteHtml.nativeElement.setAttribute('downvoted' , false);
+      }});
   }
 
-  ngAfterViewInit(): void {
-
-  }
 
 
 

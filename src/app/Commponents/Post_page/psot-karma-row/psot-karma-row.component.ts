@@ -1,4 +1,4 @@
-import {Input, Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {Input, Component, OnInit, ViewChild, ElementRef, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertType } from 'src/app/Model/alertMessage';
 import { PostResponse } from 'src/app/Model/post';
@@ -24,18 +24,25 @@ export class PostKarmaRowComponent implements OnInit {
   constructor(private authService : AuthenticationServiceService,private router : Router,private reactionService : ReactionService,
     private CreateEditService : CreateEditPostService,private dialogService : DialogService,private postService : PostServiceService,private alertService : AlertService) { }
 
-  ngOnInit(): void {
-    this.reactionService.getMyReaction(this.post.id).subscribe(reaction => {
-      if(reaction.type == 'UPWOTE'){
-        this.upvoteHtml.nativeElement.setAttribute('upvoted' , true);
-        return;
-      }
-      if(reaction.type == 'DOWNWOTE'){
-        this.downvoteHtml.nativeElement.setAttribute('downvoted' , true);
-        return;
-      }
-    });
-  }
+    ngOnInit(): void {
+      this.reactionService.getMyReaction(this.post.id).subscribe(reaction => {
+        if(reaction.type == 'UPWOTE'){
+          this.upvoteHtml.nativeElement.setAttribute('upvoted' , true);
+          return;
+        }
+        if(reaction.type == 'DOWNWOTE'){
+          this.downvoteHtml.nativeElement.setAttribute('downvoted' , true);
+          return;
+        }
+      });
+
+      this.authService.changedEvent.subscribe(res => {
+        if(res){
+          this.upvoteHtml.nativeElement.setAttribute('upvoted' , false);
+          this.downvoteHtml.nativeElement.setAttribute('downvoted' , false);
+        }});
+    }
+  
 
   canEdit(): boolean{
     const loggedIn = this.authService.getCurrentUser();
