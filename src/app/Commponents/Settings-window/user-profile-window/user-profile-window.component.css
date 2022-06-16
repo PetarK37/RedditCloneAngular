@@ -1,0 +1,115 @@
+.wrapper{
+    height: 92vh;
+    overflow: auto;
+    padding-bottom: 20px;
+}
+.window{
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+}
+
+.userTitle{
+    margin-top: 40px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    position: relative;
+    margin-left: auto;
+    width: calc(100% - 3%);
+}
+
+.userTitle > .img_overlay{
+    width: 110px;
+    height: 110px;
+    border-radius: 100%;
+     position: absolute;
+    z-index: 1;
+    left: -3%;
+    top: -40%; 
+   display: flex;
+   flex: 0 1 100px;
+   justify-content: center;
+   overflow: hidden;
+}
+
+.userTitle > h1{
+    font-size: xx-large;
+    margin-left: calc(100px - 2%);
+}
+.flexboxEnd > h2{
+    padding-right: 10px;
+    font-size: x-large;
+}
+
+.flexboxEnd > h2 > span{
+    font-weight: 100;
+    margin-right: 10px;
+}
+
+.aboutMe{
+    width: 100%;
+    padding: 10px;
+    font-size: 1.3em;
+}
+
+.aboutMe > h3{
+    font-size: 1.3em;
+}
+.myKarma{
+    margin-right: auto; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.myKarma > section{
+    align-self: center;
+}
+
+
+h5{
+    align-self: flex-start;
+    width: 100%;
+    font-size: 2rem;
+}
+
+.karma_btn{
+    font-size: 4rem;
+}
+
+.karma_num{
+    font-size: 4rem;
+}
+
+.myKarma,.myCommunities{
+    width: calc(75% / 2);
+    padding: 10px;
+    font-size: 1.3em;
+}
+
+.communities_list{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+
+.community_list_item{
+    display: flex;
+    padding: 10px;
+    justify-content: flex-start;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}

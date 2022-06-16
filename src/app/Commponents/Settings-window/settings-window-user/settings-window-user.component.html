@@ -1,3 +1,6 @@
 <div class="userSettingsWindow">
-    <app-user-settings-sidebar></app-user-settings-sidebar>
+    <app-user-settings-sidebar (navigateEvent)="navigate($event)"></app-user-settings-sidebar>
+    <div class="window">
+        <router-outlet></router-outlet>
+    </div>
 </div>

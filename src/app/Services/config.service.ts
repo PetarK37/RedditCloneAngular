@@ -21,7 +21,14 @@ export class ConfigService{
     private _login_url = this._users_url + '/login';
     private _whoami_url = this._users_url + '/auth/whoami';
     private _reactions_url = this._api_url + '/Reactions';
+    private _img_url = this._api_url + '/img';
 
+    mod_communities_url(id : number){
+        return this._communities_url + "/User/" + id
+    }
+    get img_url(){
+        return this._img_url;
+    }
 
     get whoami_url(){
         return this._whoami_url;

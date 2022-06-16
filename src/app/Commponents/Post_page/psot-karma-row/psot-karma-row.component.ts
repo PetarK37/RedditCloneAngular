@@ -38,9 +38,12 @@ export class PostKarmaRowComponent implements OnInit {
 
       this.authService.changedEvent.subscribe(res => {
         if(res){
+          if(!this.authService.isLoggedIn()){
           this.upvoteHtml.nativeElement.setAttribute('upvoted' , false);
           this.downvoteHtml.nativeElement.setAttribute('downvoted' , false);
-        }});
+          this.settingsModal.nativeElement.classList.remove('active');
+        }}
+      });
     }
   
 
@@ -71,7 +74,7 @@ export class PostKarmaRowComponent implements OnInit {
           history.back();
           return;
         }, err => {
-          if(err.status == 400){
+          if(err.status >= 400){
             this.alertService.addAlert({text : "There was problem with deleting of this post, \n please try again later!",  type : AlertType.warning});
           }
       })

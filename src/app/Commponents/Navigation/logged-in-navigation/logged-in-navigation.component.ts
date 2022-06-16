@@ -7,6 +7,7 @@ import { LoggedInNavMenuComponent } from '../logged-in-nav-menu/logged-in-nav-me
 import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';
 import { UserResponse } from 'src/app/Model/user';
 import { ThisReceiver } from '@angular/compiler';
+import { ImgService } from 'src/app/Services/img.service';
 @Component({
   selector: 'app-logged-in-navigation',
   templateUrl: './logged-in-navigation.component.html',
@@ -23,7 +24,8 @@ export class LoggedInNavigationComponent implements OnInit {
     private communityService : CommunityService,
     private router: Router,
     private alertService : AlertService,
-    private authService : AuthenticationServiceService) 
+    private authService : AuthenticationServiceService,
+    private imgService : ImgService) 
     { }
 
   ngOnInit(): void {
@@ -55,6 +57,10 @@ export class LoggedInNavigationComponent implements OnInit {
       return;
     }
     this.menu.element.classList.add('active');
+  }
+
+  getImg() : string{
+    return this.imgService.getImg(this.user.avatarUrl);
   }
 
 }

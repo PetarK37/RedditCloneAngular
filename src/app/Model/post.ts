@@ -6,7 +6,7 @@ export interface PostResponse{
     id:number,
     title:string,
     text:string,
-    creationDate:number[],
+    creationDate:string,
     imgPath:string,
     hasAFlair:Flair,
     postedBy:UserResponse,
@@ -17,7 +17,7 @@ export interface PostResponse{
 export interface PostRequest {
     title: string;
     text: string;
-    imgPath: string;
+    imgPath: string | null;
     hasAFlair: Flair | null;
     communityId: number;
 }

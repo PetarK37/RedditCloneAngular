@@ -9,6 +9,7 @@ import { AlertService } from 'src/app/Services/alert.service';
 import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';
 import { CommunityService } from 'src/app/Services/community.service';
 import { CreateEditPostService } from 'src/app/Services/create-edit-post.service';
+import { ImgService } from 'src/app/Services/img.service';
 import { PostServiceService } from 'src/app/Services/post-service.service';
 
 @Component({
@@ -27,10 +28,12 @@ export class CreateEditPostComponent implements OnInit {
   communities! : CommunityResponse[];
   flairs! : Flair[];
   form!: FormGroup;
+  selectedFile!: File;
 
 
   constructor(private communityService : CommunityService ,private fb: FormBuilder,private alertService : AlertService,
-    private createEditService : CreateEditPostService,private authService : AuthenticationServiceService,private postService : PostServiceService,private router : Router) {    
+    private createEditService : CreateEditPostService,private authService : AuthenticationServiceService,private postService : PostServiceService,private router : Router,
+    private imgService : ImgService) {    
       this.form = this.fb.group({
 			title :new FormControl(null, Validators.required), 
 			content: new FormControl(null, Validators.required),
@@ -62,9 +65,6 @@ export class CreateEditPostComponent implements OnInit {
           this.community= this.post.community;
           this.form.get('title')?.patchValue(this.post.title); 
           this.form.get('content')?.patchValue(this.post.text); 
-          // this.form.value.img = this.post.imgPath;
-          console.log(this.flairs);
-          console.log(this.post.hasAFlair);
           this.form.get('flair')?.patchValue(this.flairs.findIndex(flair => {
             return this.post.hasAFlair.name === flair.name;
           })); 
@@ -88,21 +88,20 @@ export class CreateEditPostComponent implements OnInit {
       }
 
       submit(){
+        
          const dto :  PostRequest = {
            title: '',
            text: '',
-           imgPath: '',
+           imgPath: this.post == undefined  ?  null : this.post.imgPath,
            hasAFlair: null,
            communityId: -1
          }
 
           dto.title = this.form.value.title;
           dto.text = this.form.value.content;
-          // dto.imgPath = this.form.value.img;
           dto.hasAFlair = this.flairs[this.form.value.flair];
           dto.communityId = this.community.id;
 
-          console.log(dto);
 
         if((this.form.value.community != null && this.form.value.flair == null) || ( this.form.value.flair == null)){
           this.flairLabel.nativeElement.style.setProperty("visibility", "visible");
@@ -110,33 +109,52 @@ export class CreateEditPostComponent implements OnInit {
 
           setTimeout(() => {this.flairLabel.nativeElement.style.setProperty("visibility" ,"hidden");
           this.flairSelect.nativeElement.classList.remove('invalid');},2000);
-        }else{
-          if(this.post == undefined){
-            this.postService.createPost(dto).subscribe(
-              res => {
-                this.alertService.addAlert({text :("You added post to a " + this.community.name + " successfully"),  type : AlertType.success});
-                this.createEditService.reset();
-                history.back();
-              },
-              err => {
-                this.alertService.addAlert({text : "You can't post to this community!",  type : AlertType.warning});
-                history.back();
-              }
-            )
+        }
+        else{
+          if(!this.form.get('img')?.touched){
+            this.sendPost(dto);
           }else{
-            this.postService.editPost(dto,this.post.id).subscribe(
-              res => {
-                this.alertService.addAlert({text :("Post edited successfully"),  type : AlertType.success});
-                this.createEditService.reset();
-                history.back();
-              },
-              err => {
-                this.alertService.addAlert({text : "There has been problem with edit, \n  try again later.",  type : AlertType.warning});
-                history.back();
-              }
-            )
-          }
+          const imgData: FormData = new FormData();
+
+            imgData.append('img', this.selectedFile, this.selectedFile.name);
+
+            this.imgService.saveImg(imgData).subscribe( res => {
+            dto.imgPath = res.fileName;
+            this.sendPost(dto)});
+        }
+      }  
         }
 
-      }
+        onChange(event : any){
+          console.log((event.target)?.files[0]);
+          this.selectedFile = (event.target)?.files[0];
+        }
+
+        sendPost(dto : PostRequest){
+          if(this.post == undefined){
+            this.postService.createPost(dto).subscribe(
+                res => {
+                  this.alertService.addAlert({text :("You added post to a " + this.community.name + " successfully"),  type : AlertType.success});
+                  this.createEditService.reset();
+                  history.back();
+                },
+                err => {
+                  this.alertService.addAlert({text : "You can't post to this community!",  type : AlertType.warning});
+                  history.back();
+                }
+                )
+              }else{
+                this.postService.editPost(dto,this.post.id).subscribe(
+                  res => {
+                    this.alertService.addAlert({text :("Post edited successfully"),  type : AlertType.success});
+                    this.createEditService.reset();
+                    history.back();
+                  },
+                  err => {
+                    this.alertService.addAlert({text : "There has been problem with edit, \n  try again later.",  type : AlertType.warning});
+                    history.back();
+                  }
+              )
+            }
+        }
     }

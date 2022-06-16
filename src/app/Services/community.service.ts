@@ -19,6 +19,10 @@ export class CommunityService {
     return this.http.get<CommunityResponse[]>(this.config.communities_url); 
    }
 
+   getMy(id : number): Observable<CommunityResponse[]> {
+    return this.http.get<CommunityResponse[]>(this.config.mod_communities_url(id)); 
+   }
+
    getOne(id: number): Observable<CommunityResponse> {
      return this.http.get<CommunityResponse>(this.config.communities_url + '/' + id);}
 

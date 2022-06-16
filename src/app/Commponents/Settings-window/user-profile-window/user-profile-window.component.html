@@ -1,0 +1,40 @@
+<div class="wrapper">
+    <div class="window">
+        <div class="userTitle card">
+            <div class="img_overlay">
+                <img [src]="getImg()" class="profileImg">
+            </div>
+            <h1>{{(user.displayName == null || user.displayName == "" ) ? user.username : user.displayName}}</h1>
+            <div class="flexboxEnd">
+                <h2><span>Username:</span>{{user.username}}</h2>
+            </div>
+        </div>
+        <div class="card aboutMe">
+            <h3>About me:</h3>
+            <p>{{user.profileDescription}}</p>
+        </div>
+        <div class="card myKarma">
+            <h5>My karma:</h5>
+            <section>
+                <button class="btn-wrapper" [attr.upvoted]="true">
+                    <ion-icon name="caret-up" class="karma_btn "></ion-icon>
+                </button>
+                <p class="karma_num">{{user.karma}}</p>
+                <button class="btn-wrapper" [attr.downvoted]="true">
+                    <ion-icon name="caret-down" class="karma_btn "></ion-icon>
+                </button>
+            </section>
+        </div>
+        <div class="card myCommunities">
+            <h5>My communities:</h5>
+            <ul class="communities_list">
+                <li *ngFor="let community of communities; let i=index">
+                    <div class="community_list_item">
+                        <div class="test_img"></div>
+                        <h4 [routerLink]="['/Community',community.id]">{{community.name}}</h4>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

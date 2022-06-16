@@ -10,7 +10,9 @@
         </select>
 
         <div class="flexboxEnd loggedInMenuSelect" (click) = "openMenu()">
-            <div class="test_img"></div>
+            <div class="img_overlay">
+                <img [src]="getImg()" class="profileImg">
+            </div>
             <h4>{{user?.username}}</h4>
         </div>
     </nav>

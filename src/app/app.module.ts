@@ -46,6 +46,8 @@ import { ConfirmDialogComponent } from './Commponents/Alert/confirm-dialog/confi
 import { SettingsWindowUserComponent } from './Commponents/Settings-window/settings-window-user/settings-window-user.component';
 import { UserSettingsSidebarComponent } from './Commponents/Settings-window/user-settings-sidebar/user-settings-sidebar.component';
 import { CreateCommunityComponent } from './Commponents/Create-community-window/create-community/create-community.component';
+import { EditProfileComponent } from './Commponents/Settings-window/edit-profile/edit-profile.component';
+import { UserProfileWindowComponent } from './Commponents/Settings-window/user-profile-window/user-profile-window.component';
 
 
 
@@ -86,7 +88,9 @@ import { CreateCommunityComponent } from './Commponents/Create-community-window/
     ConfirmDialogComponent,
     SettingsWindowUserComponent,
     UserSettingsSidebarComponent,
-    CreateCommunityComponent
+    CreateCommunityComponent,
+    EditProfileComponent,
+    UserProfileWindowComponent
   ],
   imports: [
     HttpClientModule,

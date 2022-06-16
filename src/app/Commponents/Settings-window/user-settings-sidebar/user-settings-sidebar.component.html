@@ -1,10 +1,10 @@
 <div class="sidebar">
     <ul>
-        <li>
+        <li (click)="navigate($event)" id="Users/About/Me">
             <ion-icon name="person-circle-outline"></ion-icon>
             <a>My Profile</a>
         </li>
-        <li>
+        <li (click)="navigate($event)" id="Users/About/Edit">
             <ion-icon name="options-outline"></ion-icon>
             <a>My Settings</a>
         </li>

@@ -5,9 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class WeekAgoPipe implements PipeTransform {
 
-  transform(date: number[]): String {
+  transform(date: string): String {
     let date1 =  new Date().getTime() 
-     let date2  = new Date(date.join()).getTime();
+    let date2  = new Date(date).getTime();
     
     let calc;
 

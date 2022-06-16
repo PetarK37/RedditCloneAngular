@@ -35,9 +35,12 @@ export class PostCardKarmaComponent implements OnInit{
 
     this.authService.changedEvent.subscribe(res => {
       if(res){
+        if(!this.authService.isLoggedIn()){
+
         this.upvoteHtml.nativeElement.setAttribute('upvoted' , false);
         this.downvoteHtml.nativeElement.setAttribute('downvoted' , false);
-      }});
+      }}
+    });
   }
 
 

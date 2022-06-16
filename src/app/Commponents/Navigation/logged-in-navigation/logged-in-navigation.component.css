@@ -15,6 +15,16 @@
     max-height: 100%;
 }
 
+.img_overlay{
+        border-radius: 100%;
+        display: flex;
+        flex: 0 1 40px;
+        height: 40px;
+        width: 40px;
+        justify-content: center;
+        overflow: hidden;
+}
+
 #homeLogoBtn{
     justify-self: stretch;
 }

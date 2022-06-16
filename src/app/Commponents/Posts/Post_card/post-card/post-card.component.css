@@ -3,6 +3,7 @@
     grid-template-rows: 1fr auto;
     grid-template-columns: auto 1fr;
     width: 100%;
+    height: 100%;
 }
 
 app-post-card-karma{
@@ -12,14 +13,17 @@ app-post-card-karma{
 
 .card_content{
     padding: 0 10px;
-   display: grid;
-   grid-template-areas: "community"
-                        "title"
-                        "content"
-                        "commnets";
-    grid-template-rows: fit-content fit-content 1fr fit-content;
+    display: flex;
+    flex-direction: column;
 }
 
+.postImg{
+    max-width: 70%; 
+    max-height: auto;
+    padding: 5px 0;
+    align-self: center;
+    display: block;
+}
 
 
 .content_txt{
@@ -36,6 +40,6 @@ app-post-card-karma{
     border-top: 1px  solid var(--devider);
 }
 
-h4,p,h2{
+h4,p,h2,.postImg,.content_txt,.card_comment_row{
     cursor: pointer;
 }

@@ -12,7 +12,7 @@
             <label for="img" class="btn btn-light">Upload <span>
                     <ion-icon name="cloud-upload-outline"></ion-icon>
                 </span></label>
-            <input type="file" id="img" [formControlName]="'img'" accept="image/*">
+            <input type="file" id="img" value="img" [formControlName]="'img'" accept="image/*" (change)="onChange($event)">
         </div>
         <select class="select"  (change) = "selectCommunity($any($event.target).value)" [formControlName]="'community'" [style.visibility]="(shouldHideSelect()) ? 'hidden' : 'visible' " [ngClass]= "{  'invalid' : !form.get('community')?.valid && form.get('community')?.touched}">
             <option  disabled [ngValue]="null" >Select Community:</option>
