@@ -92,3 +92,18 @@ button[type="submit"]{
     padding: 15px 10px;
     font-size: large;
 }
+
+.preview{
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: larger;   
+}
+
+.preview > img{
+    max-width: 20%;
+    max-height: auto;
+    margin-right: auto;
+    margin-left: auto;
+}

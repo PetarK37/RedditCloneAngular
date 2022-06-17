@@ -29,6 +29,7 @@ export class CreateEditPostComponent implements OnInit {
   flairs! : Flair[];
   form!: FormGroup;
   selectedFile!: File;
+  previewSrc = '';
 
 
   constructor(private communityService : CommunityService ,private fb: FormBuilder,private alertService : AlertService,
@@ -69,6 +70,7 @@ export class CreateEditPostComponent implements OnInit {
             return this.post.hasAFlair.name === flair.name;
           })); 
           this.form.get('community')?.removeValidators(Validators.required);
+          this.previewSrc = this.imgService.getImg(this.post.imgPath);
         }
       };
 
@@ -116,7 +118,7 @@ export class CreateEditPostComponent implements OnInit {
           }else{
           const imgData: FormData = new FormData();
 
-            imgData.append('img', this.selectedFile, this.selectedFile.name);
+            imgData.append('img', this.selectedFile!, this.selectedFile?.name);
 
             this.imgService.saveImg(imgData).subscribe( res => {
             dto.imgPath = res.fileName;
@@ -126,8 +128,24 @@ export class CreateEditPostComponent implements OnInit {
         }
 
         onChange(event : any){
-          console.log((event.target)?.files[0]);
+          if((event.target)?.files[0].size > 2000000){
+            this.alertService.addAlert({text : "File is too large(limit is 2mb)!",  type : AlertType.warning});
+            return;
+          }
           this.selectedFile = (event.target)?.files[0];
+
+          const reader = new FileReader();
+     
+          if(event.target.files && event.target.files.length) {
+            const [file] = event.target.files;
+            reader.readAsDataURL(file);
+           
+            reader.onload = () => {
+          
+              this.previewSrc = reader.result as string;
+            };
+          
+          }
         }
 
         sendPost(dto : PostRequest){

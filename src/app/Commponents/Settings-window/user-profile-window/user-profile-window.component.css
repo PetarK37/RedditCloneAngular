@@ -32,18 +32,64 @@
     border-radius: 100%;
      position: absolute;
     z-index: 1;
-    left: -3%;
-    top: -40%; 
+    left: -5%;
+    top: calc(100% - 110px); 
    display: flex;
    flex: 0 1 100px;
    justify-content: center;
    overflow: hidden;
 }
 
-.userTitle > h1{
-    font-size: xx-large;
-    margin-left: calc(100px - 2%);
+.img_overlay > img{
+    height: 100%;
+    position: relative;
+    pointer-events: none;
 }
+
+.img_edit {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity 0.25s;
+    z-index: 1;
+    height: 110px;
+    border-radius:100%;
+  }
+
+  .img_edit:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    border:  3px solid var(--primary-color);
+    opacity: 1;
+  }
+
+  .img_edit:hover > ion-icon{
+    color: var(--background-color);
+    font-size: 2em;
+  }
+
+.editWrap{
+    margin-left: calc(100px - 4%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap:5px;
+    font-size: 1.4em;
+}
+
+.editWrap > ion-icon:hover{
+    background-color: var( --hower-light);
+}
+
+h1{
+    font-size: xx-large;
+}
+
 .flexboxEnd > h2{
     padding-right: 10px;
     font-size: x-large;
@@ -60,9 +106,48 @@
     font-size: 1.3em;
 }
 
-.aboutMe > h3{
+.editWrap > h3{
     font-size: 1.3em;
 }
+
+.displayNameEdit{
+    margin-left: calc(100px - 4%);
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.displayNameEdit > form{
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.displayNameEdit > form > button{
+    align-self: stretch;
+}
+
+.aboutForm > .errorLabel{
+    align-self: center;
+}
+
+input,textarea{
+    font-size: 1em;
+    padding: 10px 8px;
+    min-width: 250px;
+    border-radius: 10px;
+}
+
+textarea{
+    resize: vertical;
+    min-width: 80%;
+
+}
+
 .myKarma{
     margin-right: auto; 
     display: flex;
@@ -112,4 +197,72 @@ h5{
     gap: 10px;
     align-items: center;
     cursor: pointer;
+}
+
+.uploadImgAlert{
+    position : fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    transition: 150ms ease-in-out;
+    z-index: 10;
+
+   
+}
+
+.addImgForm{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    gap: 15px;
+    flex-wrap:wrap;
+    min-width: 50%;
+}
+
+.uploadImgAlert.active{
+    transform: translate(-50%,-50%) scale(1);
+}
+
+.uploadDiv{
+    display: flex;
+    align-items: center;
+    min-width: 600px;
+    justify-content: space-between;
+    font-size: larger;   
+}
+
+.uploadDiv label{
+    min-width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.uploadDiv ion-icon{
+    font-size: larger;
+}
+
+input[type="file"] { 
+opacity: 0; 
+z-index: -1;
+position: absolute; 
+}
+
+.preview{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: larger;   
+}
+
+.preview > img{
+    max-width: 30%;
+    max-height: auto;
+    margin-right: auto;
+    margin-left: auto;
 }

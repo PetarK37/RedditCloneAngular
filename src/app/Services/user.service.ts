@@ -16,4 +16,11 @@ export class UserService {
   register(dto : UserRequest) : Observable<UserResponse>{
     return this.http.post<UserResponse>(this.config.users_url, JSON.stringify(dto), {headers: this.headers, responseType: 'json'});
   }
+
+  update(dto : UserRequest, id : number) : Observable<UserResponse>{
+    return this.http.put<UserResponse>(this.config.edit_user_url(id), JSON.stringify(dto), {headers: this.headers, responseType: 'json'});
+  }
+
+
+
 }

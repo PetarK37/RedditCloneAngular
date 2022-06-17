@@ -1,17 +1,38 @@
 <div class="wrapper">
     <div class="window">
         <div class="userTitle card">
-            <div class="img_overlay">
-                <img [src]="getImg()" class="profileImg">
+            <div class="img_overlay" (click)="editImg()">
+                <div class="img_edit"><ion-icon name="settings-outline" ></ion-icon></div>
+                    <img [src]="getImg()" class="profileImg">
             </div>
-            <h1>{{(user.displayName == null || user.displayName == "" ) ? user.username : user.displayName}}</h1>
+            <div class="editWrap" #dispalyName>
+                <h1>{{(user.displayName == null || user.displayName == "" ) ? user.username : user.displayName}}</h1>
+                <ion-icon name="create-outline" *ngIf="canEdit()" (click)="edit('displayName')"></ion-icon>
+            </div>
+            <div class="displayNameEdit" #nameEdit hidden>
+                <form [formGroup]="displayNameForm" class="form" (ngSubmit)="changeDisplayName()">
+                    <input type="text" class=""  id="displayName" placeholder="displayName" [formControlName]="'displayName'"[ngClass]= "{  'invalid' : !displayNameForm.get('displayName')?.valid && displayNameForm.get('displayName')?.touched}">
+                    <button type="submit" class="btn btn-filled" [disabled]="displayNameForm.invalid">Ok</button>
+                </form>
+                <p class="errorLabel" *ngIf="!displayNameForm.get('displayName')?.valid && displayNameForm.get('displayName')?.touched">This feild can not be empty!</p>
+            </div>
             <div class="flexboxEnd">
                 <h2><span>Username:</span>{{user.username}}</h2>
             </div>
         </div>
-        <div class="card aboutMe">
-            <h3>About me:</h3>
-            <p>{{user.profileDescription}}</p>
+        <div class="card aboutMe" >
+            <div class="editWrap aboutMe" #about>
+                <h3>About me:</h3>
+                <ion-icon name="create-outline" *ngIf="(user.displayName != null && user.displayName != '') && canEdit()" (click)="edit('description')"></ion-icon>
+            </div>
+            <p #descripitonTxt>{{user.profileDescription}}</p>
+            <div class="aboutMeEdit" #aboutEdit hidden>
+                <form [formGroup]="aboutForm" class="aboutForm" (ngSubmit)="changeAboutMe()">
+                    <textarea  class=""  id="aboutMe" placeholder="aboutMe" [formControlName]="'aboutMe'"[ngClass]= "{  'invalid' : !aboutForm.get('aboutMe')?.valid && aboutForm.get('aboutMe')?.touched}"></textarea>
+                    <p class="errorLabel" *ngIf="!aboutForm.get('aboutMe')?.valid && aboutForm.get('aboutMe')?.touched">This feild can not be empty!</p>
+                    <button type="submit" class="btn btn-filled" [disabled]="aboutForm.invalid">Ok</button>
+                </form>
+            </div>
         </div>
         <div class="card myKarma">
             <h5>My karma:</h5>
@@ -36,5 +57,23 @@
                 </li>
             </ul>
         </div>
+    </div>
+
+    <div class="uploadImgAlert modal" #uploadModal>
+        <form [formGroup]="addImgForm" class="addImgForm" (ngSubmit)="changeImg()">
+            <div class="uploadDiv">
+                <p>Upload image:</p>
+                <label for="img" class="btn btn-light">Upload <span>
+                        <ion-icon name="cloud-upload-outline"></ion-icon>
+                    </span></label>
+                <input type="file" id="img" value="img" [formControlName]="'img'" accept="image/*" (change)="onChange($event)">
+            </div>
+            <div class="preview"  *ngIf="selectedFile != undefined"> 
+                <p>Preview:</p>
+                <img [src]="previewSrc" alt="preview">
+            </div>
+            <button class="btn btn-light" (click) = "cancel()">Cancel</button>
+            <button type="submit" class="btn btn-filled">Ok</button>
+        </form>
     </div>
 </div>
