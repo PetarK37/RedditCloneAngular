@@ -23,6 +23,10 @@ export class ConfigService{
     private _reactions_url = this._api_url + '/Reactions';
     private _img_url = this._api_url + '/img';
 
+    change_password_url(id : number){
+        return this._users_url + '/' + id + '/Password';
+    }
+
     edit_user_url(id : number){
        return this._users_url + '/' + id;
     }

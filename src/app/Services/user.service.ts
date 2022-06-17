@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserRequest, UserResponse } from '../Model/user';
+import { PasswordChange, UserRequest, UserResponse } from '../Model/user';
 import { ConfigService } from './config.service';
 
 @Injectable({
@@ -19,6 +19,10 @@ export class UserService {
 
   update(dto : UserRequest, id : number) : Observable<UserResponse>{
     return this.http.put<UserResponse>(this.config.edit_user_url(id), JSON.stringify(dto), {headers: this.headers, responseType: 'json'});
+  }
+
+  updatePassword(dto : PasswordChange, id : number) : Observable<UserResponse>{
+    return this.http.put<UserResponse>(this.config.change_password_url(id), JSON.stringify(dto), {headers: this.headers, responseType: 'json'});
   }
 
 

@@ -68,11 +68,11 @@
                     </span></label>
                 <input type="file" id="img" value="img" [formControlName]="'img'" accept="image/*" (change)="onChange($event)">
             </div>
-            <div class="preview"  *ngIf="selectedFile != undefined"> 
+            <div class="preview"  *ngIf="previewSrc != ''"> 
                 <p>Preview:</p>
                 <img [src]="previewSrc" alt="preview">
             </div>
-            <button class="btn btn-light" (click) = "cancel()">Cancel</button>
+            <button type="reset" class="btn btn-light" (click) = "cancel()">Cancel</button>
             <button type="submit" class="btn btn-filled">Ok</button>
         </form>
     </div>

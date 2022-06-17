@@ -26,3 +26,8 @@ export interface UserRequest{
     password: string;
     avatarUrl : string|null;
 }
+
+export interface PasswordChange {
+    password: string;
+    oldPassword: string;
+}

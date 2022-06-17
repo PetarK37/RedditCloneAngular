@@ -46,7 +46,7 @@ import { ConfirmDialogComponent } from './Commponents/Alert/confirm-dialog/confi
 import { SettingsWindowUserComponent } from './Commponents/Settings-window/settings-window-user/settings-window-user.component';
 import { UserSettingsSidebarComponent } from './Commponents/Settings-window/user-settings-sidebar/user-settings-sidebar.component';
 import { CreateCommunityComponent } from './Commponents/Create-community-window/create-community/create-community.component';
-import { EditProfileComponent } from './Commponents/Settings-window/edit-profile/edit-profile.component';
+import { EditPasswordComponent } from './Commponents/Settings-window/edit-profile/edit-password.component';
 import { UserProfileWindowComponent } from './Commponents/Settings-window/user-profile-window/user-profile-window.component';
 
 
@@ -89,7 +89,7 @@ import { UserProfileWindowComponent } from './Commponents/Settings-window/user-p
     SettingsWindowUserComponent,
     UserSettingsSidebarComponent,
     CreateCommunityComponent,
-    EditProfileComponent,
+    EditPasswordComponent,
     UserProfileWindowComponent
   ],
   imports: [

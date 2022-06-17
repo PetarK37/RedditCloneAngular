@@ -153,6 +153,7 @@ export class UserProfileWindowComponent implements OnInit {
 
   cancel(){
     this.uploadModal.nativeElement.classList.remove('active');
+    this.previewSrc = '';
   }
 
   editImg(){
@@ -175,6 +176,7 @@ export class UserProfileWindowComponent implements OnInit {
               this.cancel();
               this.alertService.addAlert({text : "You successfully updated avatar", type : AlertType.success});
               this.authService.setCurrentUser();
+              this.previewSrc = '';
             } , err => {
                 this.alertService.addAlert({text : "Error while updating avatar!", type : AlertType.warning});
               })
