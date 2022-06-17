@@ -11,7 +11,7 @@
                 <div class="img_overlay">
                     <img [src]="getImg()" class="profileImg">
                 </div>
-                    <p class="username">{{post.postedBy.username}}</p>
+                    <p class="username"  [routerLink]="['/Users',post.postedBy.id]" >{{post.postedBy.username}}</p>
                 </div>
             </div>
             <div class="posted_ago">

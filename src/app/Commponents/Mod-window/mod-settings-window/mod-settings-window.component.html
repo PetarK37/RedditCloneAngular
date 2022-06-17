@@ -1,0 +1,23 @@
+<div class="wrapper">
+    <h1 *ngIf=" communities.length > 0 ">My communities:</h1>
+    <div class="searchBar" *ngIf="communities.length > 0 ">
+        <form [formGroup]="form" class="form" >
+            <input type="text" id="name" placeholder="name" [formControlName]="'name'" placeholder="Enter community name" >
+        </form>
+    </div>
+    <table *ngIf=" communitiesForRender.length > 0">
+        <tbody>
+            <tr *ngFor="let c of communitiesForRender">
+                <td>
+                    <div class="test_img"></div>
+                    <p [routerLink]="['/Community',c.id]">{{c.name}}</p>
+                    <button class="btn btn-filled flexboxEnd" [routerLink] = "[c.id]">Edit</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="empty" *ngIf=" communities == undefined || communities.length == 0">
+        <img src="../../../../assets/logo/Icon.jpg" alt="logo">
+        <h2>You dont have any communities!</h2>
+    </div>
+</div>

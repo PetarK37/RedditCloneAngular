@@ -30,4 +30,8 @@ export class CommunityService {
       return this.http.post<CommunityResponse>(this.config.communities_url, JSON.stringify(dto), {headers: this.headers});
     }
 
+    updateCommunity(dto: CommuntyRequest,id : number): Observable<CommunityResponse> {
+      return this.http.put<CommunityResponse>(this.config.communities_url + '/' + id, JSON.stringify(dto), {headers: this.headers});
+    }
+
 }

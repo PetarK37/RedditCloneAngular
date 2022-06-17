@@ -8,12 +8,14 @@
     border: 1px dotted var(--text-color);
 }
 
+
 .usernameSection{
     display: grid;
     grid-template-areas: "img username"
                             "img date"; 
     justify-items: center;
     column-gap: 5px;
+    cursor: pointer;
 }
 
 .usernameSection > .img_overlay{

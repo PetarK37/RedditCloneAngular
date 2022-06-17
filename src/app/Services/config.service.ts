@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import { CommunityPageAssideComponent } from '../Commponents/Community_page/community-page-asside/community-page-asside.component';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,16 @@ export class ConfigService{
     private _whoami_url = this._users_url + '/auth/whoami';
     private _reactions_url = this._api_url + '/Reactions';
     private _img_url = this._api_url + '/img';
+    private _flairs_url = this._api_url + '/Flairs';
+
+
+    delete_flair_url(communityId : number, flairId : String){
+        return this._flairs_url + "/Community/" + communityId + "/Flair/" + flairId
+    }
+    
+    get flairs_url(){
+        return this._flairs_url;
+    }
 
     change_password_url(id : number){
         return this._users_url + '/' + id + '/Password';
@@ -132,4 +143,9 @@ export class ConfigService{
     getMyReaction(id : Number){
         return this._reactions_url + "/ReactedTo/" + id
     }
+
+    get_user_url(id : Number){
+        return this._users_url + "/" + id
+    }
+
 }

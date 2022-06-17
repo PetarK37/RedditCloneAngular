@@ -8,7 +8,7 @@
             <ion-icon name="add-circle-outline"></ion-icon>
             <a>Create community</a>
         </li>
-        <li routerLink="/Settings/Mod/Communities">
+        <li [routerLink]="['Moderator/Communities']" (click)="closeThis()">
             <ion-icon name="list-outline"></ion-icon>
             <a>My Communities</a>
         </li>

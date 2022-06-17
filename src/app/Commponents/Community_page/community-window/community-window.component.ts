@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommunityResponse } from 'src/app/Model/community';
 import { CommunityService } from 'src/app/Services/community.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-community-window',
@@ -14,13 +14,15 @@ export class CommunityWindowComponent implements OnInit {
   
   constructor(
     private communityService : CommunityService,    
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,private router : Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.communityService.getOne(params['id']).subscribe(
         res => { this.community
           = res;
+        }, err => {
+          this.router.navigate(['/NotFound']);
         });
     });
   }

@@ -3,7 +3,7 @@
     <div class="img_overlay">
         <img [src]="getImg()" class="profileImg">
     </div>
-        <h5>{{comment.postedBy.username}}</h5>
+        <h5 [routerLink]="['/Users',comment.postedBy.id]">{{comment.postedBy.username}}</h5>
         <p>{{comment.timestamp | weekAgo}}</p>
    </section>
         <p class="commentContent">{{comment.text}}</p>

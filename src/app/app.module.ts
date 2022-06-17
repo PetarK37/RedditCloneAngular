@@ -48,6 +48,11 @@ import { UserSettingsSidebarComponent } from './Commponents/Settings-window/user
 import { CreateCommunityComponent } from './Commponents/Create-community-window/create-community/create-community.component';
 import { EditPasswordComponent } from './Commponents/Settings-window/edit-profile/edit-password.component';
 import { UserProfileWindowComponent } from './Commponents/Settings-window/user-profile-window/user-profile-window.component';
+import { ModSettingsWindowComponent } from './Commponents/Mod-window/mod-settings-window/mod-settings-window.component';
+import { NotFoundWindowComponent } from './Commponents/Error-page/not-found-window/not-found-window.component';
+import { CommunitySettingsWindowComponent } from './Commponents/Mod-window/community-settings-window/community-settings-window.component';
+import { ModSettingsAssideComponent } from './Commponents/Mod-window/mod-settings-asside/mod-settings-asside.component';
+import { CommunitySettingsModWindowComponent } from './Commponents/Mod-window/community-settings-mod-window/community-settings-mod-window.component';
 
 
 
@@ -90,7 +95,12 @@ import { UserProfileWindowComponent } from './Commponents/Settings-window/user-p
     UserSettingsSidebarComponent,
     CreateCommunityComponent,
     EditPasswordComponent,
-    UserProfileWindowComponent
+    UserProfileWindowComponent,
+    ModSettingsWindowComponent,
+    NotFoundWindowComponent,
+    CommunitySettingsWindowComponent,
+    ModSettingsAssideComponent,
+    CommunitySettingsModWindowComponent
   ],
   imports: [
     HttpClientModule,

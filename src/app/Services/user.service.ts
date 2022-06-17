@@ -13,6 +13,10 @@ export class UserService {
 
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
+  getOne(id : number){
+    return this.http.get<UserResponse>(this.config.get_user_url(id));
+  }
+
   register(dto : UserRequest) : Observable<UserResponse>{
     return this.http.post<UserResponse>(this.config.users_url, JSON.stringify(dto), {headers: this.headers, responseType: 'json'});
   }

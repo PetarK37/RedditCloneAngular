@@ -1,8 +1,8 @@
 <div class="wrapper">
     <div class="window">
         <div class="userTitle card">
-            <div class="img_overlay" (click)="editImg()">
-                <div class="img_edit"><ion-icon name="settings-outline" ></ion-icon></div>
+            <div class="img_overlay"  >
+                <div class="img_edit"  *ngIf="canEdit()" (click)="editImg()" ><ion-icon name="settings-outline" ></ion-icon></div>
                     <img [src]="getImg()" class="profileImg">
             </div>
             <div class="editWrap" #dispalyName>
@@ -23,14 +23,13 @@
         <div class="card aboutMe" >
             <div class="editWrap aboutMe" #about>
                 <h3>About me:</h3>
-                <ion-icon name="create-outline" *ngIf="(user.displayName != null && user.displayName != '') && canEdit()" (click)="edit('description')"></ion-icon>
+                <ion-icon name="create-outline" *ngIf="canEdit()" (click)="edit('description')"></ion-icon>
             </div>
             <p #descripitonTxt>{{user.profileDescription}}</p>
             <div class="aboutMeEdit" #aboutEdit hidden>
                 <form [formGroup]="aboutForm" class="aboutForm" (ngSubmit)="changeAboutMe()">
-                    <textarea  class=""  id="aboutMe" placeholder="aboutMe" [formControlName]="'aboutMe'"[ngClass]= "{  'invalid' : !aboutForm.get('aboutMe')?.valid && aboutForm.get('aboutMe')?.touched}"></textarea>
-                    <p class="errorLabel" *ngIf="!aboutForm.get('aboutMe')?.valid && aboutForm.get('aboutMe')?.touched">This feild can not be empty!</p>
-                    <button type="submit" class="btn btn-filled" [disabled]="aboutForm.invalid">Ok</button>
+                    <textarea  class=""  id="aboutMe" placeholder="aboutMe" [formControlName]="'aboutMe'"></textarea>
+                    <button type="submit" class="btn btn-filled" >Ok</button>
                 </form>
             </div>
         </div>

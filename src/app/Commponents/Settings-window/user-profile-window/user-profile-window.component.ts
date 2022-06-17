@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertType } from 'src/app/Model/alertMessage';
 import { CommunityResponse } from 'src/app/Model/community';
 import { UserRequest, UserResponse } from 'src/app/Model/user';
@@ -16,7 +17,7 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class UserProfileWindowComponent implements OnInit {
 
-  @Input() user!: UserResponse;
+  user!: UserResponse;
   @ViewChild ('dispalyName') dispalyName!: ElementRef;
   @ViewChild ('nameEdit') dispalyNameEdit!: ElementRef;
   @ViewChild ('about') about!: ElementRef;
@@ -37,13 +38,13 @@ export class UserProfileWindowComponent implements OnInit {
 
   communities!: CommunityResponse[];
   constructor(private authService : AuthenticationServiceService,private imgService : ImgService,private communityService : CommunityService,
-    private fb: FormBuilder,private userService : UserService,private alertService : AlertService) { 
+    private fb: FormBuilder,private userService : UserService,private alertService : AlertService, private route : ActivatedRoute,private router : Router) { 
     this.displayNameForm =  this.fb.group({
-			displayName : new FormControl(null, Validators.required) 
+			displayName :  new FormControl(null, Validators.required)
 		});
 
     this.aboutForm = this.fb.group({
-			aboutMe : new FormControl(null, Validators.required) 
+			aboutMe :new FormControl("")
 		});
 
     this.addImgForm = this.fb.group({
@@ -52,13 +53,25 @@ export class UserProfileWindowComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.user == undefined){
-        this.user = this.authService.getCurrentUser();
-        
-    }
-    this.communityService.getMy(this.user.id).subscribe( res => {
-      this.communities = res;
-    });
+    if(this.route.snapshot.paramMap.get('id') == null){
+          this.user = this.authService.getCurrentUser();
+          this.communityService.getMy(this.user.id).subscribe( res => {
+            this.communities = res;
+          });
+    }else{  
+    this.route.params.subscribe(params => {
+      this.userService.getOne(params['id']).subscribe(
+        res => { this.user
+          = res;
+          this.communityService.getMy(this.user.id).subscribe( res => {
+            this.communities = res;
+          });
+        }, err => {
+          this.router.navigate(['/NotFound']);
+        })});
+  }
+
+
   }
 
   getImg() : string{
@@ -66,7 +79,7 @@ export class UserProfileWindowComponent implements OnInit {
   }
 
   canEdit() : boolean{
-    return this.authService.getCurrentUser().id == this.user.id;
+    return this.route.snapshot.paramMap.get('id') == null && (this.authService.getCurrentUser().id == this.user?.id);
   }
 
   edit(reason : String) : void{
@@ -93,7 +106,7 @@ export class UserProfileWindowComponent implements OnInit {
       avatarUrl: this.user.avatarUrl
     };
 
-    dto.displayName = this.displayNameForm.value.displayName;
+    dto.displayName = this.displayNameForm.value.displayName.trim();
 
     this.userService.update(dto, this.user.id).subscribe( res => {
       this.user = res;
@@ -114,7 +127,7 @@ export class UserProfileWindowComponent implements OnInit {
       avatarUrl: this.user.avatarUrl
     };
 
-    dto.profileDescription = this.aboutForm.value.aboutMe;
+    dto.profileDescription = this.aboutForm.value.aboutMe.trim();
 
     this.userService.update(dto, this.user.id).subscribe( res => {
       this.user = res;

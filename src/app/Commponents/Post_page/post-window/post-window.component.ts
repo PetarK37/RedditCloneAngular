@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild, ViewChildren } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PostResponse } from 'src/app/Model/post';
 import { DialogService } from 'src/app/Services/dialog.service';
 import { PostServiceService } from 'src/app/Services/post-service.service';
@@ -14,7 +14,7 @@ export class PostWindowComponent implements OnInit {
   
   @ViewChild(ConfirmDialogComponent) dialog!: ConfirmDialogComponent;
 
-  constructor(private route: ActivatedRoute,private postService : PostServiceService,private dialogService : DialogService) { }
+  constructor(private route: ActivatedRoute,private postService : PostServiceService,private dialogService : DialogService,private router : Router) { }
 
   post! : PostResponse;
 
@@ -22,8 +22,10 @@ export class PostWindowComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.postService.getOne(params['id']).subscribe(
         res => { this.post
-          = res;})
-        });
+          = res;
+        }, err => {
+          this.router.navigate(['/NotFound']);
+        })});
         
         this.dialogService.openDialogEvent.subscribe( res => {
           if (res){

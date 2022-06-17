@@ -1,0 +1,11 @@
+.modSettingsWindow{
+    display: flex;
+}
+
+app-mod-settings-asside{
+    max-width: 30%;
+}
+
+.window{
+    width: 100%;
+}
