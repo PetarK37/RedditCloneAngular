@@ -7,6 +7,7 @@ import { NotFoundWindowComponent } from 'src/app/Commponents/Error-page/not-foun
 import { MainWindowComponent } from 'src/app/Commponents/Main_Page/main-window/main-window.component';
 import { CommunitySettingsModWindowComponent } from 'src/app/Commponents/Mod-window/community-settings-mod-window/community-settings-mod-window.component';
 import { CommunitySettingsWindowComponent } from 'src/app/Commponents/Mod-window/community-settings-window/community-settings-window.component';
+import { CommunityUsersWindowComponent } from 'src/app/Commponents/Mod-window/community-users-window/community-users-window.component';
 import { ModSettingsWindowComponent } from 'src/app/Commponents/Mod-window/mod-settings-window/mod-settings-window.component';
 import { PostWindowComponent } from 'src/app/Commponents/Post_page/post-window/post-window.component';
 import { EditPasswordComponent} from 'src/app/Commponents/Settings-window/edit-profile/edit-password.component';
@@ -30,7 +31,7 @@ export const routes :Routes = [
 	{path: 'Moderator/Communities/:id',component: CommunitySettingsModWindowComponent,
 	children: [
 		{path: '',component: CommunitySettingsWindowComponent},
-		// {path: 'Users',component: EditPasswordComponent},
+		{path: 'Users',component: CommunityUsersWindowComponent},
 		// {path : 'Reports',}
 	]},
 	{path: '', redirectTo: 'Home', pathMatch: 'full'},

@@ -1,0 +1,34 @@
+<div class="scroll">
+    <div class="wrapper">
+    <h1 >Community users:</h1>
+    <div class="searchBar" >
+        <form [formGroup]="form" class="form" >
+            <input type="text" id="username" placeholder="username" [formControlName]="'username'" placeholder="Enter username" >
+                <div class="radioGroup">
+                    <label for="blocked" >
+                        Blocked
+                        <input type="radio" [formControlName]="'blocked'" value="blocked" id="blocked" >
+                    </label>
+                    <label for="notBlocked"  >
+                        Not blocked
+                        <input type="radio"  [formControlName]="'blocked'" value="notBlocked" id="notBlocked">
+                    </label>
+                </div>
+                <button type="button" class="btn btn-light" (click) = "reset()"><ion-icon name="refresh-outline"></ion-icon></button>
+        </form>
+    </div>
+    <table *ngIf=" usersForRender.length > 0">
+        <tbody>
+            <tr *ngFor="let u of usersForRender">
+                <td>
+                        <img [src]="getImg(u)" class="profileImg">
+                    <p (click) = "gotoProfile(u.id)">{{u.username}}</p>
+                    <button class="btn btn-filled banBtn flexboxEnd" *ngIf="includesUser(u,notBanned)" (click)="ban(u)"><ion-icon name="ban-outline"></ion-icon></button>
+                    <button class="btn btn-filled flexboxEnd unbanBtn" *ngIf="includesUser(u,banned)" (click)="unBan(u)"><ion-icon name="checkmark-circle-outline"></ion-icon></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<app-confirm-dialog  #dialog id="dialog" class="" ></app-confirm-dialog>
+</div>

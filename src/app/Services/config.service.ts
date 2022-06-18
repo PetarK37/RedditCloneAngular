@@ -24,10 +24,35 @@ export class ConfigService{
     private _reactions_url = this._api_url + '/Reactions';
     private _img_url = this._api_url + '/img';
     private _flairs_url = this._api_url + '/Flairs';
+    private _moderaors_url = this._api_url + '/Moderators';
+    private _banned_url = this._api_url + '/Bans';
 
+
+    delteBanUrl(userId : Number, communityId : Number){
+        return this._banned_url + "/User/" + userId + "/Community/" + communityId
+    }
+    get banned_url(){
+        return this._banned_url;
+    }
+
+    get moderators_url(){
+        return this._moderaors_url;
+    }
+
+    getModeratorByUserAndCommunity(userId : Number, communityId : Number){
+        return this._moderaors_url + "/User/" + userId + "/Community/" + communityId
+    }
 
     delete_flair_url(communityId : number, flairId : String){
         return this._flairs_url + "/Community/" + communityId + "/Flair/" + flairId
+    }
+    
+    get_not_banned(communityId : number){
+        return this.users_url + '/Community/' + communityId + '/NotBanned';
+    }
+
+    get_banned(communityId : number){
+        return this.users_url + '/Community/' + communityId + '/Banned';
     }
     
     get flairs_url(){

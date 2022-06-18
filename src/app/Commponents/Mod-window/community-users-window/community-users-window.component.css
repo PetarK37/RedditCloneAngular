@@ -1,0 +1,130 @@
+.scroll{
+    overflow: auto;
+    max-height: 92vh;
+    padding-bottom: 20px;
+}
+
+.wrapper{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.btn-filled > ion-icon{
+    color: var(--background-color);
+    font-size: 1.5em;
+}
+
+h1{
+    font-size: 2rem;
+}
+
+.profileImg{
+        border-radius: 100%;
+        height: 50px;
+        width: 50px;
+}
+
+
+td:first-child{
+    border-top:1px solid var(--devider) ;
+}
+
+td{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    padding: 10px 20px ;
+    border-bottom: 1px solid var(--devider);
+}
+
+td > p{
+    font-size: 2em;
+    cursor: pointer;
+}
+
+h2{
+    font-size: 2em;
+}
+
+img{
+    max-width: 30%;
+}
+
+.searchBar > form{
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    text-align: center;
+    flex-direction: row;
+    gap:5px;
+    font-size: 1.4em;
+    
+}
+
+.radioGroup{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap : 10px;
+}
+
+.searchBar{
+    padding: 20px;
+}
+
+input[type = "radio"]{
+    width: 1.3rem;
+    height: 1.3rem;
+}
+
+input[type = "text"]{
+    font-size: 1em;
+    padding: 10px 8px;
+    min-width: 250px;
+    border-radius: 10px;
+}
+
+.btn-light{
+    padding: 10px;
+}
+
+.banBtn{
+    background-color: var(--downowoted);
+    border: none;
+}
+
+.banBtn:hover{
+    background-color: var(--warninrg-color);
+}
+
+.unbanBtn:hover{
+    background-color: var(--succes-color);
+}
+
+.unbanBtn{
+    background-color: var(--upwoted);
+    border: none;
+}
+
+.btn-filled > ion-icon{
+    color: var(--background-color);
+}
+
+app-confirm-dialog{
+    z-index: 1;
+    position: absolute;
+    position : fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    transition: 150ms ease-in-out;
+    z-index: 10;
+}
+app-confirm-dialog.active{
+    transform: translate(-50%,-50%) scale(1);
+}

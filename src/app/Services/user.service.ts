@@ -13,6 +13,18 @@ export class UserService {
 
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
+  getAll() : Observable<UserResponse[]>{
+    return this.http.get<UserResponse[]>(this.config.users_url, {headers: this.headers, responseType: 'json'});
+  }
+
+  getBanned(communityId : number) : Observable<UserResponse[]>{
+    return this.http.get<UserResponse[]>(this.config.get_banned(communityId), {headers: this.headers, responseType: 'json'});
+  }
+
+  getNotBanned(communityId : number) : Observable<UserResponse[]>{
+    return this.http.get<UserResponse[]>(this.config.get_not_banned(communityId), {headers: this.headers, responseType: 'json'});
+  }
+
   getOne(id : number){
     return this.http.get<UserResponse>(this.config.get_user_url(id));
   }

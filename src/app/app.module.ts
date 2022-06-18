@@ -53,6 +53,7 @@ import { NotFoundWindowComponent } from './Commponents/Error-page/not-found-wind
 import { CommunitySettingsWindowComponent } from './Commponents/Mod-window/community-settings-window/community-settings-window.component';
 import { ModSettingsAssideComponent } from './Commponents/Mod-window/mod-settings-asside/mod-settings-asside.component';
 import { CommunitySettingsModWindowComponent } from './Commponents/Mod-window/community-settings-mod-window/community-settings-mod-window.component';
+import { CommunityUsersWindowComponent } from './Commponents/Mod-window/community-users-window/community-users-window.component';
 
 
 
@@ -100,7 +101,8 @@ import { CommunitySettingsModWindowComponent } from './Commponents/Mod-window/co
     NotFoundWindowComponent,
     CommunitySettingsWindowComponent,
     ModSettingsAssideComponent,
-    CommunitySettingsModWindowComponent
+    CommunitySettingsModWindowComponent,
+    CommunityUsersWindowComponent
   ],
   imports: [
     HttpClientModule,
