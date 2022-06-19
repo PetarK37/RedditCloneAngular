@@ -1,0 +1,12 @@
+<div class="" [attr.mode]="_mode">
+    <form [formGroup]="form" (submit)="submit()">
+        <div class="img_overlay">
+            <img [src]="getImg()" class="profileImg">
+        </div>
+        <textarea  placeholder="Write a comment" [formControlName]="'text'"></textarea>
+        <div class="btnDiv">
+            <button type="submit" class="btn btn-filled" [disabled]="form.invalid"> OK</button>
+            <button type="button" class="btn btn-light cancel" (click) = "cancel()"> Cancel</button>
+           </div>
+    </form>
+</div>

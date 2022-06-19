@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {ConfigService} from './config.service';
-import { CommentResponse } from '../Model/comment';
+import { CommentResponse, CommentRquest } from '../Model/comment';
 
 
 @Injectable({
@@ -16,7 +16,14 @@ export class CommentService {
   
   }
 
-   
+  saveComment(dto : CommentRquest) : Observable<CommentResponse> {
+    return this.http.post<CommentResponse>(this.config.comment_url, JSON.stringify(dto), {headers: this.headers});
+  }
+
+  updateComment(dto : CommentRquest,id : number) : Observable<CommentResponse> {
+    return this.http.put<CommentResponse>(this.config.getOneCommentUrl(id), JSON.stringify(dto), {headers: this.headers});
+  }
+
   getAllByPost(id: number):  Observable<CommentResponse[]> {
     return this.http.get<CommentResponse[]>(this.config.post_comments_url(id)); 
   }

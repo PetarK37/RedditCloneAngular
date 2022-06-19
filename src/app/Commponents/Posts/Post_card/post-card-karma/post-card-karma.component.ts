@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterViewInit, Component, DoCheck, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, Component, DoCheck, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { PostResponse } from 'src/app/Model/post';
 import { ReactionRequest } from 'src/app/Model/reaction';
 import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';

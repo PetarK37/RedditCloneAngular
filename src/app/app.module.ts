@@ -58,6 +58,7 @@ import { ReportAlertComponent } from './Commponents/Alert/report-alert/report-al
 import { CommunityReportsWindowComponent } from './Commponents/Mod-window/community-reports-window/community-reports-window.component';
 import { CommentPreviewComponent } from './Commponents/Alert/comment-preview/comment-preview.component';
 import { PostPreviewComponent } from './Commponents/Alert/post-preview/post-preview.component';
+import { CrateEditCommentCardComponent } from './Commponents/Comment/crate-edit-comment-card/crate-edit-comment-card.component';
 
 
 
@@ -110,7 +111,8 @@ import { PostPreviewComponent } from './Commponents/Alert/post-preview/post-prev
     ReportAlertComponent,
     CommunityReportsWindowComponent,
     CommentPreviewComponent,
-    PostPreviewComponent
+    PostPreviewComponent,
+    CrateEditCommentCardComponent
   ],
   imports: [
     HttpClientModule,

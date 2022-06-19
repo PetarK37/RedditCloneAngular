@@ -6,6 +6,8 @@
     gap: 5px;
     background-color: var(--hower-light);
     border: 1px dotted var(--text-color);
+    word-wrap: break-word;
+    word-break: normal;
 }
 
 
@@ -31,6 +33,11 @@
         overflow: hidden;
 }
 
+p{
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
 .usernameSection > p {
     margin: auto;
     font-size: smaller;
@@ -54,3 +61,4 @@ app-comment-karma-row,.replies{
 .reply{
     padding: 10%;
 }
+

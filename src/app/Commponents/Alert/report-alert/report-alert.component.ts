@@ -75,7 +75,7 @@ export class ReportAlertComponent implements OnInit {
       this.cancel();
     } , err => {
       if(err.status == 409){
-        this.alertService.addAlert({text :"You have already reported this post", type: AlertType.warning});
+        this.alertService.addAlert({text :"You have already reported this!", type: AlertType.warning});
         this.cancel();
         return;
       }

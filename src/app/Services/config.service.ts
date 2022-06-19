@@ -139,6 +139,10 @@ export class ConfigService{
         return this._comment_url
     }
 
+    getOneCommentUrl(id : number){
+        return this._comment_url + id;
+    }
+
     post_comments_url(id : number){
         return this._post_comments_url + id
     }
@@ -158,6 +162,7 @@ export class ConfigService{
     comment_karma_url(id : number){
         return this._comment_url + id + "/Karma"
     }
+
  
     get users_url(){
      return this._users_url;

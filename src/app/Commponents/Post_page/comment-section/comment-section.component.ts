@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommentResponse } from 'src/app/Model/comment';
+import { PostResponse } from 'src/app/Model/post';
+import { UserResponse } from 'src/app/Model/user';
+import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';
 import { CommentService } from 'src/app/Services/comment.service';
 
 @Component({
@@ -9,14 +12,34 @@ import { CommentService } from 'src/app/Services/comment.service';
 })
 export class CommentSectionComponent implements OnInit {
 
-  @Input() postId!: number
+  @Input() post!: PostResponse;
+  loggedUser! : UserResponse;
 
   comments!: CommentResponse[]
 
-  constructor(private commentService : CommentService) { }
+  constructor(private commentService : CommentService,private authService : AuthenticationServiceService) { }
 
   ngOnInit(): void {
-    this.commentService.getAllByPost(this.postId).subscribe(
+    this.loggedUser = this.authService.getCurrentUser();
+
+    this.commentService.getAllByPost(this.post.id).subscribe(
+      res => {
+        this.comments = res
+        console.log(this.comments);
+      }
+    )
+
+    this.authService.changedEvent.subscribe(
+      res => {
+        if(res){
+          this.loggedUser = this.authService.getCurrentUser();
+        }
+      });
+
+  }
+
+  reload(){
+    this.commentService.getAllByPost(this.post.id).subscribe(
       res => {
         this.comments = res
       }
@@ -26,21 +49,21 @@ export class CommentSectionComponent implements OnInit {
   sortComments(criterium : String) {
     switch(criterium) {
       case("new"):
-      this.commentService.getNewAllByPost(this.postId).subscribe(
+      this.commentService.getNewAllByPost(this.post.id).subscribe(
         res => {
           this.comments = res
         }
       )
       break;
       case("old"):
-      this.commentService.getAllOldByPost(this.postId).subscribe(
+      this.commentService.getAllOldByPost(this.post.id).subscribe(
         res => {
           this.comments = res
         }
       )
       break;
       case("top"):
-      this.commentService.getAllTopByPost(this.postId).subscribe(
+      this.commentService.getAllTopByPost(this.post.id).subscribe(
         res => {
           this.comments = res
         }

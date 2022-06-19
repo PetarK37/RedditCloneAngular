@@ -10,5 +10,9 @@ export interface CommentResponse {
 }
 
 export interface CommentRquest{
-
+    text: string;
+    postedById: number;
+    commentId: number | null;
+    postId: number | null;
+    belongsToCommunity: number;
 }

@@ -12,7 +12,7 @@
             <label for="img" class="btn btn-light">Upload <span>
                     <ion-icon name="cloud-upload-outline"></ion-icon>
                 </span></label>
-            <input type="file" id="img" value="img" [formControlName]="'img'" accept="image/*" (change)="onChange($event)">
+            <input type="file" id="img" value="img" [formControlName]="'img'" accept="image/*" (change)="onChanged($event)">
         </div>
         <div class="preview" *ngIf="previewSrc != ''"> 
             <p>Preview:</p>

@@ -2,6 +2,7 @@
     <ion-icon name="caret-up" class="karma_btn upwoted"></ion-icon>
     <p class="karma_num">{{karma}}</p>
     <ion-icon name="caret-down" class="karma_btn downwoted"></ion-icon>
-    <button  class="btn btn-light">Reply</button>
-    <button  class="btn btn-light reportCommentBtn" id="">Report</button>
+    <button  class="btn btn-light" (click)="reply()" *ngIf="canEdit()"><ion-icon name="arrow-redo-outline" ></ion-icon>Reply</button>
+    <button  class="btn btn-light reportCommentBtn" id="" *ngIf="!canEdit()" (click)="report()"><ion-icon name="alert-outline"></ion-icon>Report</button>
+    <button  class="btn btn-light reportCommentBtn" id="" *ngIf="canEdit()" (click)="edit()"> <ion-icon name="create-outline"></ion-icon> Edit</button>
 </aside>

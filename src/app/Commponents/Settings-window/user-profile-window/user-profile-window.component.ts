@@ -142,7 +142,7 @@ export class UserProfileWindowComponent implements OnInit {
     
   }
 
-  onChange(event : any){
+  onChanged(event : any){
     if((event.target)?.files[0].size > 2000000){
       this.alertService.addAlert({text : "File is too large(limit is 2mb)!",  type : AlertType.warning});
       return;
