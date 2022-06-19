@@ -15,8 +15,12 @@ export class ReactionService {
   
   }
 
-  getMyReaction(id:number):Observable<ReactionResponse> {
-    return this.http.get<ReactionResponse>(this.config.getMyReaction(id));
+  getMyReactionToPost(id:number):Observable<ReactionResponse> {
+    return this.http.get<ReactionResponse>(this.config.getMyReactionToPost(id));
+  }
+
+  getMyReactionToComment(id:number):Observable<ReactionResponse> {
+    return this.http.get<ReactionResponse>(this.config.getMyReactionToComment(id));
   }
 
   saveReaction(dto : ReactionRequest) : Observable<ReactionResponse> {

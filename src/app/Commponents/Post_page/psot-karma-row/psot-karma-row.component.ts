@@ -26,7 +26,7 @@ export class PostKarmaRowComponent implements OnInit {
     private CreateEditService : CreateEditPostService,private dialogService : DialogService,private postService : PostServiceService,private alertService : AlertService) { }
 
     ngOnInit(): void {
-      this.reactionService.getMyReaction(this.post.id).subscribe(reaction => {
+      this.reactionService.getMyReactionToPost(this.post.id).subscribe(reaction => {
         if(reaction.type == 'UPWOTE'){
           this.upvoteHtml.nativeElement.setAttribute('upvoted' , true);
           return;

@@ -85,7 +85,7 @@ button[type="submit"]{
     min-width: 600px;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 10px;
     background-color: var(--card-color);
 }

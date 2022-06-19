@@ -184,9 +184,15 @@ export class ConfigService{
         return this._reactions_url;
     }
 
-    getMyReaction(id : Number){
-        return this._reactions_url + "/ReactedTo/" + id
+    getMyReactionToPost(id : Number){
+        return this._reactions_url + "/Post/ReactedTo/" + id
     }
+
+    
+    getMyReactionToComment(id : Number){
+        return this._reactions_url + "/Comment/ReactedTo/" + id
+    }
+
 
     get_user_url(id : Number){
         return this._users_url + "/" + id

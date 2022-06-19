@@ -22,7 +22,7 @@ export class PostCardKarmaComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.reactionService.getMyReaction(this.post.id).subscribe(reaction => {
+    this.reactionService.getMyReactionToPost(this.post.id).subscribe(reaction => {
       if(reaction.type == 'UPWOTE'){
         this.upvoteHtml.nativeElement.setAttribute('upvoted' , true);
         return;

@@ -21,8 +21,13 @@
     flex-direction: column;
     gap: 5px;
     padding: 5px;
+    width: 100%;
 }
 
 .sortCommentRow{
     padding: 10px;
+}
+
+app-crate-edit-comment-card{
+    width: 100%;
 }

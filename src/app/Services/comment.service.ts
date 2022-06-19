@@ -43,4 +43,10 @@ export class CommentService {
   getCommentKarma(id: number):  Observable<number> {
     return this.http.get<number>(this.config.comment_karma_url(id));
   }
+
+  getOneComment(id: number):  Observable<CommentResponse> {
+    return this.http.get<CommentResponse>(this.config.getOneCommentUrl(id));
+  }
+
+
 }

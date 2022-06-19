@@ -76,6 +76,10 @@ export class CrateEditCommentCardComponent implements OnInit{
         this.form.reset();
         return
       },err => {
+        if(err.status == 403){
+          this.alertService.addAlert({text : "You can't comment in this community!",type : AlertType.warning});
+          return
+        }
         this.alertService.addAlert({text : "Error while saving comment",type : AlertType.warning});
         return
       }
@@ -94,6 +98,10 @@ export class CrateEditCommentCardComponent implements OnInit{
       this.commentAdded.emit(true);
       this.form.reset();
     },err => {
+      if(err.status == 403){
+        this.alertService.addAlert({text : "You can't comment in this community!",type : AlertType.warning});
+        return
+      }
       this.alertService.addAlert({text : "Error while saving comment",type : AlertType.warning});
       return
     }
@@ -111,6 +119,10 @@ export class CrateEditCommentCardComponent implements OnInit{
     this.form.reset();
     return
   },err => {
+    if(err.status == 403){
+      this.alertService.addAlert({text : "You can't comment in this community!",type : AlertType.warning});
+      return
+    }
     this.alertService.addAlert({text : "Error while saving comment",type : AlertType.warning});
     return
   }
