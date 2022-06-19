@@ -27,6 +27,20 @@ export class ConfigService{
     private _moderaors_url = this._api_url + '/Moderators';
     private _banned_url = this._api_url + '/Bans';
 
+    private _reports_url = this._api_url + '/Reports';
+
+    get reports_url(){
+        return this._reports_url;
+    }
+
+    getReportsByCommunityUrl(id : number){
+        return this._reports_url + "/Community/" + id;
+    }
+
+    getOneReportUrl(id : number)
+    {
+        return this._reports_url + "/" + id
+    }
 
     delteBanUrl(userId : Number, communityId : Number){
         return this._banned_url + "/User/" + userId + "/Community/" + communityId

@@ -5,6 +5,7 @@ import { CreateEditPostComponent } from 'src/app/Commponents/Create_post_page/cr
 import { NotFoundWindowComponent } from 'src/app/Commponents/Error-page/not-found-window/not-found-window.component';
 
 import { MainWindowComponent } from 'src/app/Commponents/Main_Page/main-window/main-window.component';
+import { CommunityReportsWindowComponent } from 'src/app/Commponents/Mod-window/community-reports-window/community-reports-window.component';
 import { CommunitySettingsModWindowComponent } from 'src/app/Commponents/Mod-window/community-settings-mod-window/community-settings-mod-window.component';
 import { CommunitySettingsWindowComponent } from 'src/app/Commponents/Mod-window/community-settings-window/community-settings-window.component';
 import { CommunityUsersWindowComponent } from 'src/app/Commponents/Mod-window/community-users-window/community-users-window.component';
@@ -32,7 +33,7 @@ export const routes :Routes = [
 	children: [
 		{path: '',component: CommunitySettingsWindowComponent},
 		{path: 'Users',component: CommunityUsersWindowComponent},
-		// {path : 'Reports',}
+		{path : 'Reports', component: CommunityReportsWindowComponent}
 	]},
 	{path: '', redirectTo: 'Home', pathMatch: 'full'},
 	{path: '**', component: NotFoundWindowComponent}];

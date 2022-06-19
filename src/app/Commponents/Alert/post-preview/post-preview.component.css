@@ -1,0 +1,45 @@
+.scroll{
+    overflow: auto;
+    max-height: fit-content;
+    padding-bottom: 20px;
+    max-height: 98vh;
+    display: flex;
+}
+.previewModal{
+    position: relative;
+    max-width: 50vw;
+    max-height: 90vh;
+}
+
+a{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+a > ion-icon{
+    font-size: 1.5em;
+}
+
+.postSection{
+    margin-top: 40px;
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.content{
+    align-self: center;
+    font-size: larger;
+    text-overflow: clip;
+}
+
+.postImg{
+    align-self: center;
+    max-width: 40%;
+    max-height: auto;
+}

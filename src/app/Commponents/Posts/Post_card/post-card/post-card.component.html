@@ -8,6 +8,6 @@
         <img [src]="getImg()" class="postImg" *ngIf="post.imgPath != null" [routerLink]="['/Post',post.id]">
     </div>
     <div class="card_comment_row">
-        <a href="" class="link">Comments</a>
-        <a href="" class="link">Report</a>
+        <a  [routerLink]="['/Post',post.id]" class="link">Comments</a>
+        <a class="link report" (click)="report()">Report</a>
     </div>

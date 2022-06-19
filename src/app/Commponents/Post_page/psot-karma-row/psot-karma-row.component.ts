@@ -7,6 +7,7 @@ import { AlertService } from 'src/app/Services/alert.service';
 import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';
 import { CreateEditPostService } from 'src/app/Services/create-edit-post.service';
 import { DialogService } from 'src/app/Services/dialog.service';
+import { OpenReportModalService } from 'src/app/Services/OpenReportModalService';
 import { PostServiceService } from 'src/app/Services/post-service.service';
 import { ReactionService } from 'src/app/Services/reaction.service';
 @Component({
@@ -21,7 +22,7 @@ export class PostKarmaRowComponent implements OnInit {
   @ViewChild('upvoteElement') upvoteHtml!: ElementRef;
   @ViewChild('downovoteElement') downvoteHtml!: ElementRef;
 
-  constructor(private authService : AuthenticationServiceService,private router : Router,private reactionService : ReactionService,
+  constructor(private authService : AuthenticationServiceService,private router : Router,private reactionService : ReactionService,private reportModalService : OpenReportModalService,
     private CreateEditService : CreateEditPostService,private dialogService : DialogService,private postService : PostServiceService,private alertService : AlertService) { }
 
     ngOnInit(): void {
@@ -125,6 +126,14 @@ export class PostKarmaRowComponent implements OnInit {
         });
   } );
   }
+  }
+
+  report(){
+    if(this.authService.getCurrentUser() != null){
+      this.reportModalService.reportPost(this.post);
+      return;
+    }
+    this.alertService.addAlert({text: "You have to be logged in to report post!",type : AlertType.warning});
   }
 
 }

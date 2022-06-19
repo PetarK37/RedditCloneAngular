@@ -15,6 +15,10 @@
     overflow: auto;
 }
 
+.btn-filled{
+    font-size: 1.5em;
+}
+
 .btn-filled > ion-icon{
     color: var(--background-color);
     font-size: 1.5em;

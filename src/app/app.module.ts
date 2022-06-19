@@ -54,6 +54,10 @@ import { CommunitySettingsWindowComponent } from './Commponents/Mod-window/commu
 import { ModSettingsAssideComponent } from './Commponents/Mod-window/mod-settings-asside/mod-settings-asside.component';
 import { CommunitySettingsModWindowComponent } from './Commponents/Mod-window/community-settings-mod-window/community-settings-mod-window.component';
 import { CommunityUsersWindowComponent } from './Commponents/Mod-window/community-users-window/community-users-window.component';
+import { ReportAlertComponent } from './Commponents/Alert/report-alert/report-alert.component';
+import { CommunityReportsWindowComponent } from './Commponents/Mod-window/community-reports-window/community-reports-window.component';
+import { CommentPreviewComponent } from './Commponents/Alert/comment-preview/comment-preview.component';
+import { PostPreviewComponent } from './Commponents/Alert/post-preview/post-preview.component';
 
 
 
@@ -102,7 +106,11 @@ import { CommunityUsersWindowComponent } from './Commponents/Mod-window/communit
     CommunitySettingsWindowComponent,
     ModSettingsAssideComponent,
     CommunitySettingsModWindowComponent,
-    CommunityUsersWindowComponent
+    CommunityUsersWindowComponent,
+    ReportAlertComponent,
+    CommunityReportsWindowComponent,
+    CommentPreviewComponent,
+    PostPreviewComponent
   ],
   imports: [
     HttpClientModule,

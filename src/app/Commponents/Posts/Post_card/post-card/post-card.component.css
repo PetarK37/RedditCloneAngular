@@ -40,6 +40,12 @@ app-post-card-karma{
     border-top: 1px  solid var(--devider);
 }
 
+.card_comment_row > .report{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 30%;
+}
 h4,p,h2,.postImg,.content_txt,.card_comment_row{
     cursor: pointer;
 }

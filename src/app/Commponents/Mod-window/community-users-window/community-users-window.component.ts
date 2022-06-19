@@ -59,8 +59,8 @@ export class CommunityUsersWindowComponent implements OnInit {
     });
 
     this.userService.getAll().subscribe( res => {
-      this.users = res;
-      this.usersForRender = res;
+      this.users = res.filter(u => u.id != this.authService.getCurrentUser().id);
+      this.usersForRender = this.users; 
     });
 
     this.userService.getBanned(this.communityId).subscribe( res => {
@@ -144,12 +144,13 @@ export class CommunityUsersWindowComponent implements OnInit {
             this.notBanned.push(user);
             this.banned = this.banned.filter(u => u.id != user.id);
         }, err => {
-          this.allerService.addAlert({text : "There was problem with database, please try again alter!" + user.username, type : AlertType.warning});
+          this.allerService.addAlert({text : "There was problem with database, please try again alter!", type : AlertType.warning});
         })};
         subscription.unsubscribe();
       });
     }
 
+    
     gotoProfile(id : number){
       this.router.navigate(['/Users',id]);
     }

@@ -1,0 +1,17 @@
+<div class="scroll modal">
+    <div class="previewModal" *ngIf="comment != undefined">
+        <div class="commentRow card">
+            <section class="usernameSection">
+             <div class="img_overlay">
+                 <img [src]="getImg()" class="profileImg">
+             </div>
+                 <h5 [routerLink]="['/Users',comment.postedBy.id]">{{comment.postedBy.username}}</h5>
+                 <p>{{comment.timestamp | weekAgo}}</p>
+            </section>
+                 <p class="commentContent">{{comment.text}}</p>
+         </div>
+        <a>
+            <ion-icon name="close-outline" (click)="closeModal()"></ion-icon>
+        </a>
+    </div>
+    </div>
