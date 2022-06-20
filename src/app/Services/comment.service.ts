@@ -10,7 +10,7 @@ import { CommentResponse, CommentRquest } from '../Model/comment';
 })
 export class CommentService {
 
-  private headers = new HttpHeaders({'Content-Type': 'application/json'});
+  private headers = new HttpHeaders().set('Content-Type','application/json').set('Access-Control-Allow-Origin',"http://localhost:4200");
 
   constructor(private http: HttpClient, private config: ConfigService) {
   
@@ -18,6 +18,10 @@ export class CommentService {
 
   saveComment(dto : CommentRquest) : Observable<CommentResponse> {
     return this.http.post<CommentResponse>(this.config.comment_url, JSON.stringify(dto), {headers: this.headers});
+  }
+
+  deleteComment(id: number):  Observable<CommentResponse> {
+    return this.http.delete<CommentResponse>(this.config.getOneCommentUrl(id));
   }
 
   updateComment(dto : CommentRquest,id : number) : Observable<CommentResponse> {

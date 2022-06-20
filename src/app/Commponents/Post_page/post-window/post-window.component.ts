@@ -26,12 +26,6 @@ export class PostWindowComponent implements OnInit {
         }, err => {
           this.router.navigate(['/NotFound']);
         })});
-        
-        this.dialogService.openDialogEvent.subscribe( res => {
-          if (res){
-            this.showModal();
-          }
-        })
       }
 
       showModal(){

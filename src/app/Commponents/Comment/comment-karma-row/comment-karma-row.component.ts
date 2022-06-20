@@ -7,9 +7,11 @@ import { UserResponse } from 'src/app/Model/user';
 import { AlertService } from 'src/app/Services/alert.service';
 import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';
 import { CommentService } from 'src/app/Services/comment.service';
+import { DialogService } from 'src/app/Services/dialog.service';
 import { OpenReportModalService } from 'src/app/Services/OpenReportModalService';
 import { PostServiceService } from 'src/app/Services/post-service.service';
 import { ReactionService } from 'src/app/Services/reaction.service';
+import { ConfirmDialogComponent } from '../../Alert/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-comment-karma-row',
@@ -21,9 +23,13 @@ export class CommentKarmaRowComponent implements OnInit {
   @Input() comment!: CommentResponse;
   @Output() editEvent : EventEmitter<CommentResponse> = new EventEmitter();
   @Output() replyEvenet : EventEmitter<CommentResponse> = new EventEmitter();
+  @Output() deletedEv : EventEmitter<CommentResponse> = new EventEmitter();
+
 
   @ViewChild('upvoteElement') upvoteHtml!: ElementRef;
   @ViewChild('downovoteElement') downvoteHtml!: ElementRef;
+
+  @ViewChild(ConfirmDialogComponent) dialog!: ConfirmDialogComponent;
 
   karma!: number;
   element! : HTMLElement;
@@ -32,8 +38,8 @@ export class CommentKarmaRowComponent implements OnInit {
   loggedUser!: UserResponse;
 
   
-  constructor(private commentService : CommentService,private authService : AuthenticationServiceService,element : ElementRef,private alertService : AlertService
-    ,  private reportModalService : OpenReportModalService,private route : ActivatedRoute,private postService : PostServiceService,private reactionService : ReactionService) { 
+  constructor(private commentService : CommentService,private authService : AuthenticationServiceService,element : ElementRef,private alertService : AlertService, private dialogService : DialogService,
+     private reportModalService : OpenReportModalService,private route : ActivatedRoute,private postService : PostServiceService,private reactionService : ReactionService) { 
     this.element = element.nativeElement;
   }
 
@@ -67,6 +73,12 @@ export class CommentKarmaRowComponent implements OnInit {
         this.downvoteHtml.nativeElement.setAttribute('downvoted' , false);
       }}
     });
+
+    this.dialogService.openDialogEvent.subscribe( res => {
+      if (res == this.comment.id){
+        this.showModal();
+      }
+    })
   }
 
   canEdit() : boolean{
@@ -91,6 +103,26 @@ export class CommentKarmaRowComponent implements OnInit {
     }
     this.alertService.addAlert({text: "You have to be logged in to report comment!",type : AlertType.warning});
   }
+
+  delete(){
+    this.dialogService.addDialog({title: "Are you shure you want to delete this comment?" , text: "This action cannot be undone!"},this.comment.id);
+    alert(this.comment.text);
+    const subscription = this.dialogService.okDialogEvent.subscribe( res => {
+      this.commentService.deleteComment(this.comment.id).subscribe(res => {
+        this.alertService.addAlert({text: "Comment deleted successfully!",type : AlertType.success});
+        this.deletedEv.emit(this.comment);
+      },err => {
+        this.alertService.addAlert({text : "There was problem with database, please try again alter!", type : AlertType.warning});
+      });
+      
+      subscription.unsubscribe();
+    });
+  }
+
+  showModal(){
+    this.dialog.element.classList.add('active');
+  }
+
 
   upvote(){
     if(this.authService.isLoggedIn()){

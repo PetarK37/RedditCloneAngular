@@ -32,8 +32,7 @@ img {
 
 .btnDiv{
     max-width: 10%;
-    /* flex: 0 1 10%;
-    max-width: 10%; */
+    min-width: 0;
     align-self: start;
     display: flex;
     gap: 5px;
@@ -44,6 +43,7 @@ img {
 .btnDiv > .btn{
     max-width: 45%;
 }
+
 
 
 

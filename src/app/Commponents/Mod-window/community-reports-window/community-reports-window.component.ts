@@ -97,7 +97,7 @@ substr(string : string){
   }
 
   accept(report : ReportResponse){
-    this.dialogService.addDialog({title: "Are you shure you want to accept this report?" , text: "Content will be permanently deleted"});
+    this.dialogService.addDialog({title: "Are you shure you want to accept this report?" , text: "Content will be permanently deleted"},-1);
     const subscription = this.dialogService.okDialogEvent.subscribe( res => {
       if(res){
         this.reportService.updateReport(true,report.id).subscribe( res => {

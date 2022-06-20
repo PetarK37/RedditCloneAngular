@@ -25,7 +25,6 @@ export class CommentSectionComponent implements OnInit {
     this.commentService.getAllByPost(this.post.id).subscribe(
       res => {
         this.comments = res
-        console.log(this.comments);
       }
     )
 

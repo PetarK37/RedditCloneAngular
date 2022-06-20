@@ -9,8 +9,8 @@
         <p class="commentContent" #commentContent>{{comment.text}}</p>
 
     <app-crate-edit-comment-card [mode]="stringMode" [commentForEdit]="comment" (commentAdded) = "reload()" (cancelEv)="cancel($event)" *ngIf="loggedIn != undefined"></app-crate-edit-comment-card>
-    <app-comment-karma-row [comment] = "comment" (editEvent) = "editComment()" (replyEvenet)="replyToComment()"></app-comment-karma-row>
+    <app-comment-karma-row [comment] = "comment" (editEvent) = "editComment()" (replyEvenet)="replyToComment()" (deletedEv) = "reload()"></app-comment-karma-row>
     <div class="replies" *ngIf ="comment.replies.length > 0">
-        <app-comment-card *ngFor="let reply of comment.replies" [comment]="reply" class="reply" (reloadEv) = "reload()" (cencelEvent) = "cancel(reply.id)"></app-comment-card>
+        <app-comment-card *ngFor="let reply of comment.replies" [comment]="reply" class="reply" (reloadEv) = "reload()" (cencelEvent) = "cancel(reply.id)" (deletedEv) = "reload()"></app-comment-card>
     </div>
 </div>

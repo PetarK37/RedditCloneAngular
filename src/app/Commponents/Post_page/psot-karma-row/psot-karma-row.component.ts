@@ -67,7 +67,7 @@ export class PostKarmaRowComponent implements OnInit {
   }
 
   deletePost(){
-    this.dialogService.addDialog({title: "Are you shure you want to delete this post?" , text: "This action can't be undone"});
+    this.dialogService.addDialog({title: "Are you shure you want to delete this post?" , text: "This action can't be undone"},-1);
     this.dialogService.okDialogEvent.subscribe( res => {
       if(res){
         this.postService.deletePost(this.post.id).subscribe( ret => {

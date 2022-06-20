@@ -113,7 +113,7 @@ export class CommunityUsersWindowComponent implements OnInit {
   }
 
   ban(user : UserResponse){
-    this.dialogService.addDialog({title: "Are you shure you want to ban this user?" , text: "They will not be able to post or comment on your community"});
+    this.dialogService.addDialog({title: "Are you shure you want to ban this user?" , text: "They will not be able to post or comment on your community"},-1);
     const subscription = this.dialogService.okDialogEvent.subscribe( res => {
       if(res){
         const dto : bannedRequest= {
@@ -136,7 +136,7 @@ export class CommunityUsersWindowComponent implements OnInit {
 
 
     unBan(user : UserResponse){
-      this.dialogService.addDialog({title: "Are you shure you want to un-ban this user?" , text: "They will be able to interact with community again"});
+      this.dialogService.addDialog({title: "Are you shure you want to un-ban this user?" , text: "They will be able to interact with community again"},-1);
       const subscription = this.dialogService.okDialogEvent.subscribe( res => {
         if(res){
           this.bannedService.deleteBan(user.id,this.communityId).subscribe( res => {

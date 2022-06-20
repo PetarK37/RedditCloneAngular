@@ -7,15 +7,15 @@ import { ModalBox } from '../Model/alertMessage';
 
 export class DialogService {
 
-  openDialogEvent = new EventEmitter<boolean>();
+  openDialogEvent = new EventEmitter<number>();
   cancelDialogEvent = new EventEmitter<boolean>();
   okDialogEvent = new EventEmitter<boolean>();
 
   modal! : ModalBox;
 
-  addDialog(modalBox: ModalBox) {
+  addDialog(modalBox: ModalBox, objectId : number) {
     this.modal = modalBox;
-    this.openDialogEvent.emit(true);
+    this.openDialogEvent.emit(objectId);
   }
 
   cancel(){
