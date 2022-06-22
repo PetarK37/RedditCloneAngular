@@ -1,0 +1,35 @@
+<div class="scroll">
+    <div class="wrapper">
+        <h1>All communities:</h1>
+        <div class="searchBar" *ngIf="communities.length > 0 ">
+            <form [formGroup]="form" class="form">
+                <input type="text" id="name" placeholder="name" [formControlName]="'name'"
+                    placeholder="Enter community name">
+            </form>
+        </div>
+        <table *ngIf=" communitiesForRender.length > 0">
+            <tbody>
+                <tr *ngFor="let c of communitiesForRender">
+                    <td>
+                        <div class="test_img"></div>
+                        <p [routerLink]="['/Community',c.id]">{{c.name}}</p>
+                    </td>
+                    <td class="flexboxEnd ">
+                        <button class="btn btn-filled add">
+                            <ion-icon name="person-add-outline"></ion-icon>Add moderator
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-filled ">
+                            <ion-icon name="person-remove-outline"></ion-icon>Remove moderator
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-filled susspend" (click)="openSusspend(c)"><ion-icon name="close-circle-outline"></ion-icon>Susspend</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <app-susspend-alert (susspendEvent)="refresh()" (closeEvent)="closeDialog()"  class="" ></app-susspend-alert>
+</div>

@@ -106,7 +106,6 @@ export class CommentKarmaRowComponent implements OnInit {
 
   delete(){
     this.dialogService.addDialog({title: "Are you shure you want to delete this comment?" , text: "This action cannot be undone!"},this.comment.id);
-    alert(this.comment.text);
     const subscription = this.dialogService.okDialogEvent.subscribe( res => {
       this.commentService.deleteComment(this.comment.id).subscribe(res => {
         this.alertService.addAlert({text: "Comment deleted successfully!",type : AlertType.success});

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CommunityResponse, CommuntyRequest } from '../Model/community';
+import { CommunityResponse, CommuntyRequest, SusspendReason } from '../Model/community';
 import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {ConfigService} from './config.service';
@@ -32,6 +32,10 @@ export class CommunityService {
 
     updateCommunity(dto: CommuntyRequest,id : number): Observable<CommunityResponse> {
       return this.http.put<CommunityResponse>(this.config.communities_url + '/' + id, JSON.stringify(dto), {headers: this.headers});
+    }
+
+    deleteCommunity(id: number, dto : SusspendReason): Observable<CommunityResponse> {
+      return this.http.delete<CommunityResponse>(this.config.communities_url + '/' + id, {headers: this.headers,body : JSON.stringify(dto)});
     }
 
 }

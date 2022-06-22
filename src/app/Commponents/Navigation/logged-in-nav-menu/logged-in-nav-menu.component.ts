@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';
 
+
 @Component({
   selector: 'app-logged-in-nav-menu',
   templateUrl: './logged-in-nav-menu.component.html',
@@ -26,6 +27,10 @@ export class LoggedInNavMenuComponent implements OnInit {
 
   closeThis(){
     this.element.classList.remove('active');
+  }
+
+  getRole() : string{
+    return this.authService.getRole();
   }
 
 }

@@ -17,3 +17,7 @@ export interface CommuntyRequest{
     rules: string[];
     flairs: Flair[];
 }
+
+export interface SusspendReason{
+    reason: string;
+}

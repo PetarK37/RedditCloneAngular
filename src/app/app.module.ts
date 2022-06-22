@@ -59,6 +59,11 @@ import { CommunityReportsWindowComponent } from './Commponents/Mod-window/commun
 import { CommentPreviewComponent } from './Commponents/Alert/comment-preview/comment-preview.component';
 import { PostPreviewComponent } from './Commponents/Alert/post-preview/post-preview.component';
 import { CrateEditCommentCardComponent } from './Commponents/Comment/crate-edit-comment-card/crate-edit-comment-card.component';
+import { NotLoggedInComponent } from './Commponents/Error-page/not-logged-in/not-logged-in.component';
+import { NotAutjorizedComponent } from './Commponents/Error-page/not-autjorized/not-autjorized.component';
+import { AdminSettingsWindowComponent } from './Commponents/Admin-window/admin-settings-window/admin-settings-window.component';
+import { SusspendAlertComponent } from './Commponents/Alert/susspend-alert/susspend-alert.component';
+import { NgRandomPipeModule,NgRoundPipeModule  } from 'angular-pipes';
 
 
 
@@ -112,9 +117,15 @@ import { CrateEditCommentCardComponent } from './Commponents/Comment/crate-edit-
     CommunityReportsWindowComponent,
     CommentPreviewComponent,
     PostPreviewComponent,
-    CrateEditCommentCardComponent
+    CrateEditCommentCardComponent,
+    NotLoggedInComponent,
+    NotAutjorizedComponent,
+    AdminSettingsWindowComponent,
+    SusspendAlertComponent,
   ],
   imports: [
+    NgRoundPipeModule ,
+    NgRandomPipeModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,

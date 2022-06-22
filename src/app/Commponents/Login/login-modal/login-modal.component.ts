@@ -4,6 +4,8 @@ import { AlertType } from 'src/app/Model/alertMessage';
 import { LoginRequest } from 'src/app/Model/user';
 import { AlertService } from 'src/app/Services/alert.service';
 import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 
 @Component({
   selector: 'app-login-modal',
@@ -15,6 +17,9 @@ export class LoginModalComponent implements OnInit {
   @Output() CloseModal = new EventEmitter();
   element!: HTMLElement;
   form!: FormGroup;
+
+
+
 
   constructor(element: ElementRef,private fb: FormBuilder,private authService: AuthenticationServiceService,private alertService : AlertService) {
     this.element = element.nativeElement;
@@ -56,6 +61,8 @@ export class LoginModalComponent implements OnInit {
         this.alertService.addAlert({text : "Username or password are incorect!", type : AlertType.warning});
       }
 		);
+
+
 	}
 
 }

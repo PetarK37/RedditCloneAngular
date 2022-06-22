@@ -43,6 +43,11 @@ export class CreateCommunityComponent implements OnInit {
     dto.rules = this.rules;
     dto.flairs = this.flairs;
 
+    if(this.flairs.length == 0){
+      this.alertService.addAlert({text:  'You must add atleast one flair!', type: AlertType.warning});
+      return;
+    }
+
     this.communityService.crateCommunity(dto).subscribe( res => {
       this.alertService.addAlert({text:  'Community created successfully', type: AlertType.success});
       this.form.reset();

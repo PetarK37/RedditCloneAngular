@@ -3,6 +3,8 @@ import { Injectable,EventEmitter, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginRequest, UserResponse } from '../Model/user';
 import { ConfigService } from './config.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +54,14 @@ export class AuthenticationServiceService {
   logOut() {
     localStorage.removeItem('JWT');
     localStorage.removeItem("user");
+  }
+
+  getRole() : string{
+		const token = localStorage.getItem('JWT');
+		const jwt: JwtHelperService = new JwtHelperService();
+    if (!token) {return "";}
+    const info = jwt.decodeToken(token);
+    return info.role.authority;
   }
 
 }

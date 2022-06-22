@@ -12,6 +12,10 @@
             <ion-icon name="list-outline"></ion-icon>
             <a>My Communities</a>
         </li>
+        <li [routerLink]="['Admin/Settings']" (click)="closeThis()" *ngIf = "getRole() === 'ROLE_ADMIN'">
+            <ion-icon name="build-outline"></ion-icon>            
+            <a>Admin settings</a>
+        </li>
         <li (click)="logOut()">
             <ion-icon name="log-out-outline"></ion-icon>
             <a>Log out</a>
