@@ -64,6 +64,8 @@ import { NotAutjorizedComponent } from './Commponents/Error-page/not-autjorized/
 import { AdminSettingsWindowComponent } from './Commponents/Admin-window/admin-settings-window/admin-settings-window.component';
 import { SusspendAlertComponent } from './Commponents/Alert/susspend-alert/susspend-alert.component';
 import { NgRandomPipeModule,NgRoundPipeModule  } from 'angular-pipes';
+import { AddModeratorWindowComponent } from './Commponents/Admin-window/add-moderator-window/add-moderator-window.component';
+import { RemoveModeratorWindowComponent } from './Commponents/Admin-window/remove-moderator-window/remove-moderator-window.component';
 
 
 
@@ -122,6 +124,8 @@ import { NgRandomPipeModule,NgRoundPipeModule  } from 'angular-pipes';
     NotAutjorizedComponent,
     AdminSettingsWindowComponent,
     SusspendAlertComponent,
+    AddModeratorWindowComponent,
+    RemoveModeratorWindowComponent,
   ],
   imports: [
     NgRoundPipeModule ,

@@ -1,0 +1,25 @@
+<div class="scroll">
+    <div class="wrapper">
+        <h1>Add moderator:</h1>
+        <div class="searchBar">
+            <form [formGroup]="form" class="form">
+                <input type="text"placeholder="name" [formControlName]="'username'"
+                    placeholder="Enter username">
+            </form>
+        </div>
+       <table>
+        <tbody *ngIf = "this.community != undefined">
+            <tr *ngFor="let u of usersForRender">
+                <td>
+                        <img [src]="getImg(u)" class="profileImg">
+                    <p (click) = "gotoProfile(u.id)">{{u.username}}</p>
+                 
+                    <button class="btn btn-filled flexboxEnd" (click)="addModerator(u)" *ngIf="!cantAdd(u)"><ion-icon name="person-add-outline"></ion-icon></button>
+                    <p class=" flexboxEnd"  *ngIf="cantAdd(u)">Allready moderator</p>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</div>

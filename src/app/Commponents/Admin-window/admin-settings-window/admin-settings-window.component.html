@@ -15,12 +15,12 @@
                         <p [routerLink]="['/Community',c.id]">{{c.name}}</p>
                     </td>
                     <td class="flexboxEnd ">
-                        <button class="btn btn-filled add">
+                        <button class="btn btn-filled add" (click)="gotoLink('Admin/Add-mod',c.id)">
                             <ion-icon name="person-add-outline"></ion-icon>Add moderator
                         </button>
                     </td>
                     <td>
-                        <button class="btn btn-filled ">
+                        <button class="btn btn-filled "  (click)="gotoLink('Admin/Remove-mod',c.id)">
                             <ion-icon name="person-remove-outline"></ion-icon>Remove moderator
                         </button>
                     </td>

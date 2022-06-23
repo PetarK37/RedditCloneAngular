@@ -57,6 +57,10 @@ export class ConfigService{
         return this._moderaors_url + "/User/" + userId + "/Community/" + communityId
     }
 
+    getModeratorsByCommunity(communityId : Number){
+        return this._moderaors_url +  "/Community/" + communityId
+    }
+
     delete_flair_url(communityId : number, flairId : String){
         return this._flairs_url + "/Community/" + communityId + "/Flair/" + flairId
     }

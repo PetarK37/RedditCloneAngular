@@ -5,3 +5,8 @@ export interface ModeratorResponse{
     user: UserResponse;
     community: string;
 }
+
+export interface ModeratorRequest{
+    userId: number;
+    communityId: number;
+}

@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
+import { AddModeratorWindowComponent } from 'src/app/Commponents/Admin-window/add-moderator-window/add-moderator-window.component';
 import { AdminSettingsWindowComponent } from 'src/app/Commponents/Admin-window/admin-settings-window/admin-settings-window.component';
+import { RemoveModeratorWindowComponent } from 'src/app/Commponents/Admin-window/remove-moderator-window/remove-moderator-window.component';
 import { CommunityWindowComponent } from 'src/app/Commponents/Community_page/community-window/community-window.component';
 import { CreateCommunityComponent } from 'src/app/Commponents/Create-community-window/create-community/create-community.component';
 import { CreateEditPostComponent } from 'src/app/Commponents/Create_post_page/create-edit-post/create-edit-post.component';
@@ -17,6 +19,7 @@ import { EditPasswordComponent} from 'src/app/Commponents/Settings-window/edit-p
 import { SettingsWindowUserComponent } from 'src/app/Commponents/Settings-window/settings-window-user/settings-window-user.component';
 import { UserProfileWindowComponent } from 'src/app/Commponents/Settings-window/user-profile-window/user-profile-window.component';
 import { isLoggedInGuard } from 'src/app/Guard/isLoggedInGuard';
+import { isModeratorGuard } from 'src/app/Guard/IsModeratorGuard';
 import { RoleGuard } from 'src/app/Guard/RoleGuard';
 
 
@@ -33,8 +36,10 @@ export const routes :Routes = [
 		{path: 'Edit',component: EditPasswordComponent}
 	]},
 	{path: 'Admin/Settings',component: AdminSettingsWindowComponent ,canActivate: [isLoggedInGuard,RoleGuard],data: {expectedRoles: 'ROLE_ADMIN'}},
+	{path: 'Admin/Add-mod/:id',component: AddModeratorWindowComponent ,canActivate: [isLoggedInGuard,RoleGuard],data: {expectedRoles: 'ROLE_ADMIN'}},
+	{path: 'Admin/Remove-mod/:id',component: RemoveModeratorWindowComponent ,canActivate: [isLoggedInGuard,RoleGuard],data: {expectedRoles: 'ROLE_ADMIN'}},
 	{path: 'Moderator/Communities',component: ModSettingsWindowComponent ,canActivate: [isLoggedInGuard,RoleGuard],data: {expectedRoles: 'ROLE_ADMIN|ROLE_USER'}},
-	{path: 'Moderator/Communities/:id',component: CommunitySettingsModWindowComponent,canActivate: [isLoggedInGuard,RoleGuard],data: {expectedRoles: 'ROLE_ADMIN|ROLE_USER'},
+	{path: 'Moderator/Communities/:id',component: CommunitySettingsModWindowComponent,canActivate: [isLoggedInGuard,RoleGuard,isModeratorGuard],data: {expectedRoles: 'ROLE_ADMIN|ROLE_USER'},
 	children: [
 		{path: '',component: CommunitySettingsWindowComponent},
 		{path: 'Users',component: CommunityUsersWindowComponent},

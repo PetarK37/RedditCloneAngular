@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CommunityResponse } from 'src/app/Model/community';
 import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';
 import { CommunityService } from 'src/app/Services/community.service';
@@ -18,7 +19,7 @@ export class AdminSettingsWindowComponent implements OnInit {
 
   @ViewChild (SusspendAlertComponent) susspendDialog!: SusspendAlertComponent;
 
- constructor(private communityService : CommunityService,private authService : AuthenticationServiceService,private fb : FormBuilder) {
+ constructor(private communityService : CommunityService,private authService : AuthenticationServiceService,private fb : FormBuilder,private router: Router) {
     this.form = this.fb.group({
       name : [''],
    });
@@ -50,6 +51,13 @@ export class AdminSettingsWindowComponent implements OnInit {
     this.communityService.getAll().subscribe( res => {
       this.communities = res;
       this.communitiesForRender = res;});
+  }
+
+  gotoLink(url : string, id : number){
+    if(id == -1){
+      this.router.navigate([url]);
+    }
+    this.router.navigate([url,id]);
   }
 
 }
