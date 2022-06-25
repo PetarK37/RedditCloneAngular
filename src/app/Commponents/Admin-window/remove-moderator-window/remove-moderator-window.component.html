@@ -7,7 +7,7 @@
             </form>
         </div>
         <table>
-            <tbody *ngIf="this.community != undefined">
+            <tbody >
                 <tr *ngFor="let m of modsForRender">
                     <td>
                         <img [src]="getImg(m.user)" class="profileImg">

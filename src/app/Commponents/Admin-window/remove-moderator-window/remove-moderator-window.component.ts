@@ -33,7 +33,7 @@ export class RemoveModeratorWindowComponent implements OnInit {
   mods! : ModeratorResponse[];
   modsForRender!: ModeratorResponse[];
   form! : FormGroup;
-  community!: CommunityResponse;
+  communityId!: number;
 
   @ViewChild(ConfirmDialogComponent) dialog!: ConfirmDialogComponent;
 
@@ -41,13 +41,10 @@ export class RemoveModeratorWindowComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.communityService.getOne(params['id']).subscribe(community => {
-        this.community = community;
-        this.moderatorService.getAllByCommunity(this.community.id).subscribe(res => {
+        this.moderatorService.getAllByCommunity(params['id']).subscribe(res => {
           this.mods = res;
           this.modsForRender = res;
          });
-      });
     });
 
   
