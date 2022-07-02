@@ -40,7 +40,7 @@ export class UserProfileWindowComponent implements OnInit {
   constructor(private authService : AuthenticationServiceService,private imgService : ImgService,private communityService : CommunityService,
     private fb: FormBuilder,private userService : UserService,private alertService : AlertService, private route : ActivatedRoute,private router : Router) { 
     this.displayNameForm =  this.fb.group({
-			displayName :  new FormControl(null, Validators.required)
+			displayName :  new FormControl("")
 		});
 
     this.aboutForm = this.fb.group({
