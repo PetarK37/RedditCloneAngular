@@ -1,0 +1,15 @@
+<aside class="commentKarmaRow">
+    <button #upvoteElement (click)="upvote()" class="btn-wrapper" [attr.upvoted]="'false'">
+        <ion-icon name="caret-up" class="karma_btn "></ion-icon>
+    </button>
+    <p class="karma_num">{{karma}}</p>
+    <button #downovoteElement class="btn-wrapper" (click)="downvote()" [attr.downvoted]="'false'">
+        <ion-icon name="caret-down" class="karma_btn "></ion-icon>
+    </button>
+    <button  class="btn btn-light" (click)="reply()" *ngIf="loggedUser != undefined"><ion-icon name="arrow-redo-outline" ></ion-icon>Reply</button>
+    <button  class="btn btn-light flexboxEnd" id="" *ngIf="!canEdit()" (click)="report()"><ion-icon name="alert-outline"></ion-icon>Report</button>
+    <button  class="btn btn-light flexboxEnd" id="" *ngIf="canEdit()" (click)="edit()"> <ion-icon name="create-outline"></ion-icon> Edit</button>
+    <button  class="btn btn-light" id="" *ngIf="canEdit()" (click)="delete()"><ion-icon name="trash-outline"></ion-icon></button>
+</aside>
+<app-confirm-dialog  #dialog id="dialog" class="" ></app-confirm-dialog>
+

@@ -1,0 +1,13 @@
+<div class="card post_card">
+    <app-post-card-karma [post] = "post"></app-post-card-karma>
+    <div class="card_content">
+     <app-post-title-row [post] = "post"></app-post-title-row>
+        <p *ngIf="post.imgPath == null" class="content_txt" [routerLink]="['/Post',post.id]">
+            {{post.text}}
+        </p>
+        <img [src]="getImg()" class="postImg" *ngIf="post.imgPath != null" [routerLink]="['/Post',post.id]">
+    </div>
+    <div class="card_comment_row">
+        <a  [routerLink]="['/Post',post.id]" class="link">Comments</a>
+        <a class="link report" (click)="report()">Report</a>
+    </div>

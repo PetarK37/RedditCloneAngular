@@ -1,0 +1,64 @@
+.commentRow{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 5px 5%;
+    gap: 5px;
+    background-color: var(--hower-light);
+    border: 1px dotted var(--text-color);
+    word-wrap: break-word;
+    word-break: normal;
+}
+
+
+.usernameSection{
+    display: grid;
+    grid-template-areas: "img username"
+                            "img date"; 
+    justify-items: center;
+    column-gap: 5px;
+    cursor: pointer;
+}
+
+.usernameSection > .img_overlay{
+    grid-area: img;
+    align-self: center;
+    margin: auto;
+        border-radius: 100%;
+        display: flex;
+        flex: 0 1 40px;
+        height: 40px;
+        width: 40px;
+        justify-content: center;
+        overflow: hidden;
+}
+
+p{
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.usernameSection > p {
+    margin: auto;
+    font-size: smaller;
+    grid-area: date;
+}
+
+.usernameSection > h5 {
+    margin: auto;
+    grid-area: username;
+}
+
+.commentContent{
+    font-size: larger;
+    margin-left: 40px;
+}
+
+app-comment-karma-row,.replies{
+    width: 100%;
+}
+
+.reply{
+    padding: 10%;
+}
+

@@ -1,0 +1,38 @@
+.commentKarmaRow{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.commentKarmaRow:first-child{
+    margin-left: 40px;
+}
+
+button{
+    padding: 5px;
+}
+
+
+
+.karma_btn{
+    font-size: 2.5rem;
+}
+
+.karma_num{
+    font-size: large;
+}
+
+app-confirm-dialog{
+    z-index: 1;
+    position: absolute;
+    position : fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    transition: 150ms ease-in-out;
+    z-index: 10;
+}
+app-confirm-dialog.active{
+    transform: translate(-50%,-50%) scale(1);
+}
+

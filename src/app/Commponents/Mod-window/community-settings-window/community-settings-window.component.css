@@ -1,0 +1,194 @@
+.wrapper{
+    height: 92vh;
+    overflow: auto;
+    padding-bottom: 20px;
+}
+.window{
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+}
+
+.communityTitle{
+    margin-top: 40px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    position: relative;
+    margin-left: auto;
+    width: 97%;  /*Width - img */
+}
+
+.communityTitle > .test_img{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+     position: absolute;
+    z-index: 1;
+    left: -3%;
+    top: calc(100% - 100px); 
+}
+.communityTitle > h1{
+    font-size: x-large;
+    margin-left: calc(100px - 2%);
+}
+
+.editWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: row;
+    gap:5px;
+    font-size: 1.4em;
+}
+
+.aboutMeEdit{
+display: flex;
+align-items: flex-start;
+flex-direction: column;
+}
+
+.aboutMeEdit > form{
+width: 100%;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+gap: 5px;
+flex-wrap: wrap;
+}
+
+.aboutMeEdit > form > button{
+    align-self: center;
+    padding: 20px;
+}
+
+.editWrap > ion-icon:hover{
+    background-color: var( --hower-light);
+}
+
+.description{
+    width: 100%;
+    padding: 10px;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+textarea{
+    font-size: 1em;
+    padding: 10px 8px;
+    min-width: 250px;
+    border-radius: 10px;
+    resize: vertical;
+    min-width: 80%;
+}
+
+.rules, .flairs{
+    width: calc(80% / 2);
+    font-size: 1.3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 10px;
+}
+
+.rules{
+    margin-right: auto; 
+}
+
+.rules > form,.flairs > form{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+
+.rules > form > ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: larger;
+}
+
+.item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom:1px solid var(--devider) ;
+}
+
+.item:last-child{
+    border: none;
+}
+
+.removeBtn{
+    padding: 5px;
+    font-size: large;
+}
+
+.removeBtn:hover{
+    background-color: var(--warninrg-color);
+    color: var(--background-color);
+}
+
+.removeBtn:hover > ion-icon{
+    color: var(--background-color);
+}
+
+.todoInput{
+    width: 100%;
+    border-radius: 10px;    
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+}
+
+.todoInput >  input{
+    border: none;
+    width: calc(100% - 50px);
+    border-top-left-radius: 10px;    
+    border-bottom-left-radius: 10px;  
+    padding: 5px;  
+}
+
+.addBtn{
+    border: none;
+    min-width: 50px;
+    border-top-right-radius: 10px;    
+    border-bottom-right-radius: 10px;    
+    padding: 5px;
+    font-size: 1.5em;
+    background-color: var( --seccondary-color);
+}
+
+.addBtn:hover{
+    background-color: var(--hover-dark);
+    color: var(--background-color);
+    border-color:  var(--hover-dark);
+}
+
+.addBtn > ion-icon{
+    color: var(--background-color);
+}
+
+.saveBtn{
+    margin-top: auto;
+    font-size: 1.2em;
+}
+
+
+

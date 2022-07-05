@@ -1,0 +1,20 @@
+   <div class="commnuity_card_row">
+       <div class="test_img"></div>
+       <h4 [routerLink]="['/Community',post.community.id]">{{post.community.name}}</h4>
+    </div>
+    <header class="post_title_row">
+        <div class="title_div">
+            <h2 [routerLink]="['/Post',post.id]">{{post.title}}</h2>
+            <button class="btn btn-filled flare">{{post.hasAFlair.name}}</button>
+            <p class="posted_by">posted by:</p>
+            <div class="flex">
+                <div class="img_overlay">
+                    <img [src]="getImg()" class="profileImg">
+                </div>
+                    <p class="username"  [routerLink]="['/Users',post.postedBy.id]" >{{post.postedBy.username}}</p>
+                </div>
+            </div>
+            <div class="posted_ago">
+                <p>{{post.creationDate | weekAgo}}</p>
+            </div>
+        </header>

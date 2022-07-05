@@ -1,0 +1,8 @@
+<div class="postSection">
+    <app-post-title-row [post]="post"></app-post-title-row>
+    <div class="content">
+        <p>{{post.text}}</p>
+    </div>
+    <img [src]="getImg()" class="postImg" *ngIf="post.imgPath != null">
+    <app-post-karma-row [post]="post"></app-post-karma-row>
+</div>

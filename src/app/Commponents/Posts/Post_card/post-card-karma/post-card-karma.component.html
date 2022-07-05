@@ -1,0 +1,7 @@
+<aside class="post_card_karma">
+        <button #upvoteElement (click)="upvote()" class="btn-wrapper" [attr.upvoted] = "'false'" ><ion-icon  name="caret-up" class="karma_btn " ></ion-icon></button>
+    <p class="karma_num" #karmaa>{{post.karma}}</p>
+    <button #downovoteElement class="btn-wrapper"  (click)="downvote()" [attr.downvoted] = "'false'">
+        <ion-icon  name="caret-down"  class="karma_btn "></ion-icon>
+    </button>
+</aside>

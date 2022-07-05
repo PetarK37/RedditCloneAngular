@@ -1,0 +1,14 @@
+<div class="commentList">
+    <app-crate-edit-comment-card *ngIf="loggedUser != undefined" (commentAdded) = "reload()" [mode]="'create'"></app-crate-edit-comment-card>
+    <div class="sortCommentRow" (change)="sortComments($any($event.target!).value)">
+        <select class="select">
+            <option>Sort by</option>
+            <option value="new">New</option>
+            <option  value="old">Old</option>
+            <option  value="top">Top</option>
+        </select>
+    </div>
+    <div class="commentSectionDiv">
+        <app-comment-card *ngFor="let comment of comments" [comment]="comment" (reloadEv)="reload()"></app-comment-card>
+    </div>
+</div>

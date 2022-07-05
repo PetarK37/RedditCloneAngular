@@ -1,0 +1,20 @@
+<header class="navHeader">
+    <nav class="navBar">
+        <a routerLink="/Home" id="homeLogoBtn">
+            <img src="../../../assets/logo/RedditLogo-Light.png" alt="page logo" class="navLogo">
+        </a>
+
+        <select class="select" (change)="navigateTo($any($event.target!).value)">
+            <option [value]="'/Home'">Home</option>
+            <option *ngFor="let c of communities" [value]="'/Community/' + c.id">{{c.name}}</option>
+        </select>
+
+        <div class="flexboxEnd loggedInMenuSelect" (click) = "openMenu()">
+            <div class="img_overlay">
+                <img [src]="getImg()" class="profileImg">
+            </div>
+            <h4>{{user?.username}}</h4>
+        </div>
+    </nav>
+    <app-logged-in-nav-menu class=""></app-logged-in-nav-menu>
+</header>

@@ -1,0 +1,15 @@
+<div class="scroll modal">
+    <div class=" previewModal" *ngIf="post != undefined">
+        <div class="postSection">
+            <app-post-title-row [post]="post"></app-post-title-row>
+            <div class="content">
+                <p>{{post.text}}</p>
+            </div>
+            <img [src]="getImg()" class="postImg" *ngIf="post.imgPath != null">
+        </div>
+    
+        <a>
+            <ion-icon name="close-outline" (click)="closeModal()"></ion-icon>
+        </a>
+    </div>
+    </div>

@@ -1,0 +1,72 @@
+.postKarmaRow{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    position: relative;
+}
+
+.settings{
+    margin-left: auto;
+    font-size: x-large;
+}
+
+.settings:hover{
+    cursor: pointer;
+    background-color: var(--hower-light);
+    border-radius: 5px;
+}
+.posst-settings{
+    display: none;
+}
+
+.posst-settings.active{
+    position: absolute;
+    bottom: -70px;
+    right: 5px;
+    z-index: 1;
+    width: fit-content;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 5px;
+}
+
+.posst-settings > ul{
+    list-style: none;
+    align-self: stretch;
+}
+
+.posst-settings > ul > li{
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 2px solid var(--devider);
+    display: flex;
+    gap:5px;
+    align-items: center;
+}
+.posst-settings > ul > li > a{
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: large;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.posst-settings > ion-icon{
+    font-size: 1.5em;
+}
+
+.posst-settings > ul > li:hover{
+    background-color: var( --hower-light);
+}
+
+.karma_btn{
+    font-size: 3.5rem;
+}
+
+.karma_num{
+    font-size: x-large;
+}

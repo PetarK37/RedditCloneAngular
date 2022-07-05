@@ -1,0 +1,33 @@
+.sortCommentRow{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border-top: 1px  solid var(--devider);
+}
+
+.select{
+    font-size: larger;
+    font-weight: 500;
+    border-radius: 5px;
+    text-align: center;
+    background-color: transparent;
+    padding: 2px;
+    border: 0px solid darkgray;
+}
+
+.commentSectionDiv{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    width: 100%;
+}
+
+.sortCommentRow{
+    padding: 10px;
+}
+
+app-crate-edit-comment-card{
+    width: 100%;
+}

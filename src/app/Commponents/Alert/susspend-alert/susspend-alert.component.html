@@ -1,0 +1,17 @@
+<div class="modal susspendDialog">
+    <h1>Suspend a community</h1>
+    <div class="communityTitle">
+        <div class="test_img"></div>
+        <p >{{community?.name}}</p>
+        <p class="flexboxEnd">{{ {} | random: 0: 10 | round }}k  Members</p>
+    </div>
+    <p class="muted">Are you shure that you want to susspend this community?</p>
+    <form [formGroup]="form" (submit)="submit()">
+        <p  class="errorLabel" *ngIf="form.invalid && form.get('reason')?.touched">Reason must be minimum 10chars long!</p>
+        <textarea class="" id="reason" rows="20" placeholder="Write your reason why?"
+            [formControlName]="'reason'"
+            [ngClass]="{  'invalid' : !form.get('reason')?.valid && form.get('reason')?.touched}" required></textarea>
+        <button class="btn btn-light" type="button" (click)="cancel()">Cancel</button>
+        <button class="btn btn-filled" type="submit" [disabled]="form.invalid">Ok</button>
+    </form>
+</div>

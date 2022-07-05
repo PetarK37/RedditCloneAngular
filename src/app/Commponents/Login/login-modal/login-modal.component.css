@@ -1,0 +1,24 @@
+
+h2{
+    font-size: 1.6em;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+input{
+    display: block;
+    font-size: .85em;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    padding: 15px 8px;
+    min-width: 400px;}
+
+.logiInBtn{
+    margin-top: 50px;
+    font-size: 1.1em;
+    width: 100%;
+}
+a{
+    cursor: pointer;
+}

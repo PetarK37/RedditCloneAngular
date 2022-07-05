@@ -1,0 +1,40 @@
+.communities_card{
+    margin-top: 40px;
+    text-align: center;
+    max-width: fit-content;
+    padding: 20px;
+}
+
+.communities_list{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+    width: 100%;
+}
+
+.community_list_item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 50px;
+}
+
+.community_list_item > button{
+    padding: 8px;
+
+}
+
+.commnuity_name_row{
+    display: flex;
+    padding: 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+h4 {
+    cursor: pointer;
+}

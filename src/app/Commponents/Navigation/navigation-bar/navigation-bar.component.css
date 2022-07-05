@@ -1,0 +1,32 @@
+.navHeader, app-navigation-bar{
+    grid-area: nav;
+    height: 100%;
+}
+
+.navBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    background-color: var(--card-color);
+    max-height: 100%;
+}
+
+#homeLogoBtn{
+    justify-self: stretch;
+}
+
+.navLogo{
+    padding: 10px;
+    max-height: 8vh;
+}
+
+.select{
+    font-size: large;
+    border-radius: 5px;
+    width: 7em;
+    text-align: center;
+}
+

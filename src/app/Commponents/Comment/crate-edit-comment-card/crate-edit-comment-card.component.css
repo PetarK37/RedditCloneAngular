@@ -1,0 +1,79 @@
+form{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 10px;
+    min-width: 0;
+    width: 100%;
+}
+
+.img_overlay{
+    border-radius: 50%;
+    display: flex;
+    flex: 0 1 40px;
+    min-height: 40px;
+    min-width: auto;
+    justify-content: stretch;
+    overflow: hidden;
+    align-self: start;
+
+}
+
+img {
+
+    max-width: 100%;
+    border: 0;
+}
+
+
+
+
+.btnDiv{
+    max-width: 10%;
+    min-width: 0;
+    align-self: start;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    flex-flow: row wrap;
+}
+
+.btnDiv > .btn{
+    max-width: 45%;
+}
+
+
+
+
+textarea{
+    min-width: 0;
+    font-size: 1em;
+    padding: 8px;
+    flex-grow: 1;
+    width: max-content;
+    border-radius: 10px;
+    resize: vertical;
+}
+
+[mode = create], [mode = edit],[mode = reply]{
+    display: inline-block;
+}
+
+[mode = create] > form > .btnDiv > .cancel {
+    display: none;
+}
+
+[mode = reply] > form > .cancel,[mode = edit] > form > .cancel{
+    display: inline-flex;
+}
+    
+
+[mode = hidden]{
+    display: none;
+}
+
+[mode = edit] > form > .img_overlay .img{
+    opacity: 0;
+}

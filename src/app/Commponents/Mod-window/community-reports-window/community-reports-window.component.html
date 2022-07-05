@@ -1,0 +1,48 @@
+<div class="scroll">
+    <div class="wrapper">
+        <h1>All reports:</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Content:</th>
+                    <th>Reason:</th>
+                    <th>ReportedBy:</th>
+                    <th>Decline or Accept:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let r of reportsForRender">
+                    <td class="reportedContentDiv">
+                        <p (click)="gotoComment(r)" *ngIf="r.reportedCommentId != null">{{substr(r.reportedCommentId.text)}}
+                        </p>
+                        <p (click)="gotoContent(r)" *ngIf="r.reportedPostId != null">{{substr(r.reportedPostId.title)}}</p>
+                    </td>
+                    <td class="reasonText">
+                        <p>{{toStr(r.reason)}}</p>
+                    </td>
+                    <td>
+                        <div class="byUserDiv">
+                            <img [src]="getImg(r.byUserId.avatarUrl)" class="profileImg">
+                            <p (click)="gotoProfile(r.byUserId.id)">{{r.byUserId.username}}</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="buttonsDiv">
+                        <button class="btn btn-filled declineBtn" (click)="decline(r)">
+                            <ion-icon name="ban-outline" ></ion-icon>
+                        </button>
+                        <button class="btn btn-filled acceptBtn" (click)="accept(r)">
+                            <ion-icon name="checkmark-circle-outline"></ion-icon>
+                        </button>
+                    </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <app-confirm-dialog #dialog id="dialog" class=""></app-confirm-dialog>
+    <app-post-preview class="" [post]="selectedPost" (closePreview) = "closePreview()"></app-post-preview>
+    <app-comment-preview class="" [comment]="selectedComment" (closePreview) = "closePreview()"></app-comment-preview>
+    <app-confirm-dialog  #dialog id="dialog" class="" ></app-confirm-dialog>
+
+</div>

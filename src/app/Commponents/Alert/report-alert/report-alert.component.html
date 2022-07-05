@@ -1,0 +1,12 @@
+<div class="modal reportDialog">
+    <h1>Submit a report</h1>
+    <p>Please choose why are you reporting this post</p>
+    <form [formGroup]="form" (submit)="submit()">
+        <label *ngFor="let r of reasons">
+            <input [formControlName]="'reason'" type="radio" name="reason" [value]="r">
+            <span>{{toStr(r)}}</span>
+        </label>
+        <button class="btn btn-light" type="button" (click)="cancel()">Cancel</button>
+        <button class="btn btn-filled"  type="submit">Ok</button>
+    </form>
+</div>

@@ -1,0 +1,35 @@
+.navMenu{
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 5px;
+}
+
+.navMenu > ul{
+    list-style: none;
+    align-self: stretch;
+}
+
+.navMenu > ul > li{
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 2px solid var(--devider);
+    display: flex;
+    gap:5px;
+    align-items: center;
+}
+.navMenu > ul > li > a{
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: large;
+}
+
+ion-icon{
+    font-size: 1.5em;
+}
+
+.navMenu > ul > li:hover{
+    background-color: var( --hower-light);
+}

@@ -1,0 +1,11 @@
+.userSettingsWindow{
+    display: flex;
+}
+
+app-user-settings-sidebar{
+    max-width: 30%;
+}
+
+.window{
+    width: 100%;
+}

@@ -1,0 +1,16 @@
+.post_card_karma{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+    border-right: 1px  solid var(--devider);
+    min-height: 100%;
+}
+
+.karma_btn{
+    font-size: 3.5rem;
+}
+
+.karma_num{
+    font-size: x-large;
+}

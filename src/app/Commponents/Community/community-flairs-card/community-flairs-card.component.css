@@ -1,0 +1,13 @@
+.communityFlairs{
+    text-align: center;
+    min-width: fit-content;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.communityFlairs > h3{
+    flex-basis: 100%;
+}

@@ -1,0 +1,11 @@
+.asside{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-items: stretch;
+    max-width: fit-content;
+}
+
+app-community-rules-card ,app-about-community-card{
+    width: 100%;
+}

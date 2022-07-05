@@ -1,0 +1,36 @@
+.alert{
+    border-radius: 10px;
+    border: 1px solid var(--devider-color);
+    display: flex;
+    padding: 5px;
+    padding-right: 10px;
+    gap:5px;
+    align-items:  center;
+    max-width: 400px;
+}
+
+
+.alert > p{
+    font-size: larger;
+    color: var(--background-color);
+}
+
+.alert > ion-icon{
+    font-size: 4em;
+}
+
+[intent = "warning"]{
+    background-color: var(--warninrg-color);
+}
+
+[intent = "warning"] > ion-icon{
+    color: #d42929;
+}
+
+[intent = "success"]{
+    background-color: var(--succes-color);
+}
+
+[intent = "success"] > ion-icon{
+    color: #20bd6e;
+}

@@ -1,0 +1,25 @@
+<div class="scroll">
+    <div class="wrapper">
+        <h1>Remove moderators:</h1>
+        <div class="searchBar">
+            <form [formGroup]="form" class="form">
+                <input type="text" placeholder="name" [formControlName]="'username'" placeholder="Enter username">
+            </form>
+        </div>
+        <table>
+            <tbody >
+                <tr *ngFor="let m of modsForRender">
+                    <td>
+                        <img [src]="getImg(m.user)" class="profileImg">
+                        <p (click)="gotoProfile(m.user.id)">{{m.user.username}}</p>
+
+                        <button class="btn btn-filled flexboxEnd" (click)="removeMod(m)">
+                            <ion-icon name="person-remove-outline"></ion-icon>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <app-confirm-dialog #dialog id="dialog" class=""></app-confirm-dialog>
+</div>

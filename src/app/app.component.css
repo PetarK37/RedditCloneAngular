@@ -1,0 +1,65 @@
+.wrapper{
+    display: grid;
+    grid-template-areas: "nav"
+                        "main";
+    grid-template-rows: minmax(1vh,8vh)  1fr ;
+    background-color: var(--background-color);
+    align-content: center;
+    height: max-content;
+}
+
+.router-outlet {
+    grid-area: main;
+}
+
+app-navigation-bar{
+    grid-area: nav;
+    height: 100%;
+}
+
+#overlay{
+    position: fixed;
+    opacity: 0;
+    transition: 150ms ease-in-out;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.5);
+    pointer-events: none;
+}
+
+#overlay.active{
+    opacity: 1;
+    pointer-events: all;
+}
+
+app-login-modal,app-register-modal,app-report-alert{
+    position : fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    transition: 150ms ease-in-out;
+    z-index: 10;
+}
+app-login-modal.active,app-register-modal.active,app-report-alert.active{
+    transform: translate(-50%,-50%) scale(1);
+}
+
+app-alert-modal{
+    position : fixed;
+    bottom: 5%;
+    left: 2%;
+    z-index: 11;
+    transform: translate(0px,0px) scale(0);
+    transition: 150ms ease-in-out;
+}
+
+app-alert-modal.active{
+    transform: translate(0px,0px)  scale(1);
+}
+
+app-report-alert{
+    min-width: 50%;
+}

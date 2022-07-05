@@ -1,0 +1,84 @@
+.scroll{
+    overflow: auto;
+    padding-bottom: 20px;
+    height: 92vh;
+}
+
+.empty{
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    height: 92vh;
+}
+
+.wrapper{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    padding: 0 20%;
+    overflow: auto;
+}
+
+.btn-filled{
+    font-size: 1.5em;
+}
+
+.btn-filled > ion-icon{
+    color: var(--background-color);
+    font-size: 1.5em;
+}
+
+h1{
+    font-size: 2rem;
+}
+
+
+td:first-child{
+    border-top:1px solid var(--devider) ;
+}
+
+td{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    padding: 10px;
+    border-bottom: 1px solid var(--devider);
+}
+
+td > p{
+    font-size: 2em;
+    cursor: pointer;
+}
+
+h2{
+    font-size: 2em;
+}
+
+img{
+    max-width: 30%;
+}
+
+.searchBar > form{
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    text-align: center;
+    flex-direction: row;
+    gap:5px;
+    font-size: 1.4em;
+    
+}
+
+.searchBar{
+    padding: 20px;
+}
+
+input{
+    font-size: 1em;
+    padding: 10px 8px;
+    min-width: 250px;
+    border-radius: 10px;
+}

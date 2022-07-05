@@ -1,0 +1,14 @@
+<div class="modal loginModal" id="modal">
+    <section class="modal-title">
+        <h2>Log in</h2>
+        <button data-close-button class="exit flexboxEnd" (click)="closeModal()">&times;</button>
+    </section>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <input type="text" id="username" name="username" placeholder="Your username" [formControlName]="'username'" [ngClass]= "{  'invalid' : !form.get('username')?.valid && form.get('username')?.touched}">
+        <p class="errorLabel" *ngIf="!form.get('username')?.valid && form.get('username')?.touched">This feild can not be empty!</p>
+        <input type="password" id="password" name="password"  placeholder="Your password" [formControlName]="'password'" [ngClass]= "{  'invalid' : !form.get('password')?.valid && form.get('password')?.touched}">
+        <p class="errorLabel" *ngIf="!form.get('password')?.valid && form.get('password')?.touched">This feild can not be empty!</p>
+        <button  type="submit" class="btn btn-filled logiInBtn" [disabled]="form.invalid"> Log in</button>
+    </form>
+    <p class="notMember"> Not a member? <a (click) = "registerModal()">Sign up!</a></p>
+</div>

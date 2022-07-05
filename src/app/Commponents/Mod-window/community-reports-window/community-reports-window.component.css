@@ -1,0 +1,138 @@
+.scroll{
+    overflow: auto;
+    max-height: 92vh;
+    padding-bottom: 20px;
+}
+
+.wrapper{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.btn-filled > ion-icon{
+    color: var(--background-color);
+    font-size: 1.5em;
+}
+
+h1{
+    font-size: 2rem;
+}
+
+.profileImg{
+        border-radius: 100%;
+        height: 50px;
+        width: 50px;
+}
+
+table{
+    margin-top: 30px
+}
+
+thead{
+   font-size: 1.3em;
+}
+
+tbody{
+    padding-top: 20px;
+}
+
+tr:hover{
+    background-color: var(--hower-light);
+}
+
+td:first-child{
+    border-top:1px solid var(--devider) ;
+}
+
+td{
+    text-align: start;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--devider);
+}
+
+th{
+    text-align: center;
+    border-bottom: 1px solid var(--devider);
+}
+
+td > p{
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+h2{
+    font-size: 2em;
+}
+
+img{
+    max-width: 30%;
+}
+
+.byUserDiv{
+    height: max-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.3em;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.buttonsDiv{
+    height: max-content;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+
+
+.btn-light{
+    padding: 10px;
+}
+
+.declineBtn{
+    background-color: var(--downowoted);
+    border: none;
+}
+
+.declineBtn:hover{
+    background-color: var(--warninrg-color);
+}
+
+.acceptBtn:hover{
+    background-color: var(--succes-color);
+}
+
+.acceptBtn{
+    background-color: var(--upwoted);
+    border: none;
+}
+
+.btn-filled > ion-icon{
+    color: var(--background-color);
+}
+
+app-confirm-dialog,app-post-preview,app-comment-preview,app-confirm-dialog{
+    z-index: 1;
+    position: absolute;
+    position : fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    transition: 150ms ease-in-out;
+    z-index: 10;
+}
+app-confirm-dialog.active,app-post-preview.active,app-comment-preview.active,app-confirm-dialog.active{
+    transform: translate(-50%,-50%) scale(1);
+}
+

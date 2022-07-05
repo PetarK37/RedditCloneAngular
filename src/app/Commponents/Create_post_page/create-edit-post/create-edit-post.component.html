@@ -1,0 +1,34 @@
+<div class="createPostSection">
+   <div class="fromWrapper">
+    <h1 *ngIf="post != undefined">Edit post:</h1>
+    <h1 *ngIf="post == undefined">Create post:</h1>
+    <form [formGroup]="form" class="form" (ngSubmit)="submit()">
+        <input type="text" class="" [attr.noEdit]="disabled()" id="title" placeholder="Title" [formControlName]="'title'"[ngClass]= "{  'invalid' : !form.get('title')?.valid && form.get('title')?.touched}">
+        <p class="errorLabel" *ngIf="!form.get('title')?.valid && form.get('title')?.touched">This feild can not be empty!</p>
+        <textarea class="" id="content" rows="20" placeholder="What are you thinking today?" [formControlName]="'content'" [ngClass]= "{  'invalid' : !form.get('content')?.valid && form.get('content')?.touched}"></textarea>
+        <p class="errorLabel" *ngIf="!form.get('content')?.valid && form.get('content')?.touched">This feild can not be empty!</p>
+        <div class="uploadDiv">
+            <p>Upload image:</p>
+            <label for="img" class="btn btn-light">Upload <span>
+                    <ion-icon name="cloud-upload-outline"></ion-icon>
+                </span></label>
+            <input type="file" id="img" value="img" [formControlName]="'img'" accept="image/*" (change)="onChanged($event)">
+        </div>
+        <div class="preview" *ngIf="previewSrc != ''"> 
+            <p>Preview:</p>
+            <img [src]="previewSrc" alt="preview">
+        </div>
+        <select class="select"  (change) = "selectCommunity($any($event.target).value)" [formControlName]="'community'" [style.visibility]="(shouldHideSelect()) ? 'hidden' : 'visible' " [ngClass]= "{  'invalid' : !form.get('community')?.valid && form.get('community')?.touched}">
+            <option  disabled [ngValue]="null" >Select Community:</option>
+            <option *ngFor="let c of communities; let i = index" [ngValue]="i">{{c.name}}</option>
+        </select>
+        <p #flairLabel class="errorLabel" *ngIf="!form.get('community')?.valid && form.get('community')?.touched">Please choose community!</p>
+        <select #flairSelect class="select"   [formControlName]="'flair'">
+            <option [ngValue]="null" disabled>Add flare</option>
+            <option  *ngFor="let f of flairs; let i = index" [ngValue]="i" >{{f.name}}</option>
+        </select>
+        <p #flairLabel class="errorLabel"  style="visibility: hidden;" >Please choose flair!</p>
+        <button type="submit" class="btn btn-filled" [disabled]="form.invalid">Submit</button>
+    </form>
+   </div>
+</div>

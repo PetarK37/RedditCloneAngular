@@ -1,0 +1,60 @@
+<div class="wrapper">
+    <div class="window">
+        <div class="communityTitle card">
+            <div  class="test_img"></div>
+            <h1>{{community.name}}
+            </h1>
+        </div>
+        <div class="card description" >
+            <div class="editWrap aboutMe" #about>
+                <h3>Description:</h3>
+                <ion-icon name="create-outline" (click)="edit('description')"></ion-icon>
+            </div>
+            <p #descripitonTxt>{{community.description}}</p>
+            <div class="aboutMeEdit" #aboutEdit hidden>
+                <form [formGroup]="descriptionForm" class="descriptionForm" (ngSubmit)="changeDescription()">
+                    <textarea  class=""  id="description" placeholder="description" [formControlName]="'description'"></textarea>
+                    <button type="submit" class="btn btn-filled" >Ok</button>
+                </form>
+            </div>
+        </div>
+        <div class="card rules">
+            <form  [formGroup]="rulesForm" class="form" (ngSubmit)="submitRules()" (keydown.enter)="$event.preventDefault()">
+            <div class="todoInput">
+                    <input type="text" placeholder="Add rule" [formControlName]="'rules'">
+                    <button type="button" class="addBtn" (click) = "addRule()">
+                        <ion-icon name="add-outline"></ion-icon>
+                    </button>
+                </div>
+                <ul>
+                    <li class="item" *ngFor="let r of rules">
+                        {{r}}
+                        <button type="button" class="btn btn-light removeBtn" (click) = "removeRule(r)">
+                            <ion-icon name="close-outline"></ion-icon>
+                        </button>
+                    </li>
+                </ul>
+                <button class="btn btn-filled saveBtn" type="submit"> Save rules</button>
+            </form>
+            </div>
+        <div class="card flairs">
+            <form [formGroup]="flairsForm" class="form" (ngSubmit)="submitFlairs()" (keydown.enter)="$event.preventDefault()">
+            <div class="todoInput">
+                <input type="text" placeholder="Add flair" [formControlName]="'flairs'">
+                <button type="button" class="addBtn" (click)="addFlair()">
+                    <ion-icon name="add-outline"></ion-icon>
+                </button>
+            </div>
+            <ul>
+                <li class="item" *ngFor="let f of flairs">
+                    {{f.name}}
+                    <button type="button" class="btn btn-light removeBtn" (click)="removeFlair(f)">
+                        <ion-icon name="close-outline"></ion-icon>
+                    </button>
+                </li>
+            </ul>
+            <button class="btn btn-filled saveBtn" type="submit"> Save Flairs</button>
+        </form>
+        </div>
+    </div>
+</div>

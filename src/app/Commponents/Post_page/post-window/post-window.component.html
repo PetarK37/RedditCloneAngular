@@ -1,0 +1,5 @@
+<div class="postView" *ngIf="post != undefined">
+    <app-post-page-content [post]="post"></app-post-page-content>
+    <app-post-page-asside [community]="post.community"></app-post-page-asside>
+    <app-confirm-dialog  #dialog id="dialog" class="" ></app-confirm-dialog>
+</div>

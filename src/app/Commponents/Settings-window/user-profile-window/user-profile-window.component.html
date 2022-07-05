@@ -1,0 +1,78 @@
+<div class="wrapper">
+    <div class="window">
+        <div class="userTitle card">
+            <div class="img_overlay"  >
+                <div class="img_edit"  *ngIf="canEdit()" (click)="editImg()" ><ion-icon name="settings-outline" ></ion-icon></div>
+                    <img [src]="getImg()" class="profileImg">
+            </div>
+            <div class="editWrap" #dispalyName>
+                <h1>{{(user.displayName == null || user.displayName == "" ) ? user.username : user.displayName}}</h1>
+                <ion-icon name="create-outline" *ngIf="canEdit()" (click)="edit('displayName')"></ion-icon>
+            </div>
+            <div class="displayNameEdit" #nameEdit hidden>
+                <form [formGroup]="displayNameForm" class="form" (ngSubmit)="changeDisplayName()">
+                    <input type="text" class=""  id="displayName" placeholder="displayName" [formControlName]="'displayName'"[ngClass]= "{  'invalid' : !displayNameForm.get('displayName')?.valid && displayNameForm.get('displayName')?.touched}">
+                    <button type="submit" class="btn btn-filled" [disabled]="displayNameForm.invalid">Ok</button>
+                </form>
+                <p class="errorLabel" *ngIf="!displayNameForm.get('displayName')?.valid && displayNameForm.get('displayName')?.touched">This feild can not be empty!</p>
+            </div>
+            <div class="flexboxEnd">
+                <h2><span>Username:</span>{{user.username}}</h2>
+            </div>
+        </div>
+        <div class="card aboutMe" >
+            <div class="editWrap aboutMe" #about>
+                <h3>About me:</h3>
+                <ion-icon name="create-outline" *ngIf="canEdit()" (click)="edit('description')"></ion-icon>
+            </div>
+            <p #descripitonTxt>{{user.profileDescription}}</p>
+            <div class="aboutMeEdit" #aboutEdit hidden>
+                <form [formGroup]="aboutForm" class="aboutForm" (ngSubmit)="changeAboutMe()">
+                    <textarea  class=""  id="aboutMe" placeholder="aboutMe" [formControlName]="'aboutMe'"></textarea>
+                    <button type="submit" class="btn btn-filled" >Ok</button>
+                </form>
+            </div>
+        </div>
+        <div class="card myKarma">
+            <h5>My karma:</h5>
+            <section>
+                <button class="btn-wrapper" [attr.upvoted]="true">
+                    <ion-icon name="caret-up" class="karma_btn "></ion-icon>
+                </button>
+                <p class="karma_num">{{user.karma}}</p>
+                <button class="btn-wrapper" [attr.downvoted]="true">
+                    <ion-icon name="caret-down" class="karma_btn "></ion-icon>
+                </button>
+            </section>
+        </div>
+        <div class="card myCommunities">
+            <h5>My communities:</h5>
+            <ul class="communities_list">
+                <li *ngFor="let community of communities; let i=index">
+                    <div class="community_list_item">
+                        <div class="test_img"></div>
+                        <h4 [routerLink]="['/Community',community.id]">{{community.name}}</h4>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="uploadImgAlert modal" #uploadModal>
+        <form [formGroup]="addImgForm" class="addImgForm" (ngSubmit)="changeImg()">
+            <div class="uploadDiv">
+                <p>Upload image:</p>
+                <label for="img" class="btn btn-light">Upload <span>
+                        <ion-icon name="cloud-upload-outline"></ion-icon>
+                    </span></label>
+                <input type="file" id="img" value="img" [formControlName]="'img'" accept="image/*" (change)="onChanged($event)">
+            </div>
+            <div class="preview"  *ngIf="previewSrc != ''"> 
+                <p>Preview:</p>
+                <img [src]="previewSrc" alt="preview">
+            </div>
+            <button type="reset" class="btn btn-light" (click) = "cancel()">Cancel</button>
+            <button type="submit" class="btn btn-filled">Ok</button>
+        </form>
+    </div>
+</div>
