@@ -55,7 +55,7 @@ export class CommunityUsersWindowComponent implements OnInit {
   ngOnInit(): void {
 
     this.route.parent?.params.subscribe(params => {
-      this.communityId = params['id'];
+      this.communityId = params['id'] as number;
     });
 
     this.userService.getAll().subscribe( res => {
@@ -127,7 +127,7 @@ export class CommunityUsersWindowComponent implements OnInit {
             this.notBanned = this.notBanned.filter(u => u.id != user.id);
             
           },err => {
-            this.allerService.addAlert({text : "There was problem with database, please try again alter!" + user.username, type : AlertType.warning});
+            this.allerService.addAlert({text : "There was problem with database, please try again alter!", type : AlertType.warning});
           });
           
           subscription.unsubscribe();
