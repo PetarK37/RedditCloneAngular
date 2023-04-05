@@ -1,0 +1,7 @@
+<div [formGroup]="form">
+    <label [attr.for]="input.key">{{input.label}}</label>
+      <input  [formControlName]="input.key"
+                [placeholder]="input.placeholder"
+              [id]="input.key" [type]="input.type">
+    </div>
+  </div>

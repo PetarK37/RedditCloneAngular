@@ -66,6 +66,8 @@ import { SusspendAlertComponent } from './Commponents/Alert/susspend-alert/sussp
 import { NgRandomPipeModule,NgRoundPipeModule  } from 'angular-pipes';
 import { AddModeratorWindowComponent } from './Commponents/Admin-window/add-moderator-window/add-moderator-window.component';
 import { RemoveModeratorWindowComponent } from './Commponents/Admin-window/remove-moderator-window/remove-moderator-window.component';
+import { DynamicInputComponent } from './Dynamic_Input/dynamic-form/dynamic-input.component';
+import { DynamicFormComponent } from './Dynamic_Form/dynamic-form/dynamic-form.component';
 
 
 
@@ -126,6 +128,8 @@ import { RemoveModeratorWindowComponent } from './Commponents/Admin-window/remov
     SusspendAlertComponent,
     AddModeratorWindowComponent,
     RemoveModeratorWindowComponent,
+    DynamicInputComponent,
+    DynamicFormComponent,
   ],
   imports: [
     NgRoundPipeModule ,

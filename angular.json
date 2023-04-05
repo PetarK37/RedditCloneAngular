@@ -196,5 +196,8 @@
       }
     }
   },
-  "defaultProject": "redditCloneAngular"
+  "defaultProject": "redditCloneAngular",
+  "cli": {
+    "analytics": false
+  }
 }
