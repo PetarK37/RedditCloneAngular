@@ -66,8 +66,10 @@ import { SusspendAlertComponent } from './Commponents/Alert/susspend-alert/sussp
 import { NgRandomPipeModule,NgRoundPipeModule  } from 'angular-pipes';
 import { AddModeratorWindowComponent } from './Commponents/Admin-window/add-moderator-window/add-moderator-window.component';
 import { RemoveModeratorWindowComponent } from './Commponents/Admin-window/remove-moderator-window/remove-moderator-window.component';
-import { DynamicInputComponent } from './Dynamic_Input/dynamic-form/dynamic-input.component';
-import { DynamicFormComponent } from './Dynamic_Form/dynamic-form/dynamic-form.component';
+import { DynamicInputComponent } from './Commponents/Dynamic_Form/dynamic_Input/dynamic-form/dynamic-input.component';
+import { DynamicFormComponent } from './Commponents/Dynamic_Form/dynamic_Form/dynamic-form/dynamic-form.component';
+import { SearchModalComponent } from './Commponents/search-modal/search-modal.component';
+import { InputFormGenerator } from './DynamicForms/InputFormGenerator';
 
 
 
@@ -130,6 +132,7 @@ import { DynamicFormComponent } from './Dynamic_Form/dynamic-form/dynamic-form.c
     RemoveModeratorWindowComponent,
     DynamicInputComponent,
     DynamicFormComponent,
+    SearchModalComponent,
   ],
   imports: [
     NgRoundPipeModule ,
@@ -150,6 +153,7 @@ import { DynamicFormComponent } from './Dynamic_Form/dynamic-form/dynamic-form.c
       AuthenticationServiceService,
       CommunityService,
       PostServiceService,
+      InputFormGenerator,
     ],
   bootstrap: [AppComponent]
 })

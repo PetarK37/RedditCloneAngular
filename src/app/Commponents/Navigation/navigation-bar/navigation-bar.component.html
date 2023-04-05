@@ -8,9 +8,9 @@
             <option   [value]="'/Home'">Home</option>
             <option *ngFor="let c of communities"  [value]="'/Community/' + c.id">{{c.name}}</option>
         </select>
-        <div class="cretePostRow">
-            <input *ngIf="true" type="text" placeholder="Search communities" (click)="openSearchCommunitiesModal()">
-        </div>
+
+        <input *ngIf="true" type="text" placeholder="Search communities" class="search" (click)="searchModal()">
+
         <button class="flexboxEnd btn btn-light" (click) = "registerModal()">Sign up</button>
         <button class="btn btn-filled"  (click)="loginModal()">Log in</button>
     </nav>

@@ -42,6 +42,10 @@ export class NavigationBarComponent implements OnInit {
       this.ModalEvent.emit("login");
   }
 
+  searchModal(){
+    this.ModalEvent.emit("searchCommunity");
+  }
+
   registerModal(){
     this.ModalEvent.emit("register");
 }

@@ -1,0 +1,8 @@
+<div class="modal" id="modal">
+    <section class="modal-title">
+        <h2>Search communities</h2>
+        <button class="exit flexboxEnd" (click)="closeModal()">&times;</button>
+    </section>
+    <app-dynamic-form [inputs]="this.inputs"></app-dynamic-form>
+    <button class="btn btn-light" (click)="closeModal()">Cancel</button>
+</div>

@@ -9,14 +9,14 @@ import { InputFormGenerator } from 'src/app/DynamicForms/InputFormGenerator';
   styleUrls: ['./dynamic-form.component.css']
 })
 export class DynamicFormComponent implements OnInit {
-  @Input() inputs: InputBase<string|number>[] | null = [];
+  @Input() inputs: InputBase<string|number>[] = [];
   form!: FormGroup;
 
 
   constructor(private dfg: InputFormGenerator) { }
 
   ngOnInit(): void {
-    this.form = this.dfg.toFormGroup(this.inputs as InputBase<string|number>[])
+    this.form = this.dfg.toFormGroup(this.inputs)
   }
 
 }

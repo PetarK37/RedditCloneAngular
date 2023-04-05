@@ -1,16 +1,9 @@
-<div>
-    <form (ngSubmit)="onSubmit()" [formGroup]="form">
-  
+    <!-- TODO onsubmit -->
+    <form  [formGroup]="form">
       <div *ngFor="let input of inputs" class="form-row">
         <app-dynamic-input [input]="input" [form]="form"></app-dynamic-input>
       </div>
-  
       <div class="form-row">
         <button type="button" [disabled]="!form.valid">Search</button>
       </div>
     </form>
-  
-    <div *ngIf="payLoad" class="form-row">
-      
-    </div>
-  </div>
