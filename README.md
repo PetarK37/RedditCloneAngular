@@ -22,6 +22,7 @@ To start app run `npm install` and then `ng serve` for a dev server. Navigate to
 - User profile edit
 - Community edit
 - Banning users
+- Community susspend
 # TODO list everyhing(and add some inital admin credentials for people who wil try app)
 
 
