@@ -70,6 +70,7 @@ import { DynamicInputComponent } from './Commponents/Dynamic_Form/dynamic_Input/
 import { DynamicFormComponent } from './Commponents/Dynamic_Form/dynamic_Form/dynamic-form/dynamic-form.component';
 import { SearchModalComponent } from './Commponents/Search/search-modal/search-modal.component';
 import { InputFormGenerator } from './DynamicForms/InputFormGenerator';
+import { AddInputModalComponent } from './Commponents/Search/add-input-modal/add-input-modal/add-input-modal.component';
 
 
 
@@ -133,6 +134,7 @@ import { InputFormGenerator } from './DynamicForms/InputFormGenerator';
     DynamicInputComponent,
     DynamicFormComponent,
     SearchModalComponent,
+    AddInputModalComponent,
   ],
   imports: [
     NgRoundPipeModule ,

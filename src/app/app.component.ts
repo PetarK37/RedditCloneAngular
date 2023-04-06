@@ -26,16 +26,21 @@ export class AppComponent implements OnInit{
   @ViewChild(RegisterModalComponent) registerModla!: RegisterModalComponent;
   @ViewChild(AlertModalComponent) alertModal!: AlertModalComponent;
   @ViewChild(ReportAlertComponent) reportModal!: ReportAlertComponent;
-  @ViewChild(SearchModalComponent) searchModal!: SearchModalComponent;
+  @ViewChild('searchModal') searchModal!: SearchModalComponent;
+  @ViewChild('searchCommunityModal') searchCommunityModal!: SearchModalComponent;
+  
+
 
   @ViewChild('overlay') overlay!: ElementRef;
 
   openModal(intent:String){
     this.overlay.nativeElement.classList.add('active')
-    if (intent == "login"){
+    if (intent === "login"){
       this.loginModal.element.classList.add('active')
-    }else if(intent == "searchCommunity"){
-      this.searchModal.element.classList.add('active')
+    }else if(intent === "searchCommunity"){
+      this.searchCommunityModal.element.classList.add('active')
+    }else if(intent === "searchPost"){
+        this.searchModal.element.classList.add('active')
     }else{
       this.registerModla.element.classList.add('active')
     }
@@ -55,6 +60,7 @@ export class AppComponent implements OnInit{
       this.registerModla.element.classList.remove('active');
       this.reportModal.element.classList.remove('active');
       this.searchModal.element.classList.remove('active');
+      this.searchCommunityModal.element.classList.remove('active');
       this.overlay.nativeElement.classList.remove('active');
     }
 

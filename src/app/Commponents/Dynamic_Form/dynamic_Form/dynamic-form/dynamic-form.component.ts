@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { InputBase } from 'src/app/DynamicForms/InputBase';
 import { FormGroup } from '@angular/forms';
 import { InputFormGenerator } from 'src/app/DynamicForms/InputFormGenerator';
+import { AddInputModalComponent } from 'src/app/Commponents/Search/add-input-modal/add-input-modal/add-input-modal.component';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -11,8 +12,14 @@ import { InputFormGenerator } from 'src/app/DynamicForms/InputFormGenerator';
 export class DynamicFormComponent implements OnInit {
   @Input() inputs: InputBase<string|number>[] = [];
   form!: FormGroup;
+  @ViewChild(AddInputModalComponent) dialog!: AddInputModalComponent;
+  logic: string = 'AND';
+  fuzzy!: boolean;
+  @Input() intent! : string;
 
-  constructor(private dfg: InputFormGenerator) { }
+
+  constructor(private dfg: InputFormGenerator) { 
+  }
 
   ngOnInit(): void {
     this.form = this.dfg.toFormGroup(this.inputs)
@@ -20,11 +27,32 @@ export class DynamicFormComponent implements OnInit {
 
   removeElement(index: number){
     this.inputs = this.inputs.filter((element, i) => {
-        if (element.controlType === 'side-by-side' && (i === index-1)){
+        if (element.controlType === 'side-by-side' && (i === index-1) && (this,this.inputs[index].controlType === "side-by-side")){
           return false
         }else{
            return i !== index
         }
     });
+  }
+
+  
+  showModal(){
+    this.dialog.element.classList.add('active');
+  }
+  toggleLogic(){
+    if(this.logic === 'AND'){
+      this.logic = 'OR'
+    }else{
+      this.logic = 'AND'
+    }
+  }
+
+  toggleFuzzy(){
+    this.fuzzy = !this.fuzzy
+  }
+
+  addFeild(data: any){
+    this.logic = data.logic
+    this.inputs.push(...this.dfg.getFeild(data.feild))
   }
 }

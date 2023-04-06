@@ -1,4 +1,4 @@
-import { Component, OnInit ,Output,EventEmitter,ElementRef} from '@angular/core';
+import { Component, OnInit ,Output,EventEmitter,ElementRef, Input} from '@angular/core';
 import { InputBase } from 'src/app/DynamicForms/InputBase';
 import { InputFormGenerator } from 'src/app/DynamicForms/InputFormGenerator';
 
@@ -10,6 +10,10 @@ import { InputFormGenerator } from 'src/app/DynamicForms/InputFormGenerator';
 export class SearchModalComponent implements OnInit {
 
   @Output() CloseModal = new EventEmitter();
+  @Input() title!: string
+  @Input() intent!: string
+
+
   element!: HTMLElement;
   ifg!: InputFormGenerator;
   inputs!: InputBase<string|number>[]
@@ -18,7 +22,14 @@ export class SearchModalComponent implements OnInit {
   this.ifg = ifg}
 
   ngOnInit(): void {
-    this.inputs = this.ifg.getCommunityFeilds()
+      if (this.intent === "community"){
+        this.inputs = this.ifg.getFeild('communityName')
+      }else if(this.intent === "post"){
+        this.inputs = this.ifg.getFeild('postTitle') 
+      }
+      else{
+        this.inputs = []
+      }
   }
 
   closeModal(){
