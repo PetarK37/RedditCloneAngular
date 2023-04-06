@@ -6,7 +6,7 @@ import { AlertService } from './Services/alert.service';
 import { AlertModalComponent } from './Commponents/Alert/alert-modal/alert-modal.component';
 import { AuthenticationServiceService } from './Services/authentication-service.service';
 import { ReportAlertComponent } from './Commponents/Alert/report-alert/report-alert.component';
-import { SearchModalComponent } from './Commponents/search-modal/search-modal.component';
+import { SearchModalComponent } from './Commponents/Search/search-modal/search-modal.component';
 
 @Component({
   selector: 'app-root',

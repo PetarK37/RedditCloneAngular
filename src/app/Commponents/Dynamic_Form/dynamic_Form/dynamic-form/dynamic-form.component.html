@@ -1,9 +1,13 @@
     <!-- TODO onsubmit -->
-    <form  [formGroup]="form">
-      <div *ngFor="let input of inputs" class="form-row">
+    <form  [formGroup]="form" class="dynamic-form">
+      <div *ngFor="let input of inputs;let indexOfelement=index;" class="form-row flex">
         <app-dynamic-input [input]="input" [form]="form"></app-dynamic-input>
+        <button *ngIf="inputs.length === indexOfelement+1 && inputs.length === 1" type="button" class="btn btn-light addBtn">
+          <ion-icon name="add-outline"></ion-icon>
+      </button>
+      <button *ngIf="(inputs.length > 1 && input.controlType !=='side-by-side' )|| (input.controlType==='side-by-side' && indexOfelement%2 !== 0)" type="button" class="btn btn-light removeBtn" (click)="removeElement(indexOfelement)">
+        <ion-icon name="close-outline"></ion-icon>
+    </button>
       </div>
-      <div class="form-row">
-        <button type="button" [disabled]="!form.valid">Search</button>
-      </div>
+        <button type="button" class="btn-serach btn btn-filled" [disabled]="!form.valid">Search</button>
     </form>

@@ -1,0 +1,49 @@
+.dynamic-form{
+    max-width: 500px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-row, app-dynamic-input{
+    flex:0 0 auto;
+    justify-content: center;
+}
+
+
+.btn-serach{
+    flex:1 0 100%;
+}
+
+
+.addBtn{
+    padding: 5px;
+    font-size: large;
+    border-color:  var(--hover-dark);
+    background-color: var( --seccondary-color);
+}
+
+.addBtn:hover{
+    background-color: var(--hover-dark);
+    color: var(--background-color);
+    border-color:  var(--hover-dark);
+}
+
+.addBtn > ion-icon{
+    color: var(--background-color);
+}
+.removeBtn{
+    padding: 5px;
+    font-size: large;
+}
+
+.removeBtn:hover{
+    background-color: var(--warninrg-color);
+    color: var(--background-color);
+}
+
+.removeBtn:hover > ion-icon{
+    color: var(--background-color);
+}

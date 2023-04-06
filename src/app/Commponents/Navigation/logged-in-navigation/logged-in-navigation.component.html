@@ -8,7 +8,7 @@
             <option [value]="'/Home'">Home</option>
             <option *ngFor="let c of communities" [value]="'/Community/' + c.id">{{c.name}}</option>
         </select>
-
+        <input *ngIf="true" type="text" placeholder="Search communities" class="search" (click)="searchModal()">
         <div class="flexboxEnd loggedInMenuSelect" (click) = "openMenu()">
             <div class="img_overlay">
                 <img [src]="getImg()" class="profileImg">

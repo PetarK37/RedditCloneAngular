@@ -68,7 +68,7 @@ import { AddModeratorWindowComponent } from './Commponents/Admin-window/add-mode
 import { RemoveModeratorWindowComponent } from './Commponents/Admin-window/remove-moderator-window/remove-moderator-window.component';
 import { DynamicInputComponent } from './Commponents/Dynamic_Form/dynamic_Input/dynamic-form/dynamic-input.component';
 import { DynamicFormComponent } from './Commponents/Dynamic_Form/dynamic_Form/dynamic-form/dynamic-form.component';
-import { SearchModalComponent } from './Commponents/search-modal/search-modal.component';
+import { SearchModalComponent } from './Commponents/Search/search-modal/search-modal.component';
 import { InputFormGenerator } from './DynamicForms/InputFormGenerator';
 
 

@@ -12,11 +12,19 @@ export class DynamicFormComponent implements OnInit {
   @Input() inputs: InputBase<string|number>[] = [];
   form!: FormGroup;
 
-
   constructor(private dfg: InputFormGenerator) { }
 
   ngOnInit(): void {
     this.form = this.dfg.toFormGroup(this.inputs)
   }
 
+  removeElement(index: number){
+    this.inputs = this.inputs.filter((element, i) => {
+        if (element.controlType === 'side-by-side' && (i === index-1)){
+          return false
+        }else{
+           return i !== index
+        }
+    });
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit ,Output,EventEmitter,ElementRef} from '@angular/core';
 import { InputBase } from 'src/app/DynamicForms/InputBase';
+import { InputFormGenerator } from 'src/app/DynamicForms/InputFormGenerator';
 
 @Component({
   selector: 'app-search-modal',
@@ -10,33 +11,19 @@ export class SearchModalComponent implements OnInit {
 
   @Output() CloseModal = new EventEmitter();
   element!: HTMLElement;
+  ifg!: InputFormGenerator;
   inputs!: InputBase<string|number>[]
 
-  constructor(element: ElementRef){this.element = element.nativeElement;}
+  constructor(element: ElementRef,ifg: InputFormGenerator){this.element = element.nativeElement;
+  this.ifg = ifg}
 
   ngOnInit(): void {
-    this.inputs = [new InputBase<string>({
-      key: "communityName",
-      placeHolder: "Community name",
-      type: "text",
-      order: 1,
-      required: true,
-      value: ""
-    }),
-    new InputBase<string>({
-      key: "communityDesv",
-      placeHolder: "Community description",
-      type: "text",
-      order: 2,
-      required: true,
-      value: ""
-    })]
+    this.inputs = this.ifg.getCommunityFeilds()
   }
 
   closeModal(){
     this.CloseModal.emit(this.element);
     this.element.classList.remove('active')
-    this.inputs = []
   }
 
 }

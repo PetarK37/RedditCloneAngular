@@ -19,6 +19,8 @@ export class LoggedInNavigationComponent implements OnInit {
   user! : UserResponse;
 
   @ViewChild(LoggedInNavMenuComponent) menu! : LoggedInNavMenuComponent;
+  @Output() ModalEvent = new EventEmitter();
+
 
   constructor(private route :ActivatedRoute,
     private communityService : CommunityService,
@@ -61,6 +63,10 @@ export class LoggedInNavigationComponent implements OnInit {
 
   getImg() : string{
     return this.imgService.getImg(this.user.avatarUrl);
+  }
+
+  searchModal(){
+    this.ModalEvent.emit("searchCommunity");
   }
 
 }
