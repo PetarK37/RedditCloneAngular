@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { InputBase } from './InputBase';
+import { ValidatorFn, AbstractControl } from '@angular/forms';
 
 
 @Injectable()
@@ -9,8 +10,8 @@ export class InputFormGenerator{
         const group : any = {}
 
         inputs.forEach(input => {
-            group[input.key] = input.required ? new FormControl(input.value || '', Validators.required)
-            : new FormControl(input.value || '');
+            group[input.key] = input.required ? new FormControl(input.value || '', input.type === 'number' ?  [Validators.required , Validators.pattern(/^\d+$/)] : Validators.required)
+            : new FormControl(input.value || '',input.type === 'number' ? Validators.pattern(/^\d+$/) : null);
 });
 return new FormGroup(group);
     }
@@ -186,5 +187,4 @@ return new FormGroup(group);
         controlType: "one-row"
       })
     }
-
 }

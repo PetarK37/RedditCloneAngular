@@ -33,11 +33,13 @@ export class DynamicFormComponent implements OnInit {
            return i !== index
         }
     });
+    this.form = this.dfg.toFormGroup(this.inputs)
   }
 
   
   showModal(){
     this.dialog.element.classList.add('active');
+    
   }
   toggleLogic(){
     if(this.logic === 'AND'){
@@ -54,5 +56,16 @@ export class DynamicFormComponent implements OnInit {
   addFeild(data: any){
     this.logic = data.logic
     this.inputs.push(...this.dfg.getFeild(data.feild))
+    this.form = this.dfg.toFormGroup(this.inputs)
+  }
+
+  search(){
+    const keys = Object.keys(this.form.controls);
+    const searchParam : Record<string, any> = {fuzzy: this.fuzzy,logic: this.logic}
+    for (const key of keys) {
+      const value = this.form.controls[key].value;
+      searchParam[key] = value;
+    }
+    console.log(searchParam)
   }
 }

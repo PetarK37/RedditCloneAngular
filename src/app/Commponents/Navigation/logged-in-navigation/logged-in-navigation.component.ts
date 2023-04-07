@@ -47,6 +47,10 @@ export class LoggedInNavigationComponent implements OnInit {
           this.user = this.authService.getCurrentUser();
         }})
         this.currentRoute = this.location.path();
+
+        this.router.events.subscribe(event => { 
+          this.currentRoute = this.location.path();;
+        });
     }
 
 

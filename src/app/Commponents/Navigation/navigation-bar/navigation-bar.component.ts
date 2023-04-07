@@ -33,6 +33,10 @@ export class NavigationBarComponent implements OnInit {
         this.currentRoute = this.location.path()})
         });
         this.currentRoute = this.location.path();
+
+        this.router.events.subscribe(event => { 
+          this.currentRoute = this.location.path();;
+        });
     }
 
     navigateTo(value: string) {

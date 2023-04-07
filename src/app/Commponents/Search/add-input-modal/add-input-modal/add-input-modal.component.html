@@ -4,6 +4,7 @@
     <div class="wrapper">
         <label for="select">Feild:</label>
         <select class="select" id="select" (change)="setFeild($any($event.target!).value)">
+            <option [value]="">Please choose</option>
             <option *ngFor="let f of avelableFeilds()" [value]="f.key"  >{{f.name}}</option>
         </select>
         <label for="select">Logic:</label>

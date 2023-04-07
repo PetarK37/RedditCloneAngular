@@ -1,4 +1,3 @@
-    <!-- TODO onsubmit -->
     <div class="checkbox">
       <label>
         Fuzzy search?
@@ -8,7 +7,7 @@
     <form  [formGroup]="form" class="dynamic-form">
       <div *ngFor="let input of inputs;let indexOfelement=index;" class="form-row">
         <div class="input-wrapper">
-          <app-dynamic-input [input]="input" [form]="form"></app-dynamic-input>
+          <app-dynamic-input [ngClass]= "{  'invalid' : !form.get(input.key)?.valid && this.form.get(input.key)?.touched}" [input]="input" [form]="form"></app-dynamic-input>
           <button *ngIf="((inputs.length === indexOfelement+1 && inputs.length === 1) || (inputs.length === indexOfelement+1 && inputs.length === 2 && input.controlType === 'side-by-side'))" type="button" class="btn btn-light addBtn" (click)="showModal()">
             <ion-icon name="add-outline"></ion-icon>
           </button>
@@ -18,6 +17,6 @@
         </div>
     <button type="button" class="btn btn-filled logic" *ngIf="(inputs.length > 1) && ((indexOfelement === 1 && input.controlType == 'side-by-side' && inputs.length === 4) || (indexOfelement === 0 && input.controlType != 'side-by-side'))" (click)="toggleLogic()">{{logic}}</button>
       </div>
-        <button type="button" class="btn-serach btn btn-filled" [disabled]="!form.valid">Search</button>
+        <button type="button" class="btn-serach btn btn-filled" [disabled]="!form.valid" (click)="search()">Search</button>
     </form>
 <app-add-input-modal [intent]="intent" (okEvent)="addFeild($event)" [logic] = "logic"[containsFeild]="inputs[inputs.length-1].key" #dialog id="dialog" class="" ></app-add-input-modal>

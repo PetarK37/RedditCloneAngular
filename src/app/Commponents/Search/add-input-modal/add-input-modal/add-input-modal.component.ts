@@ -7,7 +7,6 @@ import { Component, ElementRef, Input, OnInit, Output ,EventEmitter} from '@angu
 })
 export class AddInputModalComponent implements OnInit {
 
-  // TODO fix select bugs
   feild!: string;
   @Output() okEvent = new EventEmitter<any>();
   feilds! : any[];
@@ -39,13 +38,17 @@ postFeilds = [{key: 'postTitle',name:'Post title'},{key: 'postTxt', name: "Post 
   }
 
   ok(){
-    this.element.classList.remove('active');
-    this.okEvent.emit({feild: this.feild,logic:this.logic})
+    if(this.feild !== "" && this.logic != ""){
+      this.element.classList.remove('active');
+      this.okEvent.emit({feild: this.feild,logic:this.logic})
+      this.feild = ""
+    }
   }
 
   setFeild(feild :string){
     this.feild = feild;
   }
+
   setLogic(logic :string){
     this.logic = logic;
   }
