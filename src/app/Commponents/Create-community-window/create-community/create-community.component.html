@@ -6,6 +6,14 @@
             <p class="errorLabel" *ngIf="!form.get('name')?.valid && form.get('name')?.touched">This feild can not be empty!</p>
             <textarea class="" id="content" rows="12" placeholder="Description" [formControlName]="'description'"[ngClass]= "{  'invalid' : !form.get('description')?.valid && form.get('description')?.touched}"></textarea>
             <p class="errorLabel" *ngIf="!form.get('description')?.valid && form.get('description')?.touched">This feild can not be empty!</p>
+            <div class="uploadDiv">
+                <p>Upload pdf:</p>
+                <p class="pdfName">{{pdfName}}</p>
+                <label for="pdf" class="btn btn-light">Upload <span>
+                        <ion-icon name="cloud-upload-outline"></ion-icon>
+                    </span></label>
+                <input type="file" id="pdf" value="pdf" [formControlName]="'pdf'" accept="application/pdf" (change)="onPdfChanged($event)">
+            </div>
             <div class="todoArea">
                 <div class="todoInput">
                     <input [formControlName]="'flairs'" type="text" placeholder="Add Flare">

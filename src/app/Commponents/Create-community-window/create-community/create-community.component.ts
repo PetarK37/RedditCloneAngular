@@ -18,12 +18,17 @@ export class CreateCommunityComponent implements OnInit {
   flairs : Flair[] = [];
   form! : FormGroup;
 
+  // TODO pdf file sending to back if not needed
+  selectedPdfFile!: File;
+  pdfName = ''
+
   constructor(private communityService : CommunityService ,private fb: FormBuilder,private alertService : AlertService,private router : Router) {
     this.form = this.fb.group({
 			name :new FormControl(null, Validators.required), 
       description: new FormControl(null, Validators.required),
       rules: new FormControl(''),
       flairs : new FormControl(''),
+      pdf: new FormControl()
     });
    }
 
@@ -36,6 +41,7 @@ export class CreateCommunityComponent implements OnInit {
       description : '',
       rules : [],
       flairs : [],
+      pdf: this.selectedPdfFile
     }
     
     dto.name = this.form.value.name.trim();
@@ -106,5 +112,14 @@ export class CreateCommunityComponent implements OnInit {
         this.rules.splice(i,1);
       }
     }
+  }
+
+  onPdfChanged(event : any){
+    if((event.target)?.files[0].size > 2000000){
+      this.alertService.addAlert({text : "File is too large(limit is 2mb)!",  type : AlertType.warning});
+      return;
+    }
+    this.selectedPdfFile = (event.target)?.files[0];
+    this.pdfName = (event.target)?.files[0].name;
   }
 }

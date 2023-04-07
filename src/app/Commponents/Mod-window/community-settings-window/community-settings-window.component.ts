@@ -21,8 +21,8 @@ export class CommunitySettingsWindowComponent implements OnInit {
   @ViewChild ('descripitonTxt') descripitonTxt!: ElementRef;
   rules :string[] = [];
   flairs : Flair[] = [];
-
-
+  selectedPdfFile!: File;
+  pdfName!: string;
   descriptionForm!: FormGroup;
   flairsForm!: FormGroup;
   rulesForm!: FormGroup;
@@ -67,7 +67,8 @@ export class CommunitySettingsWindowComponent implements OnInit {
       name : this.community.name,
       description : this.community.description,
       rules : this.rules,
-      flairs : this.flairs
+      flairs : this.flairs,
+      pdf: this.pdfName === '' ? undefined : this.selectedPdfFile
     }
   
     dto.description = this.descriptionForm.value.description;
@@ -157,7 +158,8 @@ export class CommunitySettingsWindowComponent implements OnInit {
       name : this.community.name,
       description : this.community.description,
       rules : this.rules,
-      flairs : this.flairs
+      flairs : this.flairs,
+      pdf: this.selectedPdfFile
     }
 
     this.communityService.updateCommunity( dto,this.community.id).subscribe(res => {
@@ -173,7 +175,8 @@ export class CommunitySettingsWindowComponent implements OnInit {
       name : this.community.name,
       description : this.community.description,
       rules : this.rules,
-      flairs : this.flairs
+      flairs : this.flairs,
+      pdf: this.selectedPdfFile
     }
 
     this.communityService.updateCommunity( dto,this.community.id).subscribe(res => {
@@ -183,6 +186,16 @@ export class CommunitySettingsWindowComponent implements OnInit {
       this.alertService.addAlert({text : "Something went wrong, please try again later!",  type : AlertType.warning});
     });
   }
+
+  onPdfChanged(event : any){
+    if((event.target)?.files[0].size > 2000000){
+      this.alertService.addAlert({text : "File is too large(limit is 2mb)!",  type : AlertType.warning});
+      return;
+    }
+    this.selectedPdfFile = (event.target)?.files[0];
+    this.pdfName = (event.target)?.files[0].name;
+  }
+
 
 
 }

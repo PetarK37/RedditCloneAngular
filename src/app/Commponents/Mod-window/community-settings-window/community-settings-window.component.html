@@ -15,6 +15,14 @@
                 <form [formGroup]="descriptionForm" class="descriptionForm" (ngSubmit)="changeDescription()">
                     <textarea  class=""  id="description" placeholder="description" [formControlName]="'description'"></textarea>
                     <button type="submit" class="btn btn-filled" >Ok</button>
+                    <div class="uploadDiv">
+                        <p>Change pdf:</p>
+                        <p class="pdfName">{{pdfName}}</p>
+                        <label for="pdf" class="btn btn-light">Upload <span>
+                                <ion-icon name="cloud-upload-outline"></ion-icon>
+                            </span></label>
+                        <input type="file" id="pdf" value="pdf" [formControlName]="'pdf'" accept="application/pdf" (change)="onPdfChanged($event)">
+                    </div>
                 </form>
             </div>
         </div>

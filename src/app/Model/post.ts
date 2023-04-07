@@ -20,4 +20,5 @@ export interface PostRequest {
     imgPath: string | null;
     hasAFlair: Flair | null;
     communityId: number;
+    pdf : File | null
 }

@@ -8,14 +8,16 @@ export interface CommunityResponse{
     creationDate:Date,
     rules:string[],
     flairs:Flair[],
-    moderators: ModeratorResponse[]
+    moderators: ModeratorResponse[],
+    pdfLink: string
 }
 
 export interface CommuntyRequest{
-    name: string;
-    description: string;
-    rules: string[];
-    flairs: Flair[];
+    name: string,
+    description: string,
+    rules: string[],
+    flairs: Flair[],
+    pdf: File|undefined;
 }
 
 export interface SusspendReason{

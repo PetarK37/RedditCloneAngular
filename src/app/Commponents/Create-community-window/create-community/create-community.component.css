@@ -123,3 +123,33 @@ button[type="submit"]{
 .removeBtn:hover > ion-icon{
     color: var(--background-color);
 }
+
+.pdfName{
+    font-size: small;
+}
+
+.uploadDiv{
+    display: flex;
+    align-items: center;
+    min-width: 600px;
+    justify-content: space-between;
+    font-size: larger;   
+}
+
+.uploadDiv label{
+    min-width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.uploadDiv ion-icon{
+    font-size: larger;
+}
+
+input[type="file"] { 
+opacity: 0; 
+z-index: -1;
+position: absolute; 
+}
