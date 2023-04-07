@@ -1,0 +1,49 @@
+.confirmDialog{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    gap: 15px;
+    flex-wrap:wrap;
+    width: 500px;
+}
+
+h4{
+    font-size: 1.5em;
+}
+
+p{
+    font-size: 0.8em;
+    color: var(--seccondary-color);
+}
+
+.confirmDialog > *{
+    flex-basis: 61%;
+}
+
+.confirmDialog > button{
+    flex: 0 1 40%;
+}
+
+.select{
+    font-size: large;
+    border-radius: 5px;
+    width: 300px;
+    padding: 8px;
+    text-align: center;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px
+}
+
+label{
+    margin-top: 10px;
+    font-size: large;
+}

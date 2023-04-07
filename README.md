@@ -8,7 +8,7 @@ To run this project you will need following library's:
 - [Angular ](https://angular.io/) version 13.3.0.
 - [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
 
-To start app run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. You will also need runnig backend wich I have wrote in this [springApp](https://github.com/PetarK37/RedditCloneSpring)
+To start app run `npm install` and then `ng serve` for a dev server. Navigate to `http://localhost:4200/`. You will also need runnig backend wich I have wrote in this [springApp](https://github.com/PetarK37/RedditCloneSpring)
 
 ## Features
 - LogIn/Register
@@ -22,6 +22,7 @@ To start app run `ng serve` for a dev server. Navigate to `http://localhost:4200
 - User profile edit
 - Community edit
 - Banning users
+- Community susspend
 # TODO list everyhing(and add some inital admin credentials for people who wil try app)
 
 

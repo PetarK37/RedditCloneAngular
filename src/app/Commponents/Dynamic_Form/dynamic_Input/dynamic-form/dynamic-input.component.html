@@ -1,0 +1,13 @@
+   <div [ngSwitch]="input.controlType" class="wrapper"[formGroup]="form">
+    <label *ngSwitchCase="'one-row'" [attr.for]="input.key">{{input.label}}</label>
+    <input  [formControlName]="input.key"
+    *ngSwitchCase="'one-row'"
+              [placeholder]="input.placeHolder"
+            [id]="input.key" [type]="input.type">
+
+    <label *ngSwitchCase="'side-by-side'" [attr.for]="input.key">{{input.label}}</label>
+    <input  [formControlName]="input.key" class="side-by-side"
+      *ngSwitchCase="'side-by-side'"
+        [placeholder]="input.placeHolder"
+          [id]="input.key" [type]="input.type">           
+   </div>
