@@ -2,7 +2,7 @@
     <h3>About community:</h3>
     <p class="description">{{community.description}}</p>
     <p class="createdOn"> creation date: {{community.creationDate | date: 'dd.MM.yy'}}</p>
-    <button class="btn btn-light" [routerLink]="['Pdf/' + community.pdfLink]">Pdf description</button>
+    <button class="btn btn-light" [routerLink]="['Pdf/' + community.pdfFileName]">Pdf description</button>
 </div>
 
 <!-- TODO add pdf route and support on back -->

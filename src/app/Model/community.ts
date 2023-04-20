@@ -9,7 +9,7 @@ export interface CommunityResponse{
     rules:string[],
     flairs:Flair[],
     moderators: ModeratorResponse[],
-    pdfLink: string
+    pdfFileName: string
 }
 
 export interface CommuntyRequest{
@@ -17,7 +17,7 @@ export interface CommuntyRequest{
     description: string,
     rules: string[],
     flairs: Flair[],
-    pdf: File|undefined;
+    pdfFile: File|undefined;
 }
 
 export interface SusspendReason{

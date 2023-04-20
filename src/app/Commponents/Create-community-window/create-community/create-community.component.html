@@ -9,10 +9,10 @@
             <div class="uploadDiv">
                 <p>Upload pdf:</p>
                 <p class="pdfName">{{pdfName}}</p>
-                <label for="pdf" class="btn btn-light">Upload <span>
+                <label for="pdfFile" class="btn btn-light">Upload <span>
                         <ion-icon name="cloud-upload-outline"></ion-icon>
                     </span></label>
-                <input type="file" id="pdf" value="pdf" [formControlName]="'pdf'" accept="application/pdf" (change)="onPdfChanged($event)">
+                <input type="file" id="pdfFile" value="pdfFile" [formControlName]="'pdfFile'" accept="application/pdf" (change)="onPdfChanged($event)">
             </div>
             <div class="todoArea">
                 <div class="todoInput">

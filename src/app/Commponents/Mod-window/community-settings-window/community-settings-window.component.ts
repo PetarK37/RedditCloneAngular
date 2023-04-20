@@ -68,7 +68,7 @@ export class CommunitySettingsWindowComponent implements OnInit {
       description : this.community.description,
       rules : this.rules,
       flairs : this.flairs,
-      pdf: this.pdfName === '' ? undefined : this.selectedPdfFile
+      pdfFile: this.pdfName === '' ? undefined : this.selectedPdfFile
     }
   
     dto.description = this.descriptionForm.value.description;
@@ -159,7 +159,7 @@ export class CommunitySettingsWindowComponent implements OnInit {
       description : this.community.description,
       rules : this.rules,
       flairs : this.flairs,
-      pdf: this.selectedPdfFile
+      pdfFile: this.selectedPdfFile
     }
 
     this.communityService.updateCommunity( dto,this.community.id).subscribe(res => {
@@ -176,7 +176,7 @@ export class CommunitySettingsWindowComponent implements OnInit {
       description : this.community.description,
       rules : this.rules,
       flairs : this.flairs,
-      pdf: this.selectedPdfFile
+      pdfFile: this.selectedPdfFile
     }
 
     this.communityService.updateCommunity( dto,this.community.id).subscribe(res => {

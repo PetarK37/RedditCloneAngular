@@ -17,8 +17,6 @@ export class CreateCommunityComponent implements OnInit {
   rules :string[] = [];
   flairs : Flair[] = [];
   form! : FormGroup;
-
-  // TODO pdf file sending to back if not needed
   selectedPdfFile!: File;
   pdfName = ''
 
@@ -28,7 +26,7 @@ export class CreateCommunityComponent implements OnInit {
       description: new FormControl(null, Validators.required),
       rules: new FormControl(''),
       flairs : new FormControl(''),
-      pdf: new FormControl()
+      pdfFile: new FormControl()
     });
    }
 
@@ -36,25 +34,26 @@ export class CreateCommunityComponent implements OnInit {
   }
 
   submit(){
-    const dto : CommuntyRequest = {
-      name :'',
-      description : '',
-      rules : [],
-      flairs : [],
-      pdf: this.selectedPdfFile
-    }
     
-    dto.name = this.form.value.name.trim();
-    dto.description = this.form.value.description.trim();
-    dto.rules = this.rules;
-    dto.flairs = this.flairs;
+    const formData = new FormData();
+    formData.append('name',this.form.value.name.trim())
+    formData.append('description',this.form.value.description.trim())
+    formData.append('pdfFile',this.selectedPdfFile)
+
+    for(let rule of this.rules){
+      formData.append('rules',rule)
+    }
+    for (let flair of this.flairs){
+      formData.append('flairs',JSON.stringify(flair))
+    }
 
     if(this.flairs.length == 0){
       this.alertService.addAlert({text:  'You must add atleast one flair!', type: AlertType.warning});
       return;
     }
 
-    this.communityService.crateCommunity(dto).subscribe( res => {
+
+    this.communityService.crateCommunity(formData).subscribe( res => {
       this.alertService.addAlert({text:  'Community created successfully', type: AlertType.success});
       this.form.reset();
       this.router.navigate(['/Community/' + res.id]);

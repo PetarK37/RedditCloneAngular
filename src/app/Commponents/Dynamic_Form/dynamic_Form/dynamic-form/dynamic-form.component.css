@@ -91,3 +91,8 @@ app-add-input-modal {
 app-add-input-modal.active{
     transform: translate(-50%,-50%) scale(1);
 }
+.muted{
+    color: var(--devider);
+    text-align: center;
+    margin: 15px 0px;
+}

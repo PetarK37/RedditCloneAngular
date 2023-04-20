@@ -11,6 +11,8 @@ export class CommunityService {
 
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
 
+  private headersMultipart = new HttpHeaders({'enctype': 'multipart/form-data'});
+
   constructor(private http: HttpClient, private config: ConfigService) {
   
    }
@@ -26,8 +28,8 @@ export class CommunityService {
    getOne(id: number): Observable<CommunityResponse> {
      return this.http.get<CommunityResponse>(this.config.communities_url + '/' + id);}
 
-    crateCommunity(dto: CommuntyRequest): Observable<CommunityResponse> {
-      return this.http.post<CommunityResponse>(this.config.communities_url, JSON.stringify(dto), {headers: this.headers});
+    crateCommunity(formData: FormData): Observable<CommunityResponse> {
+      return this.http.post<CommunityResponse>(this.config.communities_url, formData, {headers: this.headersMultipart});
     }
 
     updateCommunity(dto: CommuntyRequest,id : number): Observable<CommunityResponse> {
