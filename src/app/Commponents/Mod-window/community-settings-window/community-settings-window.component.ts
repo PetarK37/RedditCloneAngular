@@ -63,17 +63,27 @@ export class CommunitySettingsWindowComponent implements OnInit {
   }
 
   changeDescription(){
-    const dto : CommuntyRequest = {
-      name : this.community.name,
-      description : this.community.description,
-      rules : this.rules,
-      flairs : this.flairs,
-      pdfFile: this.pdfName === '' ? undefined : this.selectedPdfFile
+    
+    const formData = new FormData();
+    formData.append('name',this.community.name.trim())
+    formData.append('description',this.descriptionForm.value.description.trim())
+    if(this.selectedPdfFile !== undefined){
+      formData.append('pdfFile', this.selectedPdfFile)
+    }
+
+    for(let rule of this.rules){
+      formData.append('rules',rule)
+    }
+    for (let flair of this.flairs){
+      formData.append('flairs',JSON.stringify(flair))
+    }
+
+    if(this.flairs.length == 0){
+      this.alertService.addAlert({text:  'You must add atleast one flair!', type: AlertType.warning});
+      return;
     }
   
-    dto.description = this.descriptionForm.value.description;
-
-    this.communityService.updateCommunity( dto,this.community.id).subscribe(res => {
+    this.communityService.updateCommunity( formData,this.community.id).subscribe(res => {
       this.community = res;
       this.about.nativeElement.hidden = false;
       this.descripitonTxt.nativeElement.hidden = false;
@@ -154,15 +164,25 @@ export class CommunitySettingsWindowComponent implements OnInit {
   }
 
   submitFlairs(){
-    const dto : CommuntyRequest = {
-      name : this.community.name,
-      description : this.community.description,
-      rules : this.rules,
-      flairs : this.flairs,
-      pdfFile: this.selectedPdfFile
+    const formData = new FormData();
+    formData.append('name',this.community.name.trim())
+    formData.append('description',this.community.description.trim())
+    if(this.selectedPdfFile !== undefined){
+      formData.append('pdfFile', this.selectedPdfFile)
+    }
+    for(let rule of this.rules){
+      formData.append('rules',rule)
+    }
+    for (let flair of this.flairs){
+      formData.append('flairs',JSON.stringify(flair))
     }
 
-    this.communityService.updateCommunity( dto,this.community.id).subscribe(res => {
+    if(this.flairs.length == 0){
+      this.alertService.addAlert({text:  'You must add atleast one flair!', type: AlertType.warning});
+      return;
+    }
+  
+    this.communityService.updateCommunity( formData,this.community.id).subscribe(res => {
       this.community = res;
       this.alertService.addAlert({text : "Community updated!",  type : AlertType.success});
     },err => {
@@ -171,15 +191,25 @@ export class CommunitySettingsWindowComponent implements OnInit {
   }
 
   submitRules(){
-    const dto : CommuntyRequest = {
-      name : this.community.name,
-      description : this.community.description,
-      rules : this.rules,
-      flairs : this.flairs,
-      pdfFile: this.selectedPdfFile
+    const formData = new FormData();
+    formData.append('name',this.community.name.trim())
+    formData.append('description',this.community.description.trim())
+    if(this.selectedPdfFile !== undefined){
+      formData.append('pdfFile', this.selectedPdfFile)
+    }
+    for(let rule of this.rules){
+      formData.append('rules',rule)
+    }
+    for (let flair of this.flairs){
+      formData.append('flairs',JSON.stringify(flair))
     }
 
-    this.communityService.updateCommunity( dto,this.community.id).subscribe(res => {
+    if(this.flairs.length == 0){
+      this.alertService.addAlert({text:  'You must add atleast one flair!', type: AlertType.warning});
+      return;
+    }
+  
+    this.communityService.updateCommunity( formData,this.community.id).subscribe(res => {
       this.community = res;
       this.alertService.addAlert({text : "Community updated!",  type : AlertType.success});
     },err => {
