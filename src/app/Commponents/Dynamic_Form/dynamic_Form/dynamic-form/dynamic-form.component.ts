@@ -3,6 +3,7 @@ import { InputBase } from 'src/app/DynamicForms/InputBase';
 import { FormGroup } from '@angular/forms';
 import { InputFormGenerator } from 'src/app/DynamicForms/InputFormGenerator';
 import { AddInputModalComponent } from 'src/app/Commponents/Search/add-input-modal/add-input-modal/add-input-modal.component';
+import { CommunityService } from 'src/app/Services/community.service';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -18,7 +19,7 @@ export class DynamicFormComponent implements OnInit {
   @Input() intent! : string;
 
 
-  constructor(private dfg: InputFormGenerator) { 
+  constructor(private dfg: InputFormGenerator,private communityService : CommunityService) { 
   }
 
   ngOnInit(): void {
@@ -66,6 +67,9 @@ export class DynamicFormComponent implements OnInit {
       const value = this.form.controls[key].value;
       searchParam[key] = value;
     }
-    console.log(searchParam)
+    this.communityService.search(searchParam).subscribe(
+      res => { 
+        console.log(res)
+      });
   }
 }

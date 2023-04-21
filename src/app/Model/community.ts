@@ -23,3 +23,11 @@ export interface CommuntyRequest{
 export interface SusspendReason{
     reason: string;
 }
+
+export interface CommunitySearchResponse{
+    id:number,
+    name:string,
+    postCount:number,
+    avgKarma:number;
+    highlighterTxt:string
+}

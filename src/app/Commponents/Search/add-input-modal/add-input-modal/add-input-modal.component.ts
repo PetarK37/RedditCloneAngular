@@ -14,8 +14,8 @@ export class AddInputModalComponent implements OnInit {
   @Input() intent!: string;
   @Input() containsFeild!: string;
  
-  communityFeilds = [{key: 'communityName',name:'Community name'},{key: 'communityDesc', name: "Description"},{key: 'communityDescPdf', name:'Pdf description'},
-{key:'communityRules', name:"Rules" },{key: 'postCount',name: 'Post count' },{key:'avgKarma',name:'Avg karma'}]
+  communityFeilds = [{key: 'communityName',backKey: "name",name:'Community name'},{key: 'communityDescription',backKey: "description",name: "Description"},{key: 'communityDescPdfText', backKey: "pdfText",name:'Pdf description'},
+{key:'communityRules',backKey: "rules", name:"Rules" },{key: 'postCount',backKey: "postCount",name: 'Post count' },{key:'avgKarma',backKey: "avgKarma",name:'Avg karma'}]
 
 postFeilds = [{key: 'postTitle',name:'Post title'},{key: 'postTxt', name: "Post txt"},{key: 'postTxtPdf', name:'Pdf txt'},
 {key:'postCommentsTxt', name:"Comment txt" },{key: 'postKarma',name: 'Post karma' },{key:'commentCount',name:'Comment count'},{key:'postFlair',name:'Post Flair'}]
@@ -35,6 +35,7 @@ postFeilds = [{key: 'postTitle',name:'Post title'},{key: 'postTxt', name: "Post 
 
   cancel(){
     this.element.classList.remove('active');
+    this.feild = ""
   }
 
   ok(){
@@ -54,6 +55,6 @@ postFeilds = [{key: 'postTitle',name:'Post title'},{key: 'postTxt', name: "Post 
   }
 
   avelableFeilds(){
-    return this.feilds.filter(value => !this.containsFeild.includes(value.key))
+    return this.feilds.filter(value => !this.containsFeild.includes(value.backKey))
   }
 }

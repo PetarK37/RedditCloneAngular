@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CommunityResponse, CommuntyRequest, SusspendReason } from '../Model/community';
+import { CommunityResponse, CommunitySearchResponse, CommuntyRequest, SusspendReason } from '../Model/community';
 import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {ConfigService} from './config.service';
@@ -19,6 +19,14 @@ export class CommunityService {
 
    getAll(): Observable<CommunityResponse[]> {
     return this.http.get<CommunityResponse[]>(this.config.communities_url); 
+   }
+
+   search(searchParams:Record<string, any> ): Observable<CommunitySearchResponse[]> {
+    let queryParams = new HttpParams()
+    for(const key in searchParams){
+      queryParams = queryParams.append(key,searchParams[key])
+    }
+    return this.http.get<CommunitySearchResponse[]>(this.config.communities_url+ '/search',{params: queryParams}); 
    }
 
    getMy(id : number): Observable<CommunityResponse[]> {

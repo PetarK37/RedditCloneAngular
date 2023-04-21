@@ -32,7 +32,7 @@ return new FormGroup(group);
     
     feilds = {
       'communityName' : new InputBase<string>({
-        key: "communityName",
+        key: "name",
         placeHolder: "Community name",
         type: "text",
         order: 1,
@@ -41,8 +41,8 @@ return new FormGroup(group);
         controlType:'one-row'
       }),
 
-      'communityDesc': new InputBase<string>({
-        key: "communityDesc",
+      'communityDescription': new InputBase<string>({
+        key: "description",
         placeHolder: "Community description",
         type: "text",
         order: 2,
@@ -51,8 +51,8 @@ return new FormGroup(group);
         controlType: "one-row"
       }),
 
-      'communityDescPdf':new InputBase<string>({
-        key: "communityDescPdf",
+      'communityDescPdfText':new InputBase<string>({
+        key: "pdfText",
         placeHolder: "Community PDF description",
         type: "text",
         order: 3,
@@ -61,7 +61,7 @@ return new FormGroup(group);
         controlType: "one-row"
       }),
       communityRules: new InputBase<string>({
-        key: "communityRules",
+        key: "rules",
         placeHolder: "Community rules",
         type: "text",
         order: 4,

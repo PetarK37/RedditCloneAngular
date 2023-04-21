@@ -3,9 +3,9 @@
     <p>Please choose search type,logic and feild for comparison</p>
     <div class="wrapper">
         <label for="select">Feild:</label>
-        <select class="select" id="select" (change)="setFeild($any($event.target!).value)">
+        <select class="select" id="select" (change)="setFeild($any($event.target!).value)" >
             <option [value]="">Please choose</option>
-            <option *ngFor="let f of avelableFeilds()" [value]="f.key"  >{{f.name}}</option>
+            <option *ngFor="let f of avelableFeilds(); let i = index" [value]="f.key" [selected]="f.key === feild" >{{f.name}}</option>
         </select>
         <label for="select">Logic:</label>
         <select class="select" id="select" (change)="setLogic($any($event.target!).value)">

@@ -38,7 +38,10 @@ export class CreateCommunityComponent implements OnInit {
     const formData = new FormData();
     formData.append('name',this.form.value.name.trim())
     formData.append('description',this.form.value.description.trim())
-    formData.append('pdfFile',this.selectedPdfFile)
+    if(this.selectedPdfFile !== undefined){
+      formData.append('pdfFile',this.selectedPdfFile)
+    }  
+  
 
     for(let rule of this.rules){
       formData.append('rules',rule)

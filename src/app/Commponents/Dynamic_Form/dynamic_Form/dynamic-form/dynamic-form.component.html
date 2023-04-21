@@ -4,7 +4,7 @@
     <input type="checkbox" (click)="toggleFuzzy()">
   </label>
 </div>
-<p class="muted">Surrond your search terms in * if you want match query (ex. *has this word*)</p>
+<p class="muted">Surrond your search terms in * if you want phrase query (ex. *has this word*)</p>
     <form  [formGroup]="form" class="dynamic-form">
       <div *ngFor="let input of inputs;let indexOfelement=index;" class="form-row">
         <div class="input-wrapper">
