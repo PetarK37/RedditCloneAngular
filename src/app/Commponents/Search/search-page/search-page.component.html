@@ -1,6 +1,13 @@
 <div class="mainView">
 <div class="main_content" *ngIf="communitySearchResults !== undefined">
-         <app-community-search-resault-card *ngFor="let community of communitySearchResults" [community]="community"></app-community-search-resault-card>
+    <h2>Found {{communitySearchResults.length}} resault{{communitySearchResults.length === 1 ? "" : "s"}}:</h2>
+    <app-community-search-resault-card *ngFor="let community of communitySearchResults" [community]="community"></app-community-search-resault-card>
+</div>
+<div class="main_content" *ngIf="communitySearchResults === undefined || communitySearchResults.length === 0">
+    <img src="../../../../assets/logo/Icon.jpg" alt="logo">
+    <div class="text">
+        <h2>No resaults found!</h2>
+    </div>
 </div>
 </div>
 
