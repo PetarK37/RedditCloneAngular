@@ -1,0 +1,19 @@
+.main_content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+    grid-area: centerContent;
+}
+
+
+.mainView{
+    height: 100vh;
+    overflow: auto;
+    display: grid;
+    column-gap: 20px;
+    grid-template-areas: "leftSide centerContent rightSide"
+                            "btm btm btm";
+    grid-template-columns: 1fr 1.5fr 1fr;
+    grid-template-rows: 1fr 15vh ;
+}

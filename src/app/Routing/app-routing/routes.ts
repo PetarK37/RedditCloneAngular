@@ -15,6 +15,7 @@ import { CommunitySettingsWindowComponent } from 'src/app/Commponents/Mod-window
 import { CommunityUsersWindowComponent } from 'src/app/Commponents/Mod-window/community-users-window/community-users-window.component';
 import { ModSettingsWindowComponent } from 'src/app/Commponents/Mod-window/mod-settings-window/mod-settings-window.component';
 import { PostWindowComponent } from 'src/app/Commponents/Post_page/post-window/post-window.component';
+import { SearchPageComponent } from 'src/app/Commponents/Search/search-page/search-page.component';
 import { EditPasswordComponent} from 'src/app/Commponents/Settings-window/edit-profile/edit-password.component';
 import { SettingsWindowUserComponent } from 'src/app/Commponents/Settings-window/settings-window-user/settings-window-user.component';
 import { UserProfileWindowComponent } from 'src/app/Commponents/Settings-window/user-profile-window/user-profile-window.component';
@@ -45,6 +46,7 @@ export const routes :Routes = [
 		{path: 'Users',component: CommunityUsersWindowComponent},
 		{path : 'Reports', component: CommunityReportsWindowComponent}
 	]},
+	{path: 'Search',component : SearchPageComponent},
 	{path: 'notLoggedIn', component: NotLoggedInComponent},
 	{path: 'NotAuthorized', component : NotAutjorizedComponent},
 	{path: '', redirectTo: 'Home', pathMatch: 'full'},

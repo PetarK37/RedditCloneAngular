@@ -4,7 +4,6 @@ import { AlertType } from 'src/app/Model/alertMessage';
 import { LoginRequest } from 'src/app/Model/user';
 import { AlertService } from 'src/app/Services/alert.service';
 import { AuthenticationServiceService } from 'src/app/Services/authentication-service.service';
-import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Component({

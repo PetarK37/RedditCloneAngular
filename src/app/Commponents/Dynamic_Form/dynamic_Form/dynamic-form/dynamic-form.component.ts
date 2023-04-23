@@ -1,9 +1,12 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, Output,OnInit, ViewChild } from '@angular/core';
 import { InputBase } from 'src/app/DynamicForms/InputBase';
 import { FormGroup } from '@angular/forms';
 import { InputFormGenerator } from 'src/app/DynamicForms/InputFormGenerator';
 import { AddInputModalComponent } from 'src/app/Commponents/Search/add-input-modal/add-input-modal/add-input-modal.component';
-import { CommunityService } from 'src/app/Services/community.service';
+import { SearchService} from 'src/app/Services/search.service';
+import {  Router } from '@angular/router';
+import { EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-dynamic-form',
@@ -17,9 +20,11 @@ export class DynamicFormComponent implements OnInit {
   logic: string = 'AND';
   fuzzy!: boolean;
   @Input() intent! : string;
+  @Output() closeEvent = new EventEmitter();
 
 
-  constructor(private dfg: InputFormGenerator,private communityService : CommunityService) { 
+
+  constructor(private dfg: InputFormGenerator,private searchService : SearchService, private router: Router) { 
   }
 
   ngOnInit(): void {
@@ -40,8 +45,8 @@ export class DynamicFormComponent implements OnInit {
   
   showModal(){
     this.dialog.element.classList.add('active');
-    
   }
+
   toggleLogic(){
     if(this.logic === 'AND'){
       this.logic = 'OR'
@@ -67,9 +72,13 @@ export class DynamicFormComponent implements OnInit {
       const value = this.form.controls[key].value;
       searchParam[key] = value;
     }
-    this.communityService.search(searchParam).subscribe(
-      res => { 
-        console.log(res)
-      });
+    this.searchService.search(searchParam,"Community").subscribe(res => {
+      if(res){
+        this.closeEvent.emit();
+        this.form.reset();
+        this.router.navigate(['/Search']);
+      }
+    })
+    
   }
 }

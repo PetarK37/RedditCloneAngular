@@ -71,6 +71,8 @@ import { DynamicFormComponent } from './Commponents/Dynamic_Form/dynamic_Form/dy
 import { SearchModalComponent } from './Commponents/Search/search-modal/search-modal.component';
 import { InputFormGenerator } from './DynamicForms/InputFormGenerator';
 import { AddInputModalComponent } from './Commponents/Search/add-input-modal/add-input-modal/add-input-modal.component';
+import { SearchPageComponent } from './Commponents/Search/search-page/search-page.component';
+import { CommunitySearchResaultCardComponent } from './Commponents/Search/community-search-resault-card/community-search-resault-card.component';
 
 
 
@@ -135,6 +137,8 @@ import { AddInputModalComponent } from './Commponents/Search/add-input-modal/add
     DynamicFormComponent,
     SearchModalComponent,
     AddInputModalComponent,
+    SearchPageComponent,
+    CommunitySearchResaultCardComponent,
   ],
   imports: [
     NgRoundPipeModule ,

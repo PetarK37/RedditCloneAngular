@@ -1,0 +1,20 @@
+<div class="card resault_card">
+    <div class="card_content">
+        <div class="row">
+            <p>Community name:</p>
+            <strong [routerLink]="['/Community',community.id]">{{community.name}}</strong>
+        </div>
+        <div class="row">
+            <p>PostCount:</p>
+            <strong>{{community.postCount}}</strong>
+        </div>
+        <div class="row">
+            <p>AvrageKarma: </p>
+            <strong>{{community.avgKarma}}</strong>
+        </div>
+        <div class="higlighter">
+            <h4>Higlight:</h4>
+            <p [innerHTML]= "sanitizer.bypassSecurityTrustHtml(community.highlighterTxt)"></p>
+        </div>
+    </div>
+</div>
