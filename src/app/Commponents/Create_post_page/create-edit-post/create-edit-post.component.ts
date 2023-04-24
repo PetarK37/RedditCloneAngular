@@ -43,7 +43,7 @@ export class CreateEditPostComponent implements OnInit {
       img : new FormControl(''),
       community: new FormControl(null,Validators.required),
       flair: new FormControl(null),
-      pdf: new FormControl()
+      pdfFile: new FormControl()
 		});
    }
 
@@ -93,20 +93,18 @@ export class CreateEditPostComponent implements OnInit {
       }
 
       submit(){
-        // TODO add support on back
-         const dto :  PostRequest = {
-           title: '',
-           text: '',
-           imgPath: this.post == undefined  ?  null : this.post.imgPath,
-           hasAFlair: null,
-           communityId: -1,
-           pdf: this.selectedPdfFile
-         }
+        const formData = new FormData();
+        formData.append('title',this.form.value.title.trim())
+        formData.append('text',this.form.value.content.trim())
+        if(this.selectedPdfFile !== undefined){
+          formData.append('pdfFile',this.selectedPdfFile)
+        } 
+        if(this.post !== undefined && this.post !== null){
+          formData.append('imgPath', this.post.imgPath)
+        }
+        formData.append('hasAFlair',JSON.stringify(this.flairs[this.form.value.flair]))
+        formData.append('communityId',this.community.id.toString())
 
-          dto.title = this.form.value.title;
-          dto.text = this.form.value.content;
-          dto.hasAFlair = this.flairs[this.form.value.flair];
-          dto.communityId = this.community.id;
 
 
         if((this.form.value.community != null && this.form.value.flair == null) || ( this.form.value.flair == null)){
@@ -118,18 +116,15 @@ export class CreateEditPostComponent implements OnInit {
         }
         else{
           if(!this.form.get('img')?.touched){
-            this.sendPost(dto);
+            this.sendPost(formData);
           }else{
           const imgData: FormData = new FormData();
-
             imgData.append('img', this.selectedImgFile!, this.selectedImgFile?.name);
-
             this.imgService.saveImg(imgData).subscribe( res => {
-            dto.imgPath = res.fileName;
-            this.sendPost(dto)});
-        }
-      }  
-        }
+              formData.delete('imgPath')
+              formData.append('imgPath',res.fileName)
+              this.sendPost(formData)});
+        } }  }
 
         onChanged(event : any){
           if((event.target)?.files[0].size > 2000000){
@@ -160,7 +155,7 @@ export class CreateEditPostComponent implements OnInit {
           this.pdfName = (event.target)?.files[0].name;
         }
 
-        sendPost(dto : PostRequest){
+        sendPost(dto : FormData){
           if(this.post == undefined){
             this.postService.createPost(dto).subscribe(
                 res => {
