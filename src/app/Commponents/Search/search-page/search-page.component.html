@@ -1,9 +1,9 @@
 <div class="mainView">
-<div class="main_content" *ngIf="searchResaults !== undefined && searchResaults[0].name">
+<div class="main_content" *ngIf="searchResaults !== undefined && (searchResaults[0] && searchResaults[0].name)">
     <h2>Found {{searchResaults.length}} resault{{searchResaults.length === 1 ? "" : "s"}}:</h2>
     <app-community-search-resault-card *ngFor="let community of searchResaults " [community]="community"></app-community-search-resault-card>
 </div>
-<div class="main_content" *ngIf="searchResaults !== undefined && searchResaults[0].title">
+<div class="main_content" *ngIf="searchResaults !== undefined && (searchResaults[0] && searchResaults[0].title)">
     <h2>Found {{searchResaults.length}} resault{{searchResaults.length === 1 ? "" : "s"}}:</h2>
     <app-post-search-resalut-card *ngFor="let post of searchResaults" [post]="post"></app-post-search-resalut-card>
 </div>
