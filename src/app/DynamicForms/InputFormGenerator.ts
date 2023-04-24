@@ -21,8 +21,6 @@ return new FormGroup(group);
           return [this.feilds['avgKarmaFrom'],this.feilds['avgKarmaTo']]
         }else if(name.includes('postCount')){
           return [this.feilds['postCountFrom'],this.feilds['postCountTo']]
-        }else if(name.includes('commentCount')){
-          return [this.feilds['commentCountFrom'],this.feilds['commentCountTo']]
         }else if(name.includes('postKarma')){
           return [this.feilds['postKarmaFrom'],this.feilds['postKarmaTo']]
         }else{
@@ -83,8 +81,8 @@ return new FormGroup(group);
         placeHolder: "Posts count to",
         type: "number",
         order: 6,
-        required: true,
-        value: 0,
+        required: false,
+        value: 100000000,
         controlType: "side-by-side"
       }),
       'avgKarmaFrom' : new InputBase<number>({
@@ -101,12 +99,12 @@ return new FormGroup(group);
         placeHolder: "Avg karma to",
         type: "number",
         order: 7,
-        required: true,
-        value: 0,
+        required: false,
+        value: 100000000,
         controlType: "side-by-side"
       }), 
       'postTitle' : new InputBase<string>({
-        key: "postTitle",
+        key: "title",
         placeHolder: "Post title",
         type: "text",
         order: 1,
@@ -115,7 +113,7 @@ return new FormGroup(group);
         controlType:'one-row'
       }), 
       'postTxt' : new InputBase<string>({
-        key: "postTxt",
+        key: "text",
         placeHolder: "Post txt",
         type: "text",
         order: 2,
@@ -124,7 +122,7 @@ return new FormGroup(group);
         controlType: "one-row"
       }), 
       'postTxtPdf' :  new InputBase<string>({
-        key: "postTxtPdf",
+        key: "pdfText",
         placeHolder: "Community PDF description",
         type: "text",
         order: 3,
@@ -132,15 +130,15 @@ return new FormGroup(group);
         value: "",
         controlType: "one-row"
       }),
-      'postCommentsTxt' :  new InputBase<string>({
-        key: "postCommentsTxt",
-        placeHolder: "Comments txt",
-        type: "text",
-        order: 4,
-        required: true,
-        value: "",
-        controlType: "one-row"
-      }),
+      // 'postCommentsTxt' :  new InputBase<string>({
+      //   key: "postCommentsTxt",
+      //   placeHolder: "Comments txt",
+      //   type: "text",
+      //   order: 4,
+      //   required: true,
+      //   value: "",
+      //   controlType: "one-row"
+      // }),
       'postKarmaFrom' : new InputBase<number>({
         key: "postKarmaFrom",
         placeHolder: "Post karma from",
@@ -155,30 +153,30 @@ return new FormGroup(group);
         placeHolder: "Posts karma to",
         type: "number",
         order: 6,
-        required: true,
-        value: 0,
+        required: false,
+        value: 100000000,
         controlType: "side-by-side"
       }),
-      'commentCountFrom' : new InputBase<number>({
-        key: "commentCountFrom",
-        placeHolder: "Comment count from",
-        type: "number",
-        order: 6,
-        required: true,
-        value: 0,
-        controlType: "side-by-side"
-      }),
-      'commentCountTo' : new InputBase<number>({
-        key: "commentCountTo",
-        placeHolder: "Comment count to",
-        type: "number",
-        order: 7,
-        required: true,
-        value: 0,
-        controlType: "side-by-side"
-      }),
+      // 'commentCountFrom' : new InputBase<number>({
+      //   key: "commentCountFrom",
+      //   placeHolder: "Comment count from",
+      //   type: "number",
+      //   order: 6,
+      //   required: true,
+      //   value: 0,
+      //   controlType: "side-by-side"
+      // }),
+      // 'commentCountTo' : new InputBase<number>({
+      //   key: "commentCountTo",
+      //   placeHolder: "Comment count to",
+      //   type: "number",
+      //   order: 7,
+      //   required: true,
+      //   value: 0,
+      //   controlType: "side-by-side"
+      // }),
       'postFlair' :  new InputBase<string>({
-        key: "postFlair",
+        key: "flair",
         placeHolder: "Flair",
         type: "text",
         order: 8,

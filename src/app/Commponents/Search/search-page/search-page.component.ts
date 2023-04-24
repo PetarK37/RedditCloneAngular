@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommunitySearchResponse } from 'src/app/Model/community';
+import { PostSearchResponse } from 'src/app/Model/post';
 import { SearchService } from 'src/app/Services/search.service';
 
 
@@ -10,13 +11,13 @@ import { SearchService } from 'src/app/Services/search.service';
 })
 export class SearchPageComponent implements OnInit {
 
-  communitySearchResults!: CommunitySearchResponse[];
+  searchResaults!: any[];
 
   constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
-    this.searchService.searchResults$.subscribe((results: CommunitySearchResponse[]) => {
-      this.communitySearchResults = results;
+    this.searchService.searchResults$.subscribe((results: CommunitySearchResponse[]| PostSearchResponse[]) => {
+      this.searchResaults = results;
     });
   }
 

@@ -8,8 +8,9 @@
             <option [value]="'/Home'">Home</option>
             <option *ngFor="let c of communities" [value]="'/Community/' + c.id">{{c.name}}</option>
         </select>
-        <input *ngIf="!currentRoute.includes('Community')" type="text" placeholder="Search communities" class="search" (click)="searchModal()">
-        <input *ngIf="currentRoute.includes('Community')" type="text" placeholder="Search Posts from this community" class="search" (click)="searchPostsModal()">        <div class="flexboxEnd loggedInMenuSelect" (click) = "openMenu()">
+        <input *ngIf="!currentRoute.includes('Community')" type="text" placeholder="Search communities" class="search" (click)="searchModal()" readonly >
+        <input *ngIf="currentRoute.includes('Community')" type="text" placeholder="Search Posts from this community" class="search" (click)="searchPostsModal()" readonly>        
+        <div class="flexboxEnd loggedInMenuSelect" (click) = "openMenu()">
             <div class="img_overlay">
                 <img [src]="getImg()" class="profileImg">
             </div>

@@ -22,3 +22,12 @@ export interface PostRequest {
     communityId: number;
     pdf : File | null
 }
+
+export interface PostSearchResponse{
+    id:number,
+    title:string,
+    text:string,
+    flair:string,
+    karma:number;
+    highlighterTxt:string
+}

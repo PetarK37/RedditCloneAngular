@@ -17,8 +17,8 @@ export class AddInputModalComponent implements OnInit {
   communityFeilds = [{key: 'communityName',backKey: "name",name:'Community name'},{key: 'communityDescription',backKey: "description",name: "Description"},{key: 'communityDescPdfText', backKey: "pdfText",name:'Pdf description'},
 {key:'communityRules',backKey: "rules", name:"Rules" },{key: 'postCount',backKey: "postCount",name: 'Post count' },{key:'avgKarma',backKey: "avgKarma",name:'Avg karma'}]
 
-postFeilds = [{key: 'postTitle',name:'Post title'},{key: 'postTxt', name: "Post txt"},{key: 'postTxtPdf', name:'Pdf txt'},
-{key:'postCommentsTxt', name:"Comment txt" },{key: 'postKarma',name: 'Post karma' },{key:'commentCount',name:'Comment count'},{key:'postFlair',name:'Post Flair'}]
+postFeilds = [{key: 'postTitle',backKey: "title",name:'Post title'},{key: 'postTxt',backKey: "text", name: "Post txt"},{key: 'postTxtPdf',backKey: "pdfText", name:'Pdf txt'},
+,{key: 'postKarma',name: 'Post karma' },{key:'postFlair',backKey: "flair",name:'Post Flair'}]
 
   element!: HTMLElement;
   constructor( element : ElementRef) {

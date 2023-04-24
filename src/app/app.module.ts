@@ -73,6 +73,7 @@ import { InputFormGenerator } from './DynamicForms/InputFormGenerator';
 import { AddInputModalComponent } from './Commponents/Search/add-input-modal/add-input-modal/add-input-modal.component';
 import { SearchPageComponent } from './Commponents/Search/search-page/search-page.component';
 import { CommunitySearchResaultCardComponent } from './Commponents/Search/community-search-resault-card/community-search-resault-card.component';
+import { PostSearchResalutCardComponent } from './Commponents/Search/post-search-resalut-card/post-search-resalut-card.component';
 
 
 
@@ -139,6 +140,7 @@ import { CommunitySearchResaultCardComponent } from './Commponents/Search/commun
     AddInputModalComponent,
     SearchPageComponent,
     CommunitySearchResaultCardComponent,
+    PostSearchResalutCardComponent,
   ],
   imports: [
     NgRoundPipeModule ,

@@ -6,6 +6,7 @@ import { AddInputModalComponent } from 'src/app/Commponents/Search/add-input-mod
 import { SearchService} from 'src/app/Services/search.service';
 import {  Router } from '@angular/router';
 import { EventEmitter } from '@angular/core';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -19,16 +20,17 @@ export class DynamicFormComponent implements OnInit {
   @ViewChild(AddInputModalComponent) dialog!: AddInputModalComponent;
   logic: string = 'AND';
   fuzzy!: boolean;
+  communityId: string = '0'
   @Input() intent! : string;
   @Output() closeEvent = new EventEmitter();
 
 
-
-  constructor(private dfg: InputFormGenerator,private searchService : SearchService, private router: Router) { 
+  constructor(private dfg: InputFormGenerator,private searchService : SearchService, private router: Router,private location: Location) { 
   }
 
   ngOnInit(): void {
     this.form = this.dfg.toFormGroup(this.inputs)
+    
   }
 
   removeElement(index: number){
@@ -72,13 +74,22 @@ export class DynamicFormComponent implements OnInit {
       const value = this.form.controls[key].value;
       searchParam[key] = value;
     }
-    this.searchService.search(searchParam,"Community").subscribe(res => {
-      if(res){
-        this.closeEvent.emit();
-        this.form.reset();
-        this.router.navigate(['/Search']);
-      }
-    })
+    if(this.location.path().includes('Community')){   
+        this.searchService.search(searchParam,this.location.path().substring(this.location.path().lastIndexOf('/')+1)).subscribe(res => {
+            if(res){
+              this.closeEvent.emit();
+              this.form.reset();
+              this.router.navigate(['/Search']);
+            }
+        })}else{
+      this.searchService.search(searchParam,this.intent).subscribe(res => {
+        if(res){
+          this.closeEvent.emit();
+          this.form.reset();
+          this.router.navigate(['/Search']);
+        }
+      })  
+    }
     
   }
 }
