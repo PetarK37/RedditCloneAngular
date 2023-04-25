@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommunityResponse } from 'src/app/Model/community';
+import { PdfService } from 'src/app/Services/pdf.service';
 
 @Component({
   selector: 'app-about-community-card',
@@ -10,9 +11,13 @@ export class AboutCommunityCardComponent implements OnInit {
 
   @Input() community!: CommunityResponse;
   
-  constructor() { }
+  constructor(private pdfService : PdfService) { }
 
   ngOnInit(): void {
+  }
+
+  getPdf(){
+    return this.pdfService.getPdf(this.community.pdfFileName)
   }
 
 }

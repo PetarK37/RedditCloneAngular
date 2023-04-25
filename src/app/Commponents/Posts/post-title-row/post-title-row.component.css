@@ -25,8 +25,12 @@ h2,.username,.img_overlay,.commnuity_card_row{
    grid-template-rows: fit-content fit-content;
 }
 
+.pdf{
+    font-size: small;
+}
+
 .flare{
-    padding: 3px;
+    padding: 8px;
 }
 
 .posted_by{

@@ -6,6 +6,7 @@
         <div class="title_div">
             <h2 [routerLink]="['/Post',post.id]">{{post.title}}</h2>
             <button class="btn btn-filled flare" (click)="search()">{{post.hasAFlair.name}}</button>
+            <a *ngIf="post.pdfFileName" class="btn btn-light" [href]="getPdf()">Get pdf</a>
             <p class="posted_by">posted by:</p>
             <div class="flex">
                 <div class="img_overlay">

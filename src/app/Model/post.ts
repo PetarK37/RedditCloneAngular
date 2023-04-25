@@ -11,7 +11,9 @@ export interface PostResponse{
     hasAFlair:Flair,
     postedBy:UserResponse,
     community:CommunityResponse,
-    karma:number
+    karma:number,
+    pdfFileName: string
+
 }
 
 export interface PostRequest {

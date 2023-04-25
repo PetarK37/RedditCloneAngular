@@ -2,7 +2,5 @@
     <h3>About community:</h3>
     <p class="description">{{community.description}}</p>
     <p class="createdOn"> creation date: {{community.creationDate | date: 'dd.MM.yy'}}</p>
-    <button class="btn btn-light" [routerLink]="['Pdf/' + community.pdfFileName]">Pdf description</button>
+    <a *ngIf="community.pdfFileName" class="btn btn-light" [href]="getPdf()">Pdf description</a>
 </div>
-
-<!-- TODO add pdf route and support on back -->
