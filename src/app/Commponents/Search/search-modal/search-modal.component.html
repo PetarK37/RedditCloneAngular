@@ -1,0 +1,8 @@
+<div class="modal loginModal" id="modal">
+    <section class="modal-title">
+        <h2>{{this.title}}</h2>
+        <button class="exit flexboxEnd" (click)="closeModal()">&times;</button>
+    </section>
+    <app-dynamic-form [intent] = "intent" (closeEvent) = "closeModal()" [inputs]="this.inputs"></app-dynamic-form>
+    <button * class="btn btn-light cencel" (click)="closeModal()">Cancel</button>
+</div>

@@ -23,6 +23,7 @@ export class ConfigService{
     private _whoami_url = this._users_url + '/auth/whoami';
     private _reactions_url = this._api_url + '/Reactions';
     private _img_url = this._api_url + '/img';
+    private _pdf_url = this._api_url + '/pdf';
     private _flairs_url = this._api_url + '/Flairs';
     private _moderaors_url = this._api_url + '/Moderators';
     private _banned_url = this._api_url + '/Bans';
@@ -90,6 +91,10 @@ export class ConfigService{
     }
     get img_url(){
         return this._img_url;
+    }
+
+    get pdf_url(){
+        return this._pdf_url;
     }
 
     get whoami_url(){

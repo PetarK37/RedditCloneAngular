@@ -8,16 +8,26 @@ export interface CommunityResponse{
     creationDate:Date,
     rules:string[],
     flairs:Flair[],
-    moderators: ModeratorResponse[]
+    moderators: ModeratorResponse[],
+    pdfFileName: string
 }
 
 export interface CommuntyRequest{
-    name: string;
-    description: string;
-    rules: string[];
-    flairs: Flair[];
+    name: string,
+    description: string,
+    rules: string[],
+    flairs: Flair[],
+    pdfFile: File|undefined;
 }
 
 export interface SusspendReason{
     reason: string;
+}
+
+export interface CommunitySearchResponse{
+    id:number,
+    name:string,
+    postCount:number,
+    avgKarma:number;
+    highlighterTxt:string
 }

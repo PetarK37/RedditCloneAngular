@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PostRequest, PostResponse } from '../Model/post';
+import { PostResponse } from '../Model/post';
 import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {ConfigService} from './config.service';
@@ -10,6 +10,8 @@ import {ConfigService} from './config.service';
 export class PostServiceService {
 
   private headers = new HttpHeaders().set('Content-Type','application/json').set('Access-Control-Allow-Origin',"http://localhost:4200");
+  private headersMultipart = new HttpHeaders({'enctype': 'multipart/form-data'})
+
 
   constructor(private http: HttpClient, private config: ConfigService) {
   
@@ -56,13 +58,12 @@ export class PostServiceService {
     return this.http.get<PostResponse[]>(this.config.post_url_community_top(id));
   }
 
-  createPost(dto : PostRequest) : Observable<PostResponse> {
-    return this.http.post<PostResponse>(this.config.post_url, JSON.stringify(dto), {headers: this.headers, responseType: 'json'});
+  createPost(formData: FormData) : Observable<PostResponse> {
+    return this.http.post<PostResponse>(this.config.post_url, formData, {headers: this.headersMultipart, responseType: 'json'});
   }
 
-  
-  editPost(dto : PostRequest,id : number) : Observable<PostResponse> {
-    return this.http.put<PostResponse>(this.config.editPost(id), JSON.stringify(dto), {headers: this.headers, responseType: 'json'});
+  editPost(formData: FormData,id : number) : Observable<PostResponse> {
+    return this.http.put<PostResponse>(this.config.editPost(id), formData, {headers: this.headersMultipart, responseType: 'json'});
   }
 
   deletePost(id : number) : Observable<PostResponse> {

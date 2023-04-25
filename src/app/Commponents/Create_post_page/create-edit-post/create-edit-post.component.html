@@ -18,6 +18,14 @@
             <p>Preview:</p>
             <img [src]="previewSrc" alt="preview">
         </div>
+        <div class="uploadDiv">
+            <p>Upload pdf:</p>
+            <p class="pdfName">{{pdfName}}</p>
+            <label for="pdfFile" class="btn btn-light">Upload <span>
+                    <ion-icon name="cloud-upload-outline"></ion-icon>
+                </span></label>
+            <input type="file" id="pdfFile" value="pdfFile" [formControlName]="'pdfFile'" accept="application/pdf" (change)="onPdfChanged($event)">
+        </div>
         <select class="select"  (change) = "selectCommunity($any($event.target).value)" [formControlName]="'community'" [style.visibility]="(shouldHideSelect()) ? 'hidden' : 'visible' " [ngClass]= "{  'invalid' : !form.get('community')?.valid && form.get('community')?.touched}">
             <option  disabled [ngValue]="null" >Select Community:</option>
             <option *ngFor="let c of communities; let i = index" [ngValue]="i">{{c.name}}</option>

@@ -14,6 +14,7 @@ import { OpenReportModalService } from 'src/app/Services/OpenReportModalService'
 export class PostCardComponent implements OnInit {
   
   @Input() post!: PostResponse;
+  
 
   constructor(private imgService :ImgService,private authService : AuthenticationServiceService,private alertService : AlertService,private reportModalService : OpenReportModalService) { }
 

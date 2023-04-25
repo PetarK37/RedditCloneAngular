@@ -3,7 +3,6 @@
     <div class="communityTitle">
         <div class="test_img"></div>
         <p >{{community?.name}}</p>
-        <p class="flexboxEnd">{{ {} | random: 0: 10 | round }}k  Members</p>
     </div>
     <p class="muted">Are you shure that you want to susspend this community?</p>
     <form [formGroup]="form" (submit)="submit()">

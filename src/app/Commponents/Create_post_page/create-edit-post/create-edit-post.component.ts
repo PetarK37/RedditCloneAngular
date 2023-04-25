@@ -28,8 +28,10 @@ export class CreateEditPostComponent implements OnInit {
   communities! : CommunityResponse[];
   flairs! : Flair[];
   form!: FormGroup;
-  selectedFile!: File;
+  selectedImgFile!: File;
+  selectedPdfFile!: File;
   previewSrc = '';
+  pdfName = ''
 
 
   constructor(private communityService : CommunityService ,private fb: FormBuilder,private alertService : AlertService,
@@ -41,6 +43,7 @@ export class CreateEditPostComponent implements OnInit {
       img : new FormControl(''),
       community: new FormControl(null,Validators.required),
       flair: new FormControl(null),
+      pdfFile: new FormControl()
 		});
    }
 
@@ -90,19 +93,18 @@ export class CreateEditPostComponent implements OnInit {
       }
 
       submit(){
-        
-         const dto :  PostRequest = {
-           title: '',
-           text: '',
-           imgPath: this.post == undefined  ?  null : this.post.imgPath,
-           hasAFlair: null,
-           communityId: -1
-         }
+        const formData = new FormData();
+        formData.append('title',this.form.value.title.trim())
+        formData.append('text',this.form.value.content.trim())
+        if(this.selectedPdfFile !== undefined){
+          formData.append('pdfFile',this.selectedPdfFile)
+        } 
+        if(this.post !== undefined && this.post !== null){
+          formData.append('imgPath', this.post.imgPath)
+        }
+        formData.append('hasAFlair',JSON.stringify(this.flairs[this.form.value.flair]))
+        formData.append('communityId',this.community.id.toString())
 
-          dto.title = this.form.value.title;
-          dto.text = this.form.value.content;
-          dto.hasAFlair = this.flairs[this.form.value.flair];
-          dto.communityId = this.community.id;
 
 
         if((this.form.value.community != null && this.form.value.flair == null) || ( this.form.value.flair == null)){
@@ -114,25 +116,22 @@ export class CreateEditPostComponent implements OnInit {
         }
         else{
           if(!this.form.get('img')?.touched){
-            this.sendPost(dto);
+            this.sendPost(formData);
           }else{
           const imgData: FormData = new FormData();
-
-            imgData.append('img', this.selectedFile!, this.selectedFile?.name);
-
+            imgData.append('img', this.selectedImgFile!, this.selectedImgFile?.name);
             this.imgService.saveImg(imgData).subscribe( res => {
-            dto.imgPath = res.fileName;
-            this.sendPost(dto)});
-        }
-      }  
-        }
+              formData.delete('imgPath')
+              formData.append('imgPath',res.fileName)
+              this.sendPost(formData)});
+        } }  }
 
         onChanged(event : any){
           if((event.target)?.files[0].size > 2000000){
             this.alertService.addAlert({text : "File is too large(limit is 2mb)!",  type : AlertType.warning});
             return;
           }
-          this.selectedFile = (event.target)?.files[0];
+          this.selectedImgFile = (event.target)?.files[0];
 
           const reader = new FileReader();
      
@@ -141,14 +140,22 @@ export class CreateEditPostComponent implements OnInit {
             reader.readAsDataURL(file);
            
             reader.onload = () => {
-          
               this.previewSrc = reader.result as string;
             };
           
           }
         }
 
-        sendPost(dto : PostRequest){
+        onPdfChanged(event : any){
+          if((event.target)?.files[0].size > 2000000){
+            this.alertService.addAlert({text : "File is too large(limit is 2mb)!",  type : AlertType.warning});
+            return;
+          }
+          this.selectedPdfFile = (event.target)?.files[0];
+          this.pdfName = (event.target)?.files[0].name;
+        }
+
+        sendPost(dto : FormData){
           if(this.post == undefined){
             this.postService.createPost(dto).subscribe(
                 res => {

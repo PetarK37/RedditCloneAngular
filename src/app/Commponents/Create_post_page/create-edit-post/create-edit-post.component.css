@@ -107,3 +107,7 @@ button[type="submit"]{
     margin-right: auto;
     margin-left: auto;
 }
+
+.pdfName{
+    font-size: small;
+}

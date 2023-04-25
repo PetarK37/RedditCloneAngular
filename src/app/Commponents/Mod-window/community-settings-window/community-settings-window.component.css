@@ -46,8 +46,13 @@
     justify-content: center;
     text-align: center;
     flex-direction: row;
+    flex-wrap: wrap;
     gap:5px;
     font-size: 1.4em;
+}
+
+.pdfName{
+    font-size: small;
 }
 
 .aboutMeEdit{
@@ -188,6 +193,40 @@ textarea{
 .saveBtn{
     margin-top: auto;
     font-size: 1.2em;
+}
+
+input[type="text"]{
+    display: block;
+    font-size: 1em;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    padding: 15px 8px;
+}
+
+    .uploadDiv{
+        display: flex;
+        align-items: center;
+        min-width: 600px;
+        justify-content: space-between;
+        font-size: large;   
+    }
+
+    .uploadDiv label{
+        min-width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .uploadDiv ion-icon{
+        font-size: larger;
+    }
+
+input[type="file"] { 
+    opacity: 0; 
+    z-index: -1;
+    position: absolute; 
 }
 
 

@@ -35,7 +35,7 @@ app-navigation-bar{
     pointer-events: all;
 }
 
-app-login-modal,app-register-modal,app-report-alert{
+app-login-modal,app-register-modal,app-report-alert,app-search-modal{
     position : fixed;
     top: 50%;
     left: 50%;
@@ -43,7 +43,7 @@ app-login-modal,app-register-modal,app-report-alert{
     transition: 150ms ease-in-out;
     z-index: 10;
 }
-app-login-modal.active,app-register-modal.active,app-report-alert.active{
+app-login-modal.active,app-register-modal.active,app-report-alert.active,app-search-modal.active{
     transform: translate(-50%,-50%) scale(1);
 }
 

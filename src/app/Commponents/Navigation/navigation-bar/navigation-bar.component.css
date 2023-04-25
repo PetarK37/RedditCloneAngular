@@ -30,3 +30,12 @@
     text-align: center;
 }
 
+.search{
+    border: 2px solid var(--card-color);
+    font-size: large;
+    padding: 10px 3px;
+    min-width: 40%;
+    border-radius: 10px;
+    margin: auto;
+}
+

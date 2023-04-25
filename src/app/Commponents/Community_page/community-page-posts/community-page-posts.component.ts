@@ -35,7 +35,9 @@ export class CommunityPagePostsComponent implements OnInit, OnChanges {
   
   ngOnChanges(){
     this.postService.getAllByCommunity(this.community.id).subscribe(
-      res => { this.posts = res}
+      res => { this.posts = res},error => {
+        this.posts = []
+      }
     );
     this.isLoggedIn = this.authService.isLoggedIn();
   }

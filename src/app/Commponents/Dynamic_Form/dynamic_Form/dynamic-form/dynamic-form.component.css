@@ -1,0 +1,98 @@
+.dynamic-form{
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-wrapper{
+    display: flex;
+    max-width:500px;
+}
+
+app-dynamic-input{
+    flex: 1 1 auto;
+}
+
+.form-row{
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    gap: 5px;
+    max-width: 100%;
+}
+
+.logic{
+    display: block;
+    font-size: larger;
+    min-width:  100%
+}
+
+.btn-serach{
+    flex:1 0 100%;
+}
+
+
+.addBtn{
+    padding: 5px;
+    font-size: large;
+    border-color:  var(--hover-dark);
+    background-color: var( --seccondary-color);
+}
+
+.addBtn:hover{
+    background-color: var(--hover-dark);
+    color: var(--background-color);
+    border-color:  var(--hover-dark);
+}
+
+.addBtn > ion-icon{
+    color: var(--background-color);
+}
+.removeBtn{
+    padding: 5px;
+    font-size: large;
+}
+
+.removeBtn:hover{
+    background-color: var(--warninrg-color);
+    color: var(--background-color);
+}
+
+.removeBtn:hover > ion-icon{
+    color: var(--background-color);
+}
+
+.checkbox{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.checkbox > label{
+    font-size: x-large;
+}
+
+.checkbox > label > input{
+    width: 20px;
+    height: 20px;
+}
+app-add-input-modal {
+    z-index: 1;
+    position: absolute;
+    position : fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    transition: 150ms ease-in-out;
+    z-index: 10;
+}
+app-add-input-modal.active{
+    transform: translate(-50%,-50%) scale(1);
+}
+.muted{
+    color: var(--devider);
+    text-align: center;
+    margin: 15px 0px;
+}

@@ -1,0 +1,10 @@
+h2{
+    font-size: 1.6em;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.cencel{
+    width: 100%;
+}

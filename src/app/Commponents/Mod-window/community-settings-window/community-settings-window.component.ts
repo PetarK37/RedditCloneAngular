@@ -21,8 +21,8 @@ export class CommunitySettingsWindowComponent implements OnInit {
   @ViewChild ('descripitonTxt') descripitonTxt!: ElementRef;
   rules :string[] = [];
   flairs : Flair[] = [];
-
-
+  selectedPdfFile!: File;
+  pdfName!: string;
   descriptionForm!: FormGroup;
   flairsForm!: FormGroup;
   rulesForm!: FormGroup;
@@ -63,16 +63,27 @@ export class CommunitySettingsWindowComponent implements OnInit {
   }
 
   changeDescription(){
-    const dto : CommuntyRequest = {
-      name : this.community.name,
-      description : this.community.description,
-      rules : this.rules,
-      flairs : this.flairs
+    
+    const formData = new FormData();
+    formData.append('name',this.community.name.trim())
+    formData.append('description',this.descriptionForm.value.description.trim())
+    if(this.selectedPdfFile !== undefined){
+      formData.append('pdfFile', this.selectedPdfFile)
+    }
+
+    for(let rule of this.rules){
+      formData.append('rules',rule)
+    }
+    for (let flair of this.flairs){
+      formData.append('flairs',JSON.stringify(flair))
+    }
+
+    if(this.flairs.length == 0){
+      this.alertService.addAlert({text:  'You must add atleast one flair!', type: AlertType.warning});
+      return;
     }
   
-    dto.description = this.descriptionForm.value.description;
-
-    this.communityService.updateCommunity( dto,this.community.id).subscribe(res => {
+    this.communityService.updateCommunity( formData,this.community.id).subscribe(res => {
       this.community = res;
       this.about.nativeElement.hidden = false;
       this.descripitonTxt.nativeElement.hidden = false;
@@ -153,14 +164,25 @@ export class CommunitySettingsWindowComponent implements OnInit {
   }
 
   submitFlairs(){
-    const dto : CommuntyRequest = {
-      name : this.community.name,
-      description : this.community.description,
-      rules : this.rules,
-      flairs : this.flairs
+    const formData = new FormData();
+    formData.append('name',this.community.name.trim())
+    formData.append('description',this.community.description.trim())
+    if(this.selectedPdfFile !== undefined){
+      formData.append('pdfFile', this.selectedPdfFile)
+    }
+    for(let rule of this.rules){
+      formData.append('rules',rule)
+    }
+    for (let flair of this.flairs){
+      formData.append('flairs',JSON.stringify(flair))
     }
 
-    this.communityService.updateCommunity( dto,this.community.id).subscribe(res => {
+    if(this.flairs.length == 0){
+      this.alertService.addAlert({text:  'You must add atleast one flair!', type: AlertType.warning});
+      return;
+    }
+  
+    this.communityService.updateCommunity( formData,this.community.id).subscribe(res => {
       this.community = res;
       this.alertService.addAlert({text : "Community updated!",  type : AlertType.success});
     },err => {
@@ -169,20 +191,41 @@ export class CommunitySettingsWindowComponent implements OnInit {
   }
 
   submitRules(){
-    const dto : CommuntyRequest = {
-      name : this.community.name,
-      description : this.community.description,
-      rules : this.rules,
-      flairs : this.flairs
+    const formData = new FormData();
+    formData.append('name',this.community.name.trim())
+    formData.append('description',this.community.description.trim())
+    if(this.selectedPdfFile !== undefined){
+      formData.append('pdfFile', this.selectedPdfFile)
+    }
+    for(let rule of this.rules){
+      formData.append('rules',rule)
+    }
+    for (let flair of this.flairs){
+      formData.append('flairs',JSON.stringify(flair))
     }
 
-    this.communityService.updateCommunity( dto,this.community.id).subscribe(res => {
+    if(this.flairs.length == 0){
+      this.alertService.addAlert({text:  'You must add atleast one flair!', type: AlertType.warning});
+      return;
+    }
+  
+    this.communityService.updateCommunity( formData,this.community.id).subscribe(res => {
       this.community = res;
       this.alertService.addAlert({text : "Community updated!",  type : AlertType.success});
     },err => {
       this.alertService.addAlert({text : "Something went wrong, please try again later!",  type : AlertType.warning});
     });
   }
+
+  onPdfChanged(event : any){
+    if((event.target)?.files[0].size > 2000000){
+      this.alertService.addAlert({text : "File is too large(limit is 2mb)!",  type : AlertType.warning});
+      return;
+    }
+    this.selectedPdfFile = (event.target)?.files[0];
+    this.pdfName = (event.target)?.files[0].name;
+  }
+
 
 
 }

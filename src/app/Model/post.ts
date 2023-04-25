@@ -11,7 +11,9 @@ export interface PostResponse{
     hasAFlair:Flair,
     postedBy:UserResponse,
     community:CommunityResponse,
-    karma:number
+    karma:number,
+    pdfFileName: string
+
 }
 
 export interface PostRequest {
@@ -20,4 +22,14 @@ export interface PostRequest {
     imgPath: string | null;
     hasAFlair: Flair | null;
     communityId: number;
+    pdf : File | null
+}
+
+export interface PostSearchResponse{
+    id:number,
+    title:string,
+    text:string,
+    flair:string,
+    karma:number;
+    highlighterTxt:string
 }
