@@ -5,7 +5,7 @@
         <p *ngIf="post.imgPath == null" class="content_txt" [routerLink]="['/Post',post.id]">
             {{post.text}}
         </p>
-        <img [src]="getImg()" class="postImg" *ngIf="post.imgPath != null" [routerLink]="['/Post',post.id]">
+        <img [src]="getImg()" class="postImg" *ngIf="post.imgPath != null && post.imgPath != 'null'" [routerLink]="['/Post',post.id]">
     </div>
     <div class="card_comment_row">
         <a  [routerLink]="['/Post',post.id]" class="link">Comments</a>

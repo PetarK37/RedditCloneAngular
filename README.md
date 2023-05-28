@@ -8,7 +8,7 @@ To run this project you will need following library's:
 - [Angular ](https://angular.io/) version 13.3.0.
 - [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
 
-To start app run `npm install` and then `ng serve` for a dev server. Navigate to `http://localhost:4200/`. You will also need runnig backend wich I have wrote in this [springApp](https://github.com/PetarK37/RedditCloneSpring). Initial admin credentials(if you started backend and run SQL script should be `Username:admin123 password:Lozinka123` and for some users its  same except username is user1,2,3)
+To start app run `npm install` and then `ng serve` for a dev server. Navigate to `http://localhost:4200/`. You will also need runnig backend wich I have wrote in this [springApp](https://github.com/PetarK37/RedditCloneSpring). Initial admin credentials(if you started backend and run SQL script should be `Username:admin123 password:Lozinka123` and for some users its  same except username is user1,2,3..)
 
 ## Features
 - LogIn/Register

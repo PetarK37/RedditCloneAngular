@@ -36,12 +36,17 @@
 .row strong:hover{
     border-bottom: 1px solid var(--text-color);
 }
+.higlighter{
+    text-align: center;
+    font-size: larger;
+    padding: 0 20px 20px 20px;
+}
+
 p strong{
     background-color: rgba(98, 215, 215, 0.685);
     border-radius: 5px;
     padding: 5px;
 }
-
 h4{
   font-size: x-large;
 }

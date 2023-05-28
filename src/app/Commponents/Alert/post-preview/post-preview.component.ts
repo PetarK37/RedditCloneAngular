@@ -25,6 +25,6 @@ export class PostPreviewComponent implements OnInit {
   }
 
   getImg(){
-    return this.imgService.getImg(this.post!.imgPath);
+    return this.imgService.getImg(this.post!.imgPath!);
   }
 }
