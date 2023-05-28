@@ -22,7 +22,7 @@ export class PostCardComponent implements OnInit {
   }
 
   getImg() : string{
-    return this.imgService.getImg(this.post.imgPath);
+    return this.imgService.getImg(this.post.imgPath!);
   }
 
   report(){

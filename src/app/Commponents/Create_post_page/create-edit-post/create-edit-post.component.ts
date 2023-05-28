@@ -73,7 +73,7 @@ export class CreateEditPostComponent implements OnInit {
             return this.post.hasAFlair.name === flair.name;
           })); 
           this.form.get('community')?.removeValidators(Validators.required);
-          this.previewSrc = this.imgService.getImg(this.post.imgPath);
+          this.previewSrc = this.imgService.getImg(this.post.imgPath!);
         }
       };
 

@@ -10,8 +10,8 @@ export class InputFormGenerator{
         const group : any = {}
 
         inputs.forEach(input => {
-            group[input.key] = input.required ? new FormControl(input.value || '', input.type === 'number' ?  [Validators.required , Validators.pattern(/^\d+$/)] : Validators.required)
-            : new FormControl(input.value || '',input.type === 'number' ? Validators.pattern(/^\d+$/) : null);
+            group[input.key] = input.required ? new FormControl(input.value || '', input.type === 'number' ?  [Validators.required , Validators.pattern(/^[-]?\d+$/)] : Validators.required)
+            : new FormControl(input.value || '',input.type === 'number' ? Validators.pattern(/^[-]?\d+$/) : null);
 });
 return new FormGroup(group);
     }

@@ -16,7 +16,7 @@ export class PostSectionComponent implements OnInit {
   }
 
   getImg() : string{
-    return this.imgService.getImg(this.post.imgPath);
+    return this.imgService.getImg(this.post.imgPath!);
   }
 
 

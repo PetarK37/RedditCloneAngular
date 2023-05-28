@@ -3,6 +3,6 @@
     <div class="content">
         <p>{{post.text}}</p>
     </div>
-    <img [src]="getImg()" class="postImg" *ngIf="post.imgPath != null">
+    <img [src]="getImg()" class="postImg" *ngIf="post.imgPath !== null && post.imgPath != 'null'">
     <app-post-karma-row [post]="post"></app-post-karma-row>
 </div>
